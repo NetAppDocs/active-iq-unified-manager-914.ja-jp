@@ -1,0 +1,44 @@
+---
+permalink: health-checker/task_specify_destination_location_for_snapshot_backups.html 
+sidebar: sidebar 
+keywords: specify, destination location, snapshot copies, copy 
+summary: いずれかのONTAPクラスタで設定済みのボリュームで、Active IQ Unified Manager Snapshotコピーのデスティネーションの場所を設定する必要があります。場所を定義するには、メンテナンスコンソールを使用する必要があります。 
+---
+= Snapshotコピーのデスティネーションの指定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+いずれかのONTAPクラスタで設定済みのボリュームで、Active IQ Unified Manager Snapshotコピーのデスティネーションの場所を設定する必要があります。場所を定義するには、メンテナンスコンソールを使用する必要があります。
+
+* Active IQ Unified ManagerがインストールされているLinuxホストのrootユーザのクレデンシャルが必要です。
+* Unified Managerサーバのメンテナンスコンソールへのログインが許可されているユーザIDとパスワードが必要です。
+* クラスタ管理IPアドレス、Storage VMの名前、ボリュームの名前、およびストレージシステムのユーザ名とパスワードが必要です。
+* ボリュームをActive IQ Unified Managerホストにマウントし、マウントパスを確認しておく必要があります。
+
+
+.手順
+. セキュアシェルを使用して、Active IQ Unified ManagerシステムのIPアドレスまたはFQDNに接続します。
+. メンテナンスユーザ（umadmin）の名前とパスワードでシステムにログインします。
+. コマンドを入力し `maintenance_console`、Enterキーを押します。
+. メンテナンスコンソール * メインメニュー * で、 * バックアップリストア * オプションの番号を入力します。
+. Configure NetApp Snapshot Backup * の番号を入力します。
+. NFSを設定する番号を入力します。
+. 指定する必要がある情報を確認し、「バックアップ設定の詳細を入力」 * の番号を入力します。
+. Snapshotを書き込むボリュームを特定するには、クラスタ管理インターフェイスのIPアドレス、Storage VMの名前、ボリュームの名前、LUN名、ストレージシステムのユーザ名とパスワード、およびマウントパスを入力します。
+. この情報を確認し、と入力します `y`。
++
+システムは次のタスクを実行します。
+
++
+** クラスタへの接続を確立します
+** すべてのサービスを停止します
+** ボリュームに新しいディレクトリを作成し、 Active IQ Unified Manager データベース構成ファイルをコピーします
+** Active IQ Unified Manager からファイルを削除し、新しいデータベースディレクトリへのシンボリックリンクを作成します
+** すべてのサービスを再起動します
+
+
+. メンテナンスコンソールを終了し、Active IQ Unified Managerインターフェイスを起動してSnapshotコピーのスケジュールを作成します（まだ作成していない場合）。
+

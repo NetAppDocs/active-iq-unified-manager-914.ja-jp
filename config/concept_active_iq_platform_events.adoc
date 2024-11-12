@@ -1,0 +1,20 @@
+---
+permalink: config/concept_active_iq_platform_events.html 
+sidebar: sidebar 
+keywords: feature settings, active iq, portal, events 
+summary: Active IQ ポータルイベントを有効にするか無効にするかを指定できます。この設定を有効にすると、 Active IQ ポータルでシステム構成やケーブル配線などに関する追加のイベントが検出されて表示されます。このオプションはデフォルトで有効になっています。 
+---
+= Active IQポータルイベントの有効化
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQ ポータルイベントを有効にするか無効にするかを指定できます。この設定を有効にすると、 Active IQ ポータルでシステム構成やケーブル配線などに関する追加のイベントが検出されて表示されます。このオプションはデフォルトで有効になっています。
+
+Active IQ Unified Manager でこの機能を有効にすると、 Active IQ ポータルで検出されたイベントが表示されます。これらのイベントは、監視対象のすべてのストレージシステムから生成されたAutoSupportメッセージに対して一連のルールを実行することによって作成されます。これらのイベントは Unified Manager の他のイベントとは異なり、システム構成、ケーブル配線、ベストプラクティス、および可用性の問題に関連するインシデントやリスクを特定します。
+
+この機能をアクティブ化または非アクティブ化するには、 * 一般 * > * 機能設定 * > * Active IQ ポータルイベント * を選択します。外部ネットワークへのアクセスがないサイトでは、 * Storage Management * > * Event Setup * > * Upload Rules * からルールを手動でアップロードする必要があります。
+
+この機能はデフォルトで有効になっています。この機能を無効にすると、 Active IQ イベントが Unified Manager で検出または表示されなくなります。この機能を無効にして有効にすると、Unified Managerは、クラスタに対するActive IQイベントを00：15（クラスタのタイムゾーン）に受信することができます。

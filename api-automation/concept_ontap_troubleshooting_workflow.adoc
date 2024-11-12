@@ -1,0 +1,179 @@
+---
+permalink: api-automation/concept_ontap_troubleshooting_workflow.html 
+sidebar: sidebar 
+keywords: troubleshoot, ontap, volumes, gateway, api 
+summary: ゲートウェイAPIは、ONTAP APIを呼び出してONTAPストレージオブジェクトに関する情報を照会し、報告された問題に対処するための対策を講じるためのゲートウェイとして機能します。 
+---
+= ゲートウェイAPIを使用したONTAPボリュームのトラブルシューティング
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ゲートウェイAPIは、ONTAP APIを呼び出してONTAPストレージオブジェクトに関する情報を照会し、報告された問題に対処するための対策を講じるためのゲートウェイとして機能します。
+
+このワークフローでは、ONTAPの容量がほぼ上限に達したときにイベントが生成されるユースケースを取り上げます。また、Active IQ Unified ManagerとONTAP REST APIを組み合わせて呼び出すことでこの問題に対処する方法についても説明します。
+
+[NOTE]
+====
+ワークフローの手順を実行する前に、次の点を確認してください。
+
+* ゲートウェイAPIとその使用方法について理解しておく必要があります。詳細については、を参照してください link:concept_gateway_apis.html["プロキシアクセスによるONTAP APIへのアクセス"]。
+* ONTAP REST APIの使用方法について理解しておく必要があります。ONTAP REST APIの使用については、を参照してくださいhttps://docs.netapp.com/us-en/ontap-automation/index.html["ONTAP 自動化に関するドキュメント"]。
+* あなたはアプリケーション管理者です。
+* REST API処理を実行するクラスタはONTAP 9 .5以降でサポートされており、HTTPS経由でUnified Managerに追加されています。
+
+
+====
+次の図は、ONTAPボリュームの容量使用に関する問題をトラブルシューティングするためのワークフローの各手順を示しています。
+
+image::../media/api_gateway_ontap_workflow.gif[API ゲートウェイの ONTAP ワークフロー]
+
+このワークフローでは、Unified ManagerとONTAP REST APIの両方の呼び出しポイントについて説明します。
+
+. ボリュームの容量利用率を通知するイベントのボリューム名をメモします。
+. nameパラメータの値にボリューム名を使用して、次のUnified Manager APIを実行してボリュームを照会します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+データセンター
+ a| 
+取得
+ a| 
+`/datacenter/storage/volumes`
+
+|===
+. 出力からクラスタUUIDとボリュームUUIDを取得します。
+. Unified Manager Web UI で、 * 一般 * > * 機能設定 * > * API ゲートウェイ * と移動して、 API ゲートウェイ機能が有効になっているかどうかを確認します。有効になっていないかぎり、ゲートウェイカテゴリのAPIを呼び出すことはできません。無効になっている場合は、この機能を有効にします。
+. クラスタUUIDを使用して、APIゲートウェイ経由でONTAP APIを実行し/`storage/volumes/{uuid}`ます。APIパラメータとしてボリュームUUIDを指定すると、ボリュームの詳細が返されます。
++
+APIゲートウェイを介してONTAP APIを実行する場合は、Unified Managerのクレデンシャルが認証用に内部的に渡されるため、個 々 のクラスタアクセスに対して追加の認証手順を実行する必要はありません。
+
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+Unified Manager：ゲートウェイ
+
+ONTAP：ストレージ
+ a| 
+取得
+ a| 
+ゲートウェイAPI： `/gateways/\{uuid}/\{path}`
+
+ONTAP API： `/storage/volumes/\{uuid}`
+
+|===
++
+[NOTE]
+====
+/gateways / ｛ uuid ｝ / ｛ path ｝ の値は、 REST 処理を実行するクラスタ UUID に置き換える必要があります。\ ｛ path ｝ を ONTAP REST URL / ストレージ / ボリューム / ｛ uuid ｝ に置き換える必要があります。
+
+====
++
+追加されるURLは次のとおりです。 `/gateways/\{cluster_uuid}/storage/volumes/\{volume_uuid}`
+
++
+GET処理の実行時に生成されるURLは次のとおりです。 `GEThttps://<hostname\>/api/gateways/<cluster_UUID\>/storage/volumes/\{volume_uuid\}`
+
++
+* cURL コマンドの例 *
+
++
+[listing]
+----
+curl -X GET "https://<hostname>/api/gateways/1cd8a442-86d1-11e0-ae1c-9876567890123/storage/volumes/028baa66-41bd-11e9-81d5-00a0986138f7"
+-H "accept: application/hal+json" -H "Authorization: Basic <Base64EncodedCredentials>"
+----
+. 出力から、実行するサイズ、使用量、修復方法を確認します。このワークフローでは、ボリュームのサイズ変更を修正します。
+. クラスタUUIDを使用し、APIゲートウェイ経由で次のONTAP APIを実行してボリュームのサイズを変更します。ゲートウェイAPIとONTAP APIの入力パラメータについては、手順5を参照してください。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+Unified Manager：ゲートウェイ
+
+ONTAP：ストレージ
+ a| 
+パッチ
+ a| 
+ゲートウェイAPI： `/gateways/\{uuid}/\{path}`
+
+ONTAP API： `/storage/volumes/\{uuid}`
+
+|===
++
+[NOTE]
+====
+ボリュームのサイズを変更するには、クラスタUUIDとボリュームUUIDに加えてsizeパラメータの値を入力する必要があります。値をバイト単位で入力してください。たとえば、ボリュームのサイズを100GBから120GBに拡張する場合は、クエリの最後にパラメータsizeの値を入力します。 `-d {\"size\": 128849018880}"`
+
+====
++
+* cURL コマンドの例 *
+
++
+[listing]
+----
+curl -X PATCH "https://<hostname>/api/gateways/1cd8a442-86d1-11e0-ae1c-9876567890123/storage/volumes/028baa66-41bd-11e9-81d5-00a0986138f7" -H
+    "accept: application/hal+json" -H "Authorization: Basic <Base64EncodedCredentials>" -d
+    {\"size\": 128849018880}"
+----
++
+JSON出力からジョブUUIDが返されます。
+
+. ジョブUUIDを使用して、ジョブが正常に実行されたかどうかを確認します。クラスタUUIDとジョブUUIDを使用して、APIゲートウェイ経由で次のONTAP APIを実行します。ゲートウェイAPIとONTAP APIの入力パラメータについては、手順5を参照してください。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+Unified Manager：ゲートウェイ
+
+ONTAP：クラスタ
+ a| 
+取得
+ a| 
+ゲートウェイAPI： `/gateways/\{uuid}/\{path}`
+
+ONTAP API： `/cluster/jobs/\{uuid}`
+
+|===
++
+返されるHTTPコードは、ONTAP REST APIのHTTPステータスコードと同じです。
+
+. 次のONTAP APIを実行して、サイズが変更されたボリュームの詳細を照会します。ゲートウェイAPIとONTAP APIの入力パラメータについては、手順5を参照してください。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+Unified Manager：ゲートウェイ
+
+ONTAP：ストレージ
+ a| 
+取得
+ a| 
+ゲートウェイAPI： `/gateways/\{uuid}/\{path}`
+
+ONTAP API： `/storage/volumes/\{uuid}`
+
+|===
++
+出力には、ボリュームサイズが120GBに拡張されたことが表示されます。
+
+

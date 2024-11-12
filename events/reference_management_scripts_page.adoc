@@ -1,0 +1,46 @@
+---
+permalink: events/reference_management_scripts_page.html 
+sidebar: sidebar 
+keywords: scripts, page, command, buttons, list, view 
+summary: '[Scripts]ページでは、Unified Managerにカスタムスクリプトを追加できます。作成したスクリプトをアラートに関連付けると、ストレージオブジェクトを自動的に再設定できます。' 
+---
+= [ スクリプト ] ページ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Scripts]ページでは、Unified Managerにカスタムスクリプトを追加できます。作成したスクリプトをアラートに関連付けると、ストレージオブジェクトを自動的に再設定できます。
+
+[Scripts]ページでは、Unified Managerのスクリプトを追加または削除できます。
+
+
+
+== コマンドボタン
+
+* * 追加 * 。
++
+[スクリプトの追加]ダイアログボックスが表示され、スクリプトを追加できます。
+
+* * 削除 *
++
+選択したスクリプトを削除します。
+
+
+
+
+
+== リストビュー
+
+リストビューには、 Unified Manager に追加したスクリプトが表形式で表示されます。
+
+* * 名前 *
++
+スクリプトの名前が表示されます。
+
+* * 概要 *
++
+スクリプトの説明が表示されます。
+
+

@@ -1,0 +1,88 @@
+---
+permalink: storage-mgmt/task_view_and_add_vcenter_servers.html 
+sidebar: sidebar 
+keywords: view, add, vcenter, server 
+summary: 仮想マシン（VM）のパフォーマンスを表示およびトラブルシューティングするには、関連するvCenter ServerをActive IQ Unified Managerインスタンスに追加する必要があります。 
+---
+= vCenter Serverの表示と追加
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+仮想マシン（VM）のパフォーマンスを表示およびトラブルシューティングするには、関連するvCenter ServerをActive IQ Unified Managerインスタンスに追加する必要があります。
+
+* 必要なもの *
+
+vCenter Serverを追加または表示する前に、次の点を確認してください。
+
+* vCenter Serverの名前を確認しておきます。
+* vCenter ServerのIPアドレスを確認し、必要なクレデンシャルを用意しておきます。vCenter Server管理者またはvCenter Serverへの読み取り専用アクセスを持つrootユーザのクレデンシャルが必要です。
+* 追加するvCenter ServerでvSphere 6.5以降が実行されている。
++
+
+NOTE: VMware ESXiおよびvCenter Server向けのUnified Managerは、英語と日本語でサポートされます。
+
+* vCenter Serverのデータ収集設定はの統計レベルに設定され `_Level 3_`、すべての監視対象オブジェクトで必要なレベルの指標が収集されるようにします。間隔の期間はで、保存期間はである必要があり `_5 minutes_`ます `_1 day_`。
++
+詳細については、 VMware のマニュアルの「 vSphere Monitoring and Performance Guide 」の「 `D ATA Collection Levels' 」を参照してください。
+
+* レイテンシ値を正しく計算するために、vCenter Serverのレイテンシ値がマイクロ秒単位ではなくミリ秒単位で設定されている。
+* データストアをvCenter Serverに追加するときは、ホストのIPアドレスまたはFully Qualified Domain Name（FQDN；完全修飾ドメイン名）の両方を使用できます。FQDNを追加する場合は、ドメイン名をUnified Managerサーバで解決できることを確認してください。たとえば、Linuxをインストールしている場合は、ファイルにドメイン名が追加されていることを確認し `/etc/resolv.conf`ます。
+* vCenter Serverの現在の時刻はvCenter Serverのタイムゾーンと同期しています。
+* vCenter Serverに到達して検出に成功しました。
+* vCenter ServerをUnified Managerに追加するときは、VMware SDKへの読み取りアクセス権が必要です。これは、設定のポーリングに必要です。
+
+
+Unified Managerは、追加されて検出されたすべてのvCenter Serverについて、vCenter ServerとESXiサーバの詳細、ONTAPマッピング、データストアの詳細、ホストされているVMの数などの構成データを収集します。さらに、コンポーネントのパフォーマンス指標も収集されます。
+
+.手順
+. 「 * vmware * > * vcenter * 」に移動して、 vCenter Server がリストに表示されているかどうかを確認します。
++
+[NOTE]
+====
+vCenter Serverを使用できない場合は、vCenter Serverを追加する必要があります。
+
+====
++
+.. [追加]*をクリックします。
+.. vCenter Serverの正しいIPアドレスを追加し、デバイスに到達できることを確認します。
+.. 管理者またはvCenter Serverへの読み取り専用アクセス権を持つrootユーザのユーザ名とパスワードを追加します。
+.. デフォルトの443以外のポートを使用する場合は、カスタムポート番号を追加します。
+.. [ 保存（ Save ） ] をクリックします。
++
+検出に成功すると、サーバ証明書が表示され、承認が求められます。
+
++
+証明書を承認すると、使用可能なvCenter ServerのリストにvCenter Serverが追加されます。デバイスを追加しても、関連するVMのデータ収集は行われず、収集はスケジュールされた間隔で実行されます。
+
+
+
+. vCenter Server が *vCenters * ページに表示されている場合は、 * Status * フィールドにカーソルを合わせてステータスを確認し、 vCenter Server が正常に動作しているか、警告またはエラーが発生しているかを確認します。
++
+[NOTE]
+====
+vCenter Serverを追加すると、次のステータスを確認できます。ただし、vCenter Serverの追加後、対応するVMのパフォーマンスとレイテンシのデータが正確に反映されるまでに最大で1時間かかることがあります。
+
+====
++
+** 緑：「正常」。 vCenter Server が検出され、パフォーマンス指標が収集されたことを示します
+** 黄：「警告」（各オブジェクトの統計を取得するための vCenter Server の統計レベルが 3 以上に設定されていない場合など）
+** オレンジ：「 Error 」（例外、構成データ収集の失敗、 vCenter Server に到達できないなどの内部エラーを示します）列の表示アイコン（ * Show/Hide * ）をクリックすると、 vCenter Server のステータスメッセージを表示し、問題のトラブルシューティングを行うことができます。
+
+
+. vCenter Server に到達できない場合やクレデンシャルが変更されている場合は、 * vCenter* > * Edit * を選択して vCenter Server の詳細を編集します。
+. VMware vCenter Server の編集 * ページで必要な変更を行います。
+. [ 保存（ Save ） ] をクリックします。
+
+
+* vCenter Server のデータ収集を開始します
+
+vCenter Serverは、リアルタイムのパフォーマンスデータサンプルを20秒収集し、サンプルを5分ごとに集計します。Unified Managerのパフォーマンスデータの収集スケジュールは、vCenter Serverのデフォルトの設定に基づいています。Unified Managerは、vCenter Serverから取得した5分ごとのサンプルを処理し、仮想ディスク、VM、およびホストのIOPSとレイテンシの1時間平均を計算します。データストアの場合、Unified ManagerはONTAPから取得したサンプルに基づいてIOPSとレイテンシの1時間平均を計算します。これらの値は時間の先頭に表示されます。パフォーマンス指標はvCenter Serverを追加した直後には表示されず、次の1時間の開始時にのみ表示されます。パフォーマンスデータのポーリングは、設定データ収集のサイクルが完了すると開始されます。
+
+Unified Managerは、クラスタの構成データの収集と同じスケジュールでvCenter Serverの構成データをポーリングします。vCenter Serverの設定とパフォーマンスデータの収集スケジュールについては、「クラスタ構成とパフォーマンスデータの収集アクティビティ」を参照してください。
+
+* 関連情報 *
+
+link:../performance-checker/concept_cluster_configuration_and_performance_data_collection_activity.html["クラスタの構成とパフォーマンスのデータの収集アクティビティ"]

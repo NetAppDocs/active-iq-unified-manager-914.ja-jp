@@ -1,0 +1,194 @@
+---
+permalink: events/reference_snapmirror_relationship_events.html 
+sidebar: sidebar 
+keywords: snapmirror, relationship, events, impact area, protection 
+summary: SnapMirror関係イベントは、非同期関係と同期SnapMirror関係のステータス情報を提供します。これにより、潜在的な問題を監視できます。非同期SnapMirror関係イベントはStorage VMとボリュームの両方に対して生成されますが、同期SnapMirror関係イベントはボリューム関係に対してのみ生成されます。Storage VMディザスタリカバリ関係の一部であるコンスティチュエントボリュームについてはイベントは生成されません。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= SnapMirror関係イベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror関係イベントは、非同期関係と同期SnapMirror関係のステータス情報を提供します。これにより、潜在的な問題を監視できます。非同期SnapMirror関係イベントはStorage VMとボリュームの両方に対して生成されますが、同期SnapMirror関係イベントはボリューム関係に対してのみ生成されます。Storage VMディザスタリカバリ関係の一部であるコンスティチュエントボリュームについてはイベントは生成されません。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：保護
+
+アスタリスク（ * ）は、 Unified Manager イベントに変換された EMS イベントを示します。
+
+[NOTE]
+====
+SnapMirror関係イベントは、Storage VMディザスタリカバリで保護されているStorage VMに対して生成されますが、コンスティチュエントオブジェクト関係に対しては生成されません。
+
+====
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+ミラーレプリケーションが正常でない（ocumEvtSnapmirrorRelationshipUnhealthy）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+警告
+
+
+
+ a| 
+ミラーレプリケーションを切断（ocumEvtSnapmirrorRelationshipStateBrokenoff）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+ミラーレプリケーションの初期化失敗（ocumEvtSnapmirrorRelationshipInitializeFailed）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+ミラーレプリケーションの更新失敗（ocumEvtSnapmirrorRelationshipUpdateFailed）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+ミラーレプリケーションの遅延エラー（ocumEvtSnapMirrorRelationshipLagError）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+ミラーレプリケーションの遅延警告（ocumEvtSnapMirrorRelationshipLagWarning）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+警告
+
+
+
+ a| 
+ミラーレプリケーションの再同期失敗（ocumEvtSnapmirrorRelationshipResyncFailed）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+同期レプリケーションが同期されていない * （ syncSnapmirrorRelationshipOutofsync ）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+警告
+
+
+
+ a| 
+同期レプリケーションをリストア * （同期 SnapMirror 関係は InSync ）
+ a| 
+イベント
+ a| 
+SnapMirror関係
+ a| 
+情報
+
+
+
+ a| 
+同期レプリケーションの自動再同期失敗 * （ syncSnapmirrorRelationshipAutoSyncRetryFailed ）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+クラスタにONTAPメディエーターが追加されている（snapmirrorMediatorAdded）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+情報
+
+
+
+ a| 
+ONTAPメディエーターをクラスタから削除（snapmirrorMediatorRemoved）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+情報
+
+
+
+ a| 
+クラスタからONTAPメディエーターに到達できません（snapmirrorMediatorUnreachable）
+ a| 
+リスク
+ a| 
+メディエーター
+ a| 
+警告
+
+
+
+ a| 
+クラスタからONTAPメディエーターにアクセスできない（snapmirrorMediatorMisconfigured）
+ a| 
+リスク
+ a| 
+メディエーター
+ a| 
+エラー
+
+
+
+ a| 
+ONTAPメディエーターの接続が再確立され、再同期されてアクティブなSnapMirror同期の準備が完了しました（snapmirrorMediatorInQuorum）
+ a| 
+イベント
+ a| 
+メディエーター
+ a| 
+情報
+
+|===

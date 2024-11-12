@@ -1,0 +1,38 @@
+---
+permalink: storage-mgmt/reference_issue_with_ldap_using_other_authentication_services.html 
+sidebar: sidebar 
+keywords: issue, addi, ldap, use, other, authentication, services 
+summary: トラブルシューティング：問題に他の認証サービスを使用して LDAP を追加する 
+---
+= 他の認証サービスを使用してLDAPを追加する場合の問題
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+認証サービスとして[その他]を選択した場合、ユーザーとグループの[オブジェクトクラス]には、前に選択したテンプレートの値が保持されます。LDAPサーバで同じ値が使用されていないと、処理が失敗することがあります。
+
+* 原因 *
+
+OpenLDAPでユーザが正しく設定されていません。
+
+* 是正措置 *
+
+この問題は、次のいずれかの回避策を使用して手動で修正できます。
+
+LDAPユーザオブジェクトクラスとグループオブジェクトクラスがそれぞれuserおよびgroupの場合は、次の手順を実行します。
+
+. 左側のナビゲーションペインで、 [** 一般 ***>* リモート認証 *] をクリックします。
+. [* 認証サービス *] ドロップダウンメニューで、 [* Active Directory*] を選択し、 [* その他 *] を選択します。
+. テキストフィールドに入力します。
+
+
+LDAPユーザオブジェクトクラスとグループオブジェクトクラスがそれぞれposixAccountとposixGroupの場合は、次の手順を実行します。
+
+. 左側のナビゲーションペインで、 [** 一般 ***>* リモート認証 *] をクリックします。
+. [* Authentication Service*] ドロップダウンメニューで [*OpenLDAP *] を選択し、 [*Others *] を選択します。
+. テキストフィールドに入力します。
+
+
+最初の2つの対処方法が当てはまらない場合は、APIを呼び出し `option-set`、オプションと `auth.ldap.groupObjectClass`オプションを正しい値に設定し `auth.ldap.userObjectClass`ます。

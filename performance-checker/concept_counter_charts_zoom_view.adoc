@@ -1,0 +1,22 @@
+---
+permalink: performance-checker/concept_counter_charts_zoom_view.html 
+sidebar: sidebar 
+keywords: counter, charts, zoom, view 
+summary: カウンタグラフにはズームビューが用意されており、指定した期間のパフォーマンスの詳細を拡大できます。これによりパフォーマンスの詳細やイベントをより細かく確認できるため、パフォーマンスの問題のトラブルシューティングを行うときに便利です。 
+---
+= カウンタグラフズームビュー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+カウンタグラフにはズームビューが用意されており、指定した期間のパフォーマンスの詳細を拡大できます。これによりパフォーマンスの詳細やイベントをより細かく確認できるため、パフォーマンスの問題のトラブルシューティングを行うときに便利です。
+
+Zoom Viewで表示した場合、一部の内訳グラフでは、Zoom View以外の場合に表示される情報よりも追加の情報が提供されます。たとえば、IOPS、IOPS/TB、およびMBpsの内訳グラフのズームビューページには、ONTAPで設定されている場合は、ボリュームとLUNのQoSポリシーの値が表示されます。
+
+[NOTE]
+====
+システム定義のパフォーマンスしきい値ポリシーの場合、 [*Policies*] リストから使用できるポリシーは、「 Node resources over-utilized 」ポリシーと「 QoS Throughput limit over資料 的」ポリシーのみです。システム定義の他のしきい値ポリシーは、現時点では使用できません。
+
+====

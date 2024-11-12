@@ -1,0 +1,94 @@
+---
+permalink: install-windows/reference_windows_software_and_installation_requirements.html 
+sidebar: sidebar 
+keywords: windows, software, installation, requirements, system 
+summary: Unified ManagerをWindowsに正しくインストールするには、Unified Managerをインストールするシステムがソフトウェアの要件を満たしている必要があります。 
+---
+= Windowsソフトウェアとインストールの要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+:pp: &#43;&#43;
+
+
+[role="lead"]
+Unified ManagerをWindowsに正しくインストールするには、Unified Managerをインストールするシステムがソフトウェアの要件を満たしている必要があります。
+
+
+
+== オペレーティングシステムソフトウェア
+
+Unified Managerは次のWindowsエディションにインストールできます。
+
+* Microsoft Windows Server 2019 Standard EditionおよびDatacenter Edition
+* Microsoft Windows Server 2022 Standard EditionおよびDatacenter Edition
+
+
+Unified Managerは、64ビットのWindowsオペレーティングシステムで次の言語に対応しています。
+
+* 英語
+* 日本語
+* 簡体字中国語
+
+
+サポートされているWindowsのバージョンの最新のリストについては、Interoperability Matrixを参照してください。
+
+http://mysupport.netapp.com/matrix["mysupport.netapp.com/matrix"^]
+
+
+NOTE: NetAppでは、Microsoft System Center Configuration Manager（SCCM）などのサードパーティ製ツールを使用したUnified Managerのインストールはサポートされていません。
+
+Unified Managerを実行する専用のサーバを用意する必要があります。他のアプリケーションをサーバにインストールしないでください。会社の規制により、アクティブなウイルス対策ソフトウェアがWindowsシステムにインストールされている可能性があります。インストールが失敗しないように、Unified Managerをインストールする前にウィルス対策ソフトウェアを無効にする必要があります。
+
+
+
+== サードパーティ製ソフトウェア
+
+Unified Managerには次のサードパーティパッケージがバンドルされています。これらのサードパーティパッケージがシステムにインストールされていない場合、Unified Managerのインストール時にインストールされます。
+
+* Microsoft Visual C&#43;&#43;2015再頒布可能パッケージバージョン14.26.28720.3
+* Visual Studio 2013バージョン12.0.40660.0のMicrosoft Visual C&#43;&#4;&#43;再頒布可能パッケージ
+* MySQL Community Editionバージョン8.0.34
+* Python 3.11.6
+* OpenJDKバージョン11.0.20
+* p7zipバージョン23.01以降
+
+
+[NOTE]
+====
+Unified Manager 9.5以降では、OpenJDKはUnified Managerのインストールパッケージに含まれており、自動的にインストールされます。Unified Manager 9.5以降ではOracle Javaがサポートされません。
+
+====
+MySQLが事前にインストールされている場合は、次の点を確認してください。
+
+* デフォルトのポートを使用しています。
+* サンプルデータベースがインストールされていません。
+* サービス名は「 `M YSQL8` 」です。
+
+
+Unified ManagerはWildFly Webサーバに導入されます。WildFly 26.1.3はUnified Managerにバンドルされ、設定されています。
+
+[NOTE]
+====
+サードパーティ製ソフトウェアをアップグレードする前に、Unified Managerの実行中のインスタンスをシャットダウンする必要があります。サードパーティ製ソフトウェアのインストールが完了したら、Unified Managerを再起動できます。
+
+====
+
+
+== インストールの要件
+
+* Microsoft .NET 4.5.2以降がインストールされている必要があります。
+*  `temp`インストールファイルを展開するために、ディレクトリに2GBのディスクスペースが設定されている必要があります。ディレクトリが作成されたかどうかを確認するには、コマンドラインインターフェイスで次のコマンドを実行します。 `echo %temp%`
+* Unified ManagerのMSIファイルのキャッシュ用に、Windowsドライブに2GBのディスクスペースを確保しておく必要があります。
+* Unified ManagerをインストールするMicrosoft Windows Serverの完全修飾ドメイン名（FQDN）を設定し、ホスト名およびFQDNへのが正常に応答するように設定する必要があります `ping`。
+* Microsoft IIS World Wide Web Publishing Serviceを無効にして、ポート80と443が空いていることを確認する必要があります。
+* インストール中は、「 Windows Installer RDS Compatibility 」のリモートデスクトップセッションホスト設定が無効になっていることを確認してください。
+* UDPポート514を空けておき、他のサービスで使用されないようにしてください。
+* Unified Managerをインストールする前に、システムのウィルス対策ソフトウェアをすべて無効にする必要があります。インストールが完了したら、次のパスをアンチウイルススキャンから手動で除外してください。
++
+** Unified Managerデータディレクトリ（例：） `C:\ProgramData\NetApp\OnCommandAppData\`
+** Unified Managerのインストールディレクトリ（例：） `\C:\Program Files\NetApp\`
+** MySQLのデータディレクトリ（例：） `C:\ProgramData\MySQL\MySQLServerData`
+
+
+

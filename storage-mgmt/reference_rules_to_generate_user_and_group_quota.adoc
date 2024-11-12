@@ -1,0 +1,80 @@
+---
+permalink: storage-mgmt/reference_rules_to_generate_user_and_group_quota.html 
+sidebar: sidebar 
+keywords: rules, generate, user, group, quota, email, address, page, area, define, add comments, syntax, command buttons 
+summary: '[Rules to Generate User and Group Quota Email Address]ページでは、クラスタ、SVM、ボリューム、qtree、ユーザ、またはユーザグループに関連付けられたユーザクォータに基づいてEメールアドレスを指定するルールを作成できます。クォータに違反が発生すると、指定したEメールアドレスに通知が送信されます。' 
+---
+= [Rules to Generate User and Group Quota Email Address]ページ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Rules to Generate User and Group Quota Email Address]ページでは、クラスタ、SVM、ボリューム、qtree、ユーザ、またはユーザグループに関連付けられたユーザクォータに基づいてEメールアドレスを指定するルールを作成できます。クォータに違反が発生すると、指定したEメールアドレスに通知が送信されます。
+
+
+
+== [Rules]領域
+
+クォータEメールアドレスのルールを定義する必要があります。ルールを説明するコメントを追加することもできます。
+
+
+
+== ルールを定義する方法
+
+ルールは実行する順序で入力する必要があります。最初のルールの条件が満たされると、このルールに基づいてEメールアドレスが生成されます。基準が満たされていない場合は、次のルールの基準が考慮されます。各行には個別のルールが表示されます。デフォルトルールはリストの最後のルールです。ルールの優先順位は変更できます。ただし、デフォルトルールの順序は変更できません。
+
+たとえば、qtree1のクォータ違反に関する通知をEメールアドレスqtree1@xyz.comで受信し、他のすべてのqtreeにEメールアドレスadmin@xyz.comを使用する場合は、ルールを次の順序で指定する必要があります。
+
+* （$qtree =='qtree1'）の場合はqtree1@xyz.com
+* （$qtree ==*）の場合はadmin@xyz.com
+
+
+指定したルールの条件が1つも満たされない場合は、デフォルトのルールが使用されます。
+
+（$USER_OR_GROUP==*）の場合、$USER_OR_GROUP@$DOMAIN
+
+クォータが同じユーザが複数ある場合は、ユーザの名前がカンマで区切られた値で表示され、クォータにはルールが適用されません。
+
+
+
+== コメントを追加する方法
+
+ルールを説明するコメントを追加できます。各コメントの先頭に#を使用する必要があります。各行には個別のコメントが表示されます。
+
+
+
+== ルールの構文
+
+ルールの構文は、次のいずれかである必要があります。
+
+* if `valid variableoperator *` ()の場合 `email ID@domain name`
++
+if はキーワードであり、小文字で記述します。演算子は = です。EメールIDには、任意の文字、有効な変数$USER_OR_GROUP、$USER、$GROUP、または任意の文字と有効な変数$USER_OR_GROUP、$USER、または$GROUPの組み合わせを使用できます。ドメイン名には、任意の文字、有効な変数$DOMAIN、または任意の文字と有効な変数$DOMAINの組み合わせを含めることができます。有効な変数は大文字または小文字で指定できますが、両方を組み合わせて指定することはできません。たとえば、$DOMAINと$DOMAINは有効ですが、$DOMAINは有効な変数ではありません。
+
+* if `valid variableoperator `string`` ()の場合 `email ID@domain name`
++
+if はキーワードであり、小文字で記述します。operator には、 contains または == を指定できます。EメールIDには、任意の文字、有効な変数$USER_OR_GROUP、$USER、$GROUP、または任意の文字と有効な変数$USER_OR_GROUP、$USER、または$GROUPの組み合わせを使用できます。ドメイン名には、任意の文字、有効な変数$DOMAIN、または任意の文字と有効な変数$DOMAINの組み合わせを含めることができます。有効な変数は大文字または小文字で指定できますが、両方を組み合わせて指定することはできません。たとえば、$DOMAINと$DOMAINは有効ですが、$DOMAINは有効な変数ではありません。
+
+
+
+
+
+== コマンドボタン
+
+作成したルールを保存、検証、キャンセルするには、各コマンドボタンを使用します。
+
+* * 検証 *
++
+作成したルールの構文を検証します。検証中にエラーが発生した場合は、エラーを生成するルールとエラーメッセージが表示されます。
+
+* * 工場出荷時のデフォルトに戻します *
++
+アドレスルールを工場出荷時のデフォルト値に戻すことができます。
+
+* * 保存 *
++
+ルールの構文を検証し、エラーがない場合はルールを保存します。検証中にエラーが発生した場合は、エラーを生成するルールとエラーメッセージが表示されます。
+
+

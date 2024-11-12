@@ -1,0 +1,16 @@
+---
+permalink: config/concept_what_diagnostic_user_does.html 
+sidebar: sidebar 
+keywords: diagnostic, user, capabilities 
+summary: 診断アクセスの目的は、テクニカルサポートがトラブルシューティングを支援できるようにすることです。テクニカルサポートから指示があった場合にのみ使用してください。 
+---
+= 診断ユーザの権限
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+診断アクセスの目的は、テクニカルサポートがトラブルシューティングを支援できるようにすることです。テクニカルサポートから指示があった場合にのみ使用してください。
+
+診断ユーザは、トラブルシューティングのために、テクニカルサポートから指示があったときにOSレベルのコマンドを実行できます。

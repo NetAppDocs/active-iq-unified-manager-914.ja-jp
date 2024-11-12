@@ -1,0 +1,25 @@
+---
+permalink: performance-checker/task_select_performance_thresholds_in_zoom_view.html 
+sidebar: sidebar 
+keywords: select, performance, thresholds, counter, charts, zoom, view 
+summary: カウンタグラフズームビューでしきい値を適用すると、該当するパフォーマンスしきい値イベントの詳細が表示されます。しきい値を適用または削除してすぐに結果を表示でき、トラブルシューティングが必要かどうかを判断する際に役立ちます。 
+---
+= カウンタグラフズームビューでのパフォーマンスしきい値の選択
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+カウンタグラフズームビューでしきい値を適用すると、該当するパフォーマンスしきい値イベントの詳細が表示されます。しきい値を適用または削除してすぐに結果を表示でき、トラブルシューティングが必要かどうかを判断する際に役立ちます。
+
+カウンタグラフズームビューでしきい値を選択すると、パフォーマンスしきい値のイベントに関する正確なデータを表示できます。カウンタグラフズームビューの * Policies * 領域に表示されるしきい値を適用できます。
+
+[Counter Charts Zoom View]では、オブジェクトに一度に1つのポリシーのみを適用できます。
+
+.ステップ
+. ポリシーに関連付けられているを選択または選択解除しimage:../media/eye_icon.gif["目のアイコン"]ます。
++
+選択したしきい値がCounter Charts Zoom Viewに適用されます。重大のしきい値は赤の線、警告のしきい値は黄色の線で表示されます。
+
+

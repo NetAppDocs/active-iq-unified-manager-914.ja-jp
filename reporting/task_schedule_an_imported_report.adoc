@@ -1,0 +1,40 @@
+---
+permalink: reporting/task_schedule_an_imported_report.html 
+sidebar: sidebar 
+keywords: schedule, imported, reports 
+summary: 以前のリリースのUnified Managerで作成およびインポートした既存のレポートをスケジュール設定できます。 
+---
+= インポートされた.rptdesignレポートのスケジュール設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+以前のリリースのUnified Managerで作成およびインポートした既存のレポートをスケジュール設定できます。
+
+インポートされたレポートのスケジュールを設定するには、
+
+* 以前のUnified Managerリリースで設計された.rptdesignファイルレポートをインポートしたBIRT
+* Unified Manager 9.6 GA以降にアップグレードする場合に適用
+
+
+Unified Manager 9.6 GA以降にアップグレードすると、[Report Schedules]ページにインポートしたレポートが表示されます。これらのレポートのスケジュールを編集して、受信者のEメールアドレス、頻度、形式（PDFまたはCSV）を指定できます。そうしないと、これらのレポートをUnified Manager UIで編集または表示できません。
+
+.手順
+. [Report Schedules]ページを開きます。レポートをインポートした場合は、メッセージが表示されます。
++
+image::../media/message_non_scehduled_reports.png[インポートされたレポートがある場合は、メッセージを示すUIのスクリーンショットが表示されます。]
+
+. *View* 名をクリックして、レポートの生成に使用されている SQL クエリを表示します。
++
+image::../media/importedreport1.png[レポートの生成に使用されたSQLクエリを示すUIのスクリーンショット。]
+
+. [詳細]アイコンをクリックしimage:../media/more_icon.gif[""]、*[編集]*をクリックしてレポートスケジュールの詳細を定義し、レポートを保存します。
++
+[NOTE]
+====
+[詳細]アイコンから不要なレポートを削除することもできますimage:../media/more_icon.gif[""]。
+
+====
+

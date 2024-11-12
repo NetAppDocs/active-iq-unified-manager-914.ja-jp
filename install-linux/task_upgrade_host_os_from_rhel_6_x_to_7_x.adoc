@@ -1,0 +1,70 @@
+---
+permalink: install-linux/task_upgrade_host_os_from_rhel_6_x_to_7_x.html 
+sidebar: sidebar 
+keywords: upgrade, host OS, red hat enterprise, linux 7.x, 8.x 
+summary: Unified ManagerがインストールされているRed Hat Enterprise Linux 7.xシステムをRed Hat Enterprise Linux 8.xにアップグレードする必要がある場合は、このトピックに記載されているいずれかの手順に従う必要があります。いずれの場合も、Red Hat Enterprise Linux 7.xでUnified Managerのバックアップを作成し、そのバックアップをRed Hat Enterprise Linux 8.xシステムにリストアする必要があります。 
+---
+= Red Hat Enterprise Linux 7.xから8.xへのホストOSのアップグレード
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified ManagerがインストールされているRed Hat Enterprise Linux 7.xシステムをRed Hat Enterprise Linux 8.xにアップグレードする必要がある場合は、このトピックに記載されているいずれかの手順に従う必要があります。いずれの場合も、Red Hat Enterprise Linux 7.xでUnified Managerのバックアップを作成し、そのバックアップをRed Hat Enterprise Linux 8.xシステムにリストアする必要があります。サポートされるRed Hat Enterprise Linuxのバージョンは8.0から8.9です。
+
+ここに記載する2つの方法の違いは、Unified Managerのリストア処理を新しい8.xサーバで実行する場合と同じサーバで実行する場合です。
+
+この作業では、Red Hat Enterprise Linux 7.xシステムでUnified Managerのバックアップを作成する必要があるため、Unified Managerがオフラインになる時間が最小限になるように、アップグレード プロセス全体を実行する準備ができてからバックアップを作成します。Red Hat Enterprise Linux 7.xシステムをシャットダウンしたあと、新しいRed Hat Enterprise Linux 8.xシステムが起動するまではデータが収集されないため、その間のデータはUnified Manager UIに表示されません。
+
+バックアッププロセスとリストアプロセスの詳細な手順を確認する必要があるかどうかは、を参照してくださいlink:../health-checker/concept_manage_backup_and_restore_operations.html["バックアップ処理とリストア処理の管理"]。
+
+Red Hat Enterprise Linux 8.xソフトウェアをインストールできるスペアシステムがあり、Red Hat Enterprise Linux 7.xシステムが稼働している間にスペアシステムでUnified Managerのリストアを実行できる場合は、次の手順を実行します。
+
+. 新しいサーバにRed Hat Enterprise Linux 8.xソフトウェアをインストールして設定します。
++
+を参照して link:reference_red_hat_and_centos_software_and_installation_requirements.html["Linuxソフトウェアとインストールの要件"]
+
+. Red Hat Enterprise Linux 8.xシステムに、既存のRed Hat Enterprise Linux 7.xシステムと同じバージョンのUnified Managerソフトウェアをインストールします。
++
+を参照して link:concept_install_unified_manager_on_rhel_or_centos.html["LinuxへのUnified Managerのインストール"]
+
++
+インストールが完了しても、UIを起動したり、クラスタ、ユーザ、認証設定を設定したりしないでください。バックアップファイルには、リストアプロセス中にこの情報が入力されます。
+
+. Red Hat Enterprise Linux 7.xシステムで、Web UIの[管理]メニューを使用してUnified Managerのバックアップを作成し、バックアップファイルファイルファイル）とデータベースリポジトリディレクトリのサブディレクトリの内容を(`/database-dumps-repo`外部の場所にコピーし(`.7z`ます。
+. Red Hat Enterprise Linux 7.xシステムで、Unified Managerをシャットダウンします。
+. Red Hat Enterprise Linux 8.xシステムで、バックアップファイルファイル）を外部の場所からに `/opt/netapp/data/ocum-backup/`コピーし、データベースリポジトリファイルを `/database-dumps-repo`ディレクトリの下のサブディレクトリに `/ocum-backup`コピーします(`.7z`。
+. 次のコマンドを入力して、バックアップファイルからUnified Managerデータベースをリストアします。
++
+`um backup restore -f /opt/netapp/data/ocum-backup/<backup_file_name>`
+
+. WebブラウザにIPアドレスまたはURLを入力してUnified Manager Web UIを起動し、システムにログインします。
+
+
+システムが正常に動作していることを確認したら、Red Hat Enterprise Linux 7.xシステムからUnified Managerを削除できます。
+
+* 同じサーバ上のホスト OS のアップグレード *
+
+Red Hat Enterprise Linux 8.xソフトウェアをインストールできるスペアシステムがない場合は、次の手順を実行します。
+
+. Web UIの[管理]メニューを使用して、Unified Managerのバックアップを作成し、バックアップファイルファイルとデータベースリポジトリディレクトリのサブディレクトリの内容を(`/database-dumps-repo`外部の場所にコピーし(`.7z`ます。
+. システムからRed Hat Enterprise Linux 7.xイメージを削除し、システムを完全に消去します。
+. 同じシステムにRed Hat Enterprise Linux 8.xソフトウェアをインストールして設定します。
++
+を参照して link:reference_red_hat_and_centos_software_and_installation_requirements.html["Linuxソフトウェアとインストールの要件"]
+
+. Red Hat Enterprise Linux 8.xシステムに、前のRed Hat Enterprise Linux 7.xシステムと同じバージョンのUnified Managerソフトウェアをインストールします。
++
+を参照して link:concept_install_unified_manager_on_rhel_or_centos.html["LinuxへのUnified Managerのインストール"]
+
++
+インストールが完了しても、UIを起動したり、クラスタ、ユーザ、認証設定を設定したりしないでください。バックアップファイルには、リストアプロセス中にこの情報が入力されます。
+
+. バックアップファイルファイル）を外部の場所からに `/opt/netapp/data/ocum-backup/`コピーし、データベースリポジトリファイルを `/database-dumps-repo`ディレクトリの下のサブディレクトリに `/ocum-backup`コピーします(`.7z`。
+. 次のコマンドを入力して、バックアップファイルからUnified Managerデータベースをリストアします。
++
+`um backup restore -f /opt/netapp/data/ocum-backup/<backup_file_name>`
+
+. WebブラウザにIPアドレスまたはURLを入力してUnified Manager Web UIを起動し、システムにログインします。
+

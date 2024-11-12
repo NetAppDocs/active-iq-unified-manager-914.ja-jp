@@ -1,0 +1,16 @@
+---
+permalink: config/concept_configure_um_backup.html 
+sidebar: sidebar 
+keywords: configure, unified manager, backup 
+summary: Unified Manager のバックアップ機能は、ホストシステムおよびメンテナンスコンソールから実行する一連の設定手順で設定できます。 
+---
+= Unified Manager のバックアップを設定しています
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Manager のバックアップ機能は、ホストシステムおよびメンテナンスコンソールから実行する一連の設定手順で設定できます。
+
+設定手順の詳細については、を参照してくださいlink:..//health-checker/concept_manage_backup_and_restore_operations.html["バックアップ処理とリストア処理の管理"]。

@@ -1,0 +1,14 @@
+---
+permalink: health-checker/concept_manage_health_thresholds.html 
+sidebar: sidebar 
+keywords: manage, health, thresholds 
+summary: すべてのアグリゲート、ボリューム、およびqtreeに対してグローバル健常性しきい値を設定して、健常性しきい値の違反を追跡することができます。 
+---
+= 健全性しきい値の管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+すべてのアグリゲート、ボリューム、およびqtreeに対してグローバル健常性しきい値を設定して、健常性しきい値の違反を追跡することができます。

@@ -1,0 +1,14 @@
+---
+permalink: reporting/concept_customize_cluster_storage_reports.html 
+sidebar: sidebar 
+keywords: customize, cluster, storage, reports 
+summary: このセクションのサンプルクラスタストレージレポートは、ストレージシステムリソースの監視に役立つクラスタ容量に関するレポートの作成方法を理解するのに役立つサンプルです。 
+---
+= クラスタストレージレポートのカスタマイズ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+このセクションのサンプルクラスタストレージレポートは、ストレージシステムリソースの監視に役立つクラスタ容量に関するレポートの作成方法を理解するのに役立つサンプルです。

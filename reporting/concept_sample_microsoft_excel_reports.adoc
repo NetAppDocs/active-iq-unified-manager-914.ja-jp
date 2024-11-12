@@ -1,0 +1,22 @@
+---
+permalink: reporting/concept_sample_microsoft_excel_reports.html 
+sidebar: sidebar 
+keywords: sample, microsoft, excel, reports 
+summary: これらのサンプルMicrosoft Excelレポートは、Excelの高度な機能を使用して使用できるレポートオプションを紹介することを目的としています。 
+---
+= Microsoft Excelレポートの例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+これらのサンプルMicrosoft Excelレポートは、Excelの高度な機能を使用して使用できるレポートオプションを紹介することを目的としています。
+
+Excelの高度な機能を使用すると、ニーズに応じたさまざまなレポートを作成できます。Excelの使用方法の詳細については、製品ドキュメントを参照してください。
+
+[NOTE]
+====
+レポートを管理するには、アプリケーション管理者またはストレージ管理者のロールが必要です。
+
+====

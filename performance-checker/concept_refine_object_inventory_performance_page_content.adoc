@@ -1,0 +1,16 @@
+---
+permalink: performance-checker/concept_refine_object_inventory_performance_page_content.html 
+sidebar: sidebar 
+keywords: refining, performance, inventory, page, contents 
+summary: パフォーマンスオブジェクトのインベントリページには、オブジェクトインベントリデータの内容を絞り込むためのツールが用意されており、特定のデータをすばやく簡単に特定できます。 
+---
+= [パフォーマンスインベントリ]ページの内容の絞り込み
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+パフォーマンスオブジェクトのインベントリページには、オブジェクトインベントリデータの内容を絞り込むためのツールが用意されており、特定のデータをすばやく簡単に特定できます。
+
+[Performance Object Inventory]ページには大量の情報が格納され、多くの場合複数のページにまたがって格納されます。この種の包括的なデータは、パフォーマンスの監視、追跡、改善に最適です。ただし、特定のデータを見つけるには、探しているデータをすばやく見つけるためのツールが必要です。そのため、[パフォーマンスオブジェクトインベントリ]ページには、検索、ソート、フィルタリングの機能が用意されています。さらに、検索とフィルタリングを組み合わせて、結果をさらに絞り込むこともできます。

@@ -1,0 +1,74 @@
+---
+permalink: health-checker/task_view_detailed_security_status_for_clusters_and_svms.html 
+sidebar: sidebar 
+keywords: view, cluster security status, svm security status, volume encryption status, compliance, security hardening, encryption, anti-ransomware, certificate expiry, clusters page, storage VMs page, System Manager 
+summary: Securityページには、すべてのクラスタとStorage VMのセキュリティステータスの概要が表示されます。詳細なクラスタステータスには、クラスタコンプライアンス、 SVM コンプライアンス、ボリューム暗号化コンプライアンスが含まれます。 
+---
+= クラスタとStorage VMのセキュリティステータスの表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQ Unified Managerを使用すると、インターフェイスのさまざまなポイントから、環境内のストレージオブジェクトのセキュリティステータスを表示できます。定義されたパラメータに基づいて情報とレポートを収集して分析し、監視対象のクラスタとStorage VMでの不審な動作や不正なシステム変更を検出できます。
+
+セキュリティに関する推奨事項については、を参照してください。 https://www.netapp.com/pdf.html?item=/media/10674-tr4569pdf.pdf["ONTAP 9 セキュリティ設定ガイド"^]
+
+
+
+== [セキュリティ]ページでのオブジェクトレベルのセキュリティステータスの表示
+
+システム管理者は、セキュリティ*ページを使用して、データセンターレベルとサイトレベルのONTAP クラスタとStorage VMのセキュリティ強度を可視化できます。サポートされるオブジェクトは、クラスタ、Storage VM、およびボリュームです。次の手順を実行します。
+
+.手順
+. 左側のナビゲーションペインで、 * ダッシュボード * をクリックします。
+. すべての監視対象クラスタのセキュリティステータスを表示するか、 1 つのクラスタのセキュリティステータスを表示するかに応じて、 * すべてのクラスタ * を選択するか、ドロップダウンメニューから 1 つのクラスタを選択します。
+. セキュリティ * パネルの右矢印をクリックします。[セキュリティ]ページが表示されます。
+
+
+棒グラフ、カウント、およびリンクをクリック `View Reports`すると、[Volumes]、[Clusters]、または[Storage VMs]ページに移動し、必要に応じて対応する詳細を表示したり、レポートを生成したりできます。
+
+[Security]ページには、次のパネルが表示されます。
+
+* *クラスタコンプライアンス*：データセンター内のすべてのクラスタのセキュリティステータス（準拠または非準拠のクラスタ数）
+* * Storage VM Compliance *：データセンター内のすべてのStorage VMのセキュリティステータス（準拠または非準拠のStorage VM数）
+* * Volume Encryption *：環境内のすべてのボリュームの暗号化ステータス（暗号化されているボリュームまたは暗号化されていないボリュームの数）
+* * Volume Anti-Ransomware Status *：環境内のすべてのボリュームのセキュリティステータス（ランサムウェア対策が有効または無効になっているボリュームの数）
+* *クラスタ認証および証明書*：SAML、Active Directory、証明書およびローカル認証など、各タイプの認証方法を使用するクラスタの数。このパネルには、証明書の有効期限が切れているクラスタまたは60日以内に有効期限が切れるクラスタの数も表示されます。
+
+
+
+
+== [クラスタ]ページですべてのクラスタのセキュリティの詳細を表示する
+
+[*クラスタ/セキュリティ*の詳細]ページでは、セキュリティコンプライアンスのステータスをクラスタレベルで表示できます。
+
+.手順
+. 左側のナビゲーションペインで、* Storage > Clusters *の順にクリックします。
+. [*表示]>[セキュリティ]>[すべてのクラスタ*]を選択します。
+
+
+デフォルトのセキュリティパラメータ（グローバルFIPS、Telnet、セキュアでないSSH設定、ログインバナー、ネットワークタイムプロトコル、AutoSupport HTTPS転送、クラスタ証明書の有効期限のステータスなど）が表示されます。
+
+[その他のオプション]ボタンをクリックすると、Unified Managerの*[セキュリティ]*ページまたはSystem Managerでセキュリティの詳細を表示できますimage:icon_kabob.gif["Kabob アイコン"]。System Managerで詳細を表示するための有効なクレデンシャルが必要です。
+
+
+NOTE: クラスタの証明書の有効期限が切れている場合は、*[クラスタ証明書の有効期限]*をクリックし、System Manager（9.10.1以降）で更新できます `expired`。System Managerインスタンスが9.10.1より前のリリースの場合は、をクリックできません `expired`。
+
+
+
+== [Storage VM]ページからすべてのクラスタのセキュリティの詳細を表示する
+
+Storage VMs/Security *の詳細ページでは、Storage VMレベルでセキュリティ準拠ステータスを確認できます。
+
+.手順
+. 左側のナビゲーションペインで、* Storage > Storage VM*をクリックします。
+. [*表示]>[セキュリティ]>[すべてのStorage VMs]を選択します。*セキュリティパラメータを含むクラスタのリストが表示されます。
+
+
+Storage VM、クラスタ、ログインバナー、監査ログ、セキュアでないSSH設定などのセキュリティパラメータを確認することで、Storage VMのセキュリティ準拠状況をデフォルトで確認できます。
+
+[その他のオプション]ボタンをクリックすると、Unified Managerの*[セキュリティ]*ページまたはSystem Managerでセキュリティの詳細を表示できますimage:icon_kabob.gif["Kabob アイコン"]。System Managerで詳細を表示するための有効なクレデンシャルが必要です。
+
+ボリュームとStorage VMのランサムウェア対策セキュリティの詳細については、を参照してくださいlink:../health-checker/task_view_antiransomware_status_of_all_volumes_storage_vms.html["すべてのボリュームおよびStorage VMのランサムウェア対策ステータスを表示する"]。

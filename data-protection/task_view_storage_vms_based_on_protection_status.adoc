@@ -1,0 +1,63 @@
+---
+permalink: data-protection/task_view_storage_vms_based_on_protection_status.html 
+sidebar: sidebar 
+keywords: storage vm, view protection status 
+summary: 'インベントリの[Storage VM]ページを使用して、Active IQ Unified Manager内のすべてのStorage VMを表示し、保護ステータスに基づいてStorage VMをフィルタできます。' 
+---
+= 保護ステータスに基づくStorage VMの表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+インベントリの[Storage VM]ページを使用して、Active IQ Unified Manager内のすべてのStorage VMを表示し、保護ステータスに基づいてStorage VMをフィルタできます。
+
+* 必要なもの *
+
+アプリケーション管理者またはストレージ管理者のロールが必要です。
+
+[Storage VMs]ビューに、Storage VMが保護されているかどうかを示す新しい列[Protection Role]が追加されました。
+
+[NOTE]
+====
+ソースクラスタがActive IQ Unified Managerに追加されていない場合、そのクラスタに関連するすべての情報がグリッド内で使用できなくなります。
+
+====
+.手順
+. 左側のナビゲーションペインで、 * storage * > * Storage VM* をクリックします。
+. view * メニューから * Health * > * All Storage VM* を選択します。
++
+Health ： All Storage VM が表示されます。
+
+. 「 * Filter * 」をクリックして、次のいずれかの Storage VM を表示します。
++
+[cols="2*"]
+|===
+| をクリックしてください | フィルタ値 
+
+
+ a| 
+* 保護された Storage VM*
+ a| 
+* 保護役割 * は保護されています *
+
+
+
+ a| 
+* 保護されていない Storage VM *
+ a| 
+* 保護ロール * は保護されていません *
+
+|===
++
+[NOTE]
+====
+保護されているStorage VMと保護されていないStorage VMの両方を同時に表示することはできません。新しいフィルタオプションを再適用するには、既存のフィルタをクリアする必要があります。
+
+====
+. [ フィルタを適用（ Apply Filter ） ] をクリックする。
++
+[保存されていない]ビューには、選択したフィルタに基づいて、Storage VMディザスタリカバリで保護されているか保護されていないすべてのStorage VMが表示されます。
+
+

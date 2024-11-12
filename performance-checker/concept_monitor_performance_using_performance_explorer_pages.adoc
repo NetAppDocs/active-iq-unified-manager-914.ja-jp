@@ -1,0 +1,16 @@
+---
+permalink: performance-checker/concept_monitor_performance_using_performance_explorer_pages.html 
+sidebar: sidebar 
+keywords: monitoring, performance, explorer, pages 
+summary: パフォーマンスエクスプローラページには、クラスタ内の各オブジェクトのパフォーマンスに関する詳細情報が表示されます。ページにはすべてのクラスタオブジェクトのパフォーマンスの詳細が表示され、さまざまな期間の特定のオブジェクトのパフォーマンスデータを選択して比較することができます。 
+---
+= [パフォーマンスエクスプローラ]ページを使用したパフォーマンスの監視
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+パフォーマンスエクスプローラページには、クラスタ内の各オブジェクトのパフォーマンスに関する詳細情報が表示されます。ページにはすべてのクラスタオブジェクトのパフォーマンスの詳細が表示され、さまざまな期間の特定のオブジェクトのパフォーマンスデータを選択して比較することができます。
+
+すべてのオブジェクトの全体的なパフォーマンスを評価し、オブジェクトのパフォーマンスデータを並べて比較することもできます。

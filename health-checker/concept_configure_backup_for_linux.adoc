@@ -1,0 +1,29 @@
+---
+permalink: health-checker/concept_configure_backup_for_linux.html 
+sidebar: sidebar 
+keywords: netapp, snapshot copy, copies, linux, operate, system, configure, backup 
+summary: Active IQ Unified ManagerがLinuxマシンにインストールされている場合は、NetAppスナップショットを使用してバックアップとリストアを設定できます。 
+---
+= Linuxでのバックアップの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQ Unified ManagerがLinuxマシンにインストールされている場合は、NetAppスナップショットを使用してバックアップとリストアを設定できます。
+
+Snapshotコピーにはごくわずかな時間（通常は数分）しかかかりません。また、Unified Managerデータベースがロックされるのはごく短時間であるため、インストールが中断されることはほとんどありません。イメージにはSnapshotコピーが最後に作成されてからのファイルへの変更のみが記録されるため、ストレージスペースは最小限しか消費されず、パフォーマンスのオーバーヘッドもわずかです。SnapshotはONTAPクラスタ上に作成されるため、必要に応じて、SnapMirrorなどの他のNetApp機能を利用してセカンダリ保護を作成できます。
+
+バックアップ処理を開始する前に、Unified Managerによって整合性チェックが実行され、デスティネーションシステムが使用可能かどうかが検証されます。
+
+[NOTE]
+====
+* Snapshotコピーは、同じバージョンのActive IQ Unified Managerにのみリストアできます。
++
+たとえば、Unified Manager 9.14で作成したバックアップは、Unified Manager 9.14のシステムにのみリストアできます。
+
+* Snapshotの設定に変更があると、Snapshotが無効になる可能性があります。
+
+
+====

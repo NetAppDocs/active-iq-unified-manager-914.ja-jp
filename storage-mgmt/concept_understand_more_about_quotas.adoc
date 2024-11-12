@@ -1,0 +1,14 @@
+---
+permalink: storage-mgmt/concept_understand_more_about_quotas.html 
+sidebar: sidebar 
+keywords: understand, more, quotas 
+summary: クォータの概念を理解すると、ユーザクォータとユーザグループクォータを効率的に管理できるようになります。 
+---
+= クォータに関する詳細情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クォータの概念を理解すると、ユーザクォータとユーザグループクォータを効率的に管理できるようになります。

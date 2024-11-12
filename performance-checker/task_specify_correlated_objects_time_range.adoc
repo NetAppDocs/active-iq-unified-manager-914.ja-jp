@@ -1,0 +1,16 @@
+---
+permalink: performance-checker/task_specify_correlated_objects_time_range.html 
+sidebar: sidebar 
+keywords: specify, time range, correlated objects 
+summary: '[Performance Explorer]ページの[Time Range]セレクタを使用して、オブジェクトデータを比較する期間を指定できます。期間を指定すると、[Performance Explorer]ページの内容が絞り込まれ、指定した期間内のオブジェクトデータのみが表示されます。' 
+---
+= 関連オブジェクトの期間の指定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Performance Explorer]ページの[Time Range]セレクタを使用して、オブジェクトデータを比較する期間を指定できます。期間を指定すると、[Performance Explorer]ページの内容が絞り込まれ、指定した期間内のオブジェクトデータのみが表示されます。
+
+期間を絞り込むと、関心のあるパフォーマンスデータのみを効率的に表示できます。事前定義された期間を選択するか、カスタムの期間を指定できます。デフォルトの期間は過去72時間です。

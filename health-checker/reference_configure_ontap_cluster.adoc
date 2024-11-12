@@ -1,0 +1,37 @@
+---
+permalink: health-checker/reference_configure_ontap_cluster.html 
+sidebar: sidebar 
+keywords: netapp, snapshot copy, copies, backup, windows, configure, ontap, cluster 
+summary: WindowsシステムでSnapshotコピーを使用してActive IQ Unified Managerをバックアップおよびリストアするには、ONTAPクラスタでいくつかの設定前の手順を実行する必要があります。 
+---
+= ONTAPクラスタノセッテイ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+WindowsシステムでSnapshotコピーを使用してActive IQ Unified Managerをバックアップおよびリストアするには、ONTAPクラスタでいくつかの設定前の手順を実行する必要があります。
+
+ONTAPクラスタは、コマンドプロンプトまたはSystem Managerユーザインターフェイスを使用して設定できます。ONTAPクラスタの設定では、データLIFをStorage VMにiSCSI LIFとして割り当てられるように設定します。次の手順では、System Managerのユーザインターフェイスを使用してiSCSIが有効なStorage VMを設定します。LIFが発信トラフィックをネットワークでどのように使用するかを制御するには、このStorage VMの静的ネットワークルートを設定する必要があります。
+
+[NOTE]
+====
+バックアップ構成用に専用のボリュームとLUNが必要です。選択したボリュームに含まれるLUNは1つだけにする必要があります。LUNのサイズは、Active IQ Unified Managerで処理される想定データサイズの2倍以上にする必要があります。
+
+====
+次の設定を行う必要があります。
+
+.手順
+. iSCSIが有効なStorage VMを設定するか、同じ構成の既存のStorage VMを使用してください。
+. 設定したStorage VMのネットワークルートを設定します。
+. 適切な容量のボリュームと単一のLUNを構成し、ボリュームがこのLUN専用になるようにします。
++
+
+NOTE: System ManagerでLUNを作成すると、LUNのマッピングを解除するとigroupが削除され、リストアが失敗することがあります。この状況を回避するには、LUNの作成時に明示的に作成され、LUNのマッピングを解除しても削除されないようにしてください。
+
+. Storage VMにイニシエータグループを設定します。
+. ポートセットを設定します。
+. igroupをポートセットに統合します。
+. LUNをigroupにマッピングします。
+

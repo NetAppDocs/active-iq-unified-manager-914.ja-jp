@@ -1,0 +1,67 @@
+---
+permalink: install-vapp/qsg-vapp.html 
+sidebar: sidebar 
+keywords: quick start guide, getting started, QSG, VMWare QSG, vApp QSG, quick installation 
+summary: VMware vSphere プラットフォームの Unified Manager のクイックスタートガイドです。 
+---
+= クイックスタートガイド（VMwareのインストール）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ルート証明書、ファイル、 `OVA`およびファイルが含まれているファイルを `README`ダウンロードし、Unified Managerを仮想アプライアンスとして導入できます `.tar`。
+
+
+
+== システム要件
+
+* オペレーティングシステム：VMware ESXi 7.0および8.0
+* RAM ： 12GB
+* CPU：合計9572MHz
+* 空きディスクスペース： 5GB （シンプロビジョニング）、 152GB （シックプロビジョニング）
+
+
+詳細なシステム要件については、およびを参照してlink:../install-vapp/concept_requirements_for_installing_unified_manager.html["Unified Managerのインストール要件"]link:http://mysupport.netapp.com/matrix["Interoperability Matrix"]ください。
+
+
+
+== Active IQ Unified Managerのインストール
+
+
+
+=== インストーラをダウンロードする
+
+. ルート証明書、ファイル、および `OVA`ファイルが含まれているファイルを `README`ダウンロードし `.tar`ます。
+. vSphere Clientからアクセス可能なローカルまたはネットワークのディレクトリにファイルを保存します。
+. ファイルをダウンロードしたディレクトリ `.tar`で、コマンドを入力し `tar -xvzf ActiveIQUnifiedManager-<version>.tar.gz`ます。+必要な `OVA`ファイル、ルート証明書、および `README`ファイルがターゲットディレクトリに解凍されます。
+
+
+
+
+=== 整合性の検証
+
+ファイルの整合性を検証する `OVA`には、ファイルに記載されている手順に従い `README`ます。
+
+
+
+=== Unified Managerをインストールする
+
+. vSphere Client で、 * File > Deploy OVF Template * をクリックします。
+. OVAファイルを探し、ウィザードを使用してESXiサーバに仮想アプライアンスを導入します。
+. [レビューの詳細]ページの[パブリッシャ]セクションで、ダウンロードしたファイルの整合性を確認する `OVA`メッセージが表示され `Entrust Code Signing - OVCS2 (Trusted certificate)`ます。このメッセージが表示されたら `Entrust Code Signing - OVCS2 (Invalid certificate)`、VMware vCenter Serverを7.0U3E以降のバージョンにアップグレードします。
+. [テンプレートのカスタマイズ（Customize Template）]ページの[プロパティ（Properties）]タブで、実行するインストールのタイプに応じてフィールドを入力します。
++
+** 静的設定の場合は、すべてのフィールドに必要な情報を入力します。[* Secondary DNS* （セカンダリ DNS * ） ] フィールドへの情報の追加は不要です。
+** IPv4を使用するDHCPの場合は、どのフィールドにも情報を追加しないでください。
+** IPv6を使用するDHCPの場合は、[Enable Auto IPv6 addressing]ボックスをオンにします。他のフィールドには情報を追加しないでください。
+
+
+. VMの電源をオンにします。
+. [Console]タブをクリックして、初期ブートプロセスを表示します。
+. タイムゾーンを設定します。
+. Unified Managerのメンテナンスユーザの名前とパスワードを入力します。
+
+
+インストールが完了すると、Unified Manager Web UIに接続するための情報が表示されます。

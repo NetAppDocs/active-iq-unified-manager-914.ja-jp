@@ -1,0 +1,20 @@
+---
+permalink: health-checker/task_send_asup_to_technical_support.html 
+sidebar: sidebar 
+keywords: support bundle, web ui, maintenance console 
+summary: AutoSupportメッセージよりも詳細な診断とトラブルシューティングが必要な問題については、サポートバンドルを送信する必要があります。Unified Manager Web UIおよびメンテナンスコンソールを使用して、テクニカルサポートにサポートバンドルを送信できます。 
+---
+= Web UIおよびメンテナンスコンソールからのサポートバンドルの送信
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AutoSupportメッセージよりも詳細な診断とトラブルシューティングが必要な問題については、サポートバンドルを送信する必要があります。Unified Manager Web UIおよびメンテナンスコンソールを使用して、テクニカルサポートにサポートバンドルを送信できます。
+
+Unified Managerには、一度に最大2つのフルサポートバンドルと3つの軽量サポートバンドルが格納されます。
+
+* 関連情報 *
+
+link:../config/reference_unified_manager_roles_and_capabilities.html["Unified Managerのユーザロールと機能"]

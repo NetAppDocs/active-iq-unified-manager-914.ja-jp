@@ -1,0 +1,81 @@
+---
+permalink: reporting/task_create_report_to_view_aggregates_with_most_available_iops.html 
+sidebar: sidebar 
+keywords: create, report, view, aggregates, available, IOPS 
+summary: このレポートには、新しいワークロードをプロビジョニングできるアグリゲートタイプあたりのIOPSが最も高いアグリゲートが表示されます。 
+---
+= 使用可能なIOPSが最も高いアグリゲートを表示するレポートの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+このレポートには、新しいワークロードをプロビジョニングできるアグリゲートタイプあたりのIOPSが最も高いアグリゲートが表示されます。
+
+* 必要なもの *
+
+* アプリケーション管理者またはストレージ管理者のロールが必要です。
+
+
+次の手順に従って、健全性を開きます。すべてのボリュームビュー、 Excel でのビューのダウンロード、使用可能な容量グラフの作成、カスタマイズした Excel ファイルのアップロード、最終レポートのスケジュール設定を行います。
+
+.手順
+. 左側のナビゲーションペインで、 * Storage * > * Aggregates * をクリックします。
+. View * ドロップダウンから * Performance ： All aggregates * を選択します。
+. 列を表示し、列と `Threshold Policy`列を非表示にするには、*[表示/非 `Cluster FQDN, Inactive Data Reporting,`表示]*を選択し `Available IOPS`ます。
+. 列と `Free Capacity`列を列の横に `Type`ドラッグアンドドロップし `Available IOPS`ます。
+. カスタムビューに名前を付けて保存する `Available IOPS Per Aggr.`
+. [* レポート *>] > [* Excel のダウンロード *] を選択します。
++
+image::../media/download_excel_menu.png[レポートからExcelをダウンロードする方法を示すUIスクリーンショット。]
+
++
+ブラウザによっては、ファイルを保存するために * OK * をクリックする必要があります。
+
+. 必要に応じて、 * 編集を有効にする * をクリックします。
+. Excelで、ダウンロードしたファイルを開きます。
+. データシートで、シートの左上にある小さな三角形をクリックして、シート全体を選択します。
+. [データ]リボンで、 `Sort & Filter area.`
+. 次のソートレベルを設定します。
++
+.. Sort by * As（IOPS）、* Sort On * As、* `Cell Values,` Order * Asを `Largest to Smallest.`指定します。 `Available IOPS`
+.. [ レベルの追加 ] をクリックします。
+.. * Sort by * As、* Sort on * As、* Order * As `Cell Values,`を `Z to A.`指定します。 `Type`
+.. [ レベルの追加 ] をクリックします。
+.. 「* Sort by *」を「* Sort on * as」 `Cell Values,`に、「* Order * as」を `Largest to Smallest.`指定します。 `Free Capacity (GB),`
+.. [OK]*をクリックします。
+
+
+. Excelファイルを保存して閉じます。
+. Unified Manager で、 * Reports * > * Upload Excel * を選択します。
++
+[NOTE]
+====
+Excelファイルをダウンロードしたビューと同じビューにいることを確認します。
+
+====
+. 変更したExcelファイルを選択します。ここでは、 `performance-aggregates-<date>.xlsx.`
+. * 開く * をクリックします。
+. [Submit （送信） ] をクリックします。
++
+[*Reports*>*Upload Excel*] メニュー項目の横にチェックマークが表示されます。
+
++
+image::../media/upload_excel.png[Excelをレポートにアップロードする方法を示すUIスクリーンショット。]
+
+. [ スケジュール済みレポート ] をクリックします。
+. [ レポートスケジュール ] ページに新しい行を追加して、新しいレポートのスケジュール特性を定義できるようにするには、 [ スケジュールの追加 ] をクリックします。
+. レポートスケジュールの名前を入力し、他のレポートフィールドに入力して、行の最後にあるチェックマーク（）をクリックしますimage:../media/blue_check.gif[""]。
++
+[NOTE]
+====
+レポートの *XLSX* 形式を選択します。
+
+====
++
+レポートはテストとしてすぐに送信されます。その後、指定した頻度でレポートが生成され、指定した受信者にEメールで送信されます。
+
+
+
+レポートに表示された結果を基に、使用可能なIOPSが最も高いアグリゲートに新しいワークロードをプロビジョニングできます。

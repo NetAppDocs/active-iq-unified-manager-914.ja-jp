@@ -1,0 +1,45 @@
+---
+permalink: data-protection/task_create_snapmirror_and_snapvault_schedules.html 
+sidebar: sidebar 
+keywords: create, snapmirror, snapvault, schedules 
+summary: SnapMirrorおよびSnapVaultの基本スケジュールまたは詳細スケジュールを作成して、ソースボリュームまたはプライマリボリュームで自動データ保護転送を有効にすることができます。これにより、ボリュームでデータが変更される頻度に応じて、転送の実行頻度を増減できます。 
+---
+= SnapMirrorスケジュールとSnapVaultスケジュールの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirrorおよびSnapVaultの基本スケジュールまたは詳細スケジュールを作成して、ソースボリュームまたはプライマリボリュームで自動データ保護転送を有効にすることができます。これにより、ボリュームでデータが変更される頻度に応じて、転送の実行頻度を増減できます。
+
+* 必要なもの *
+
+* アプリケーション管理者またはストレージ管理者のロールが必要です。
+* [保護の設定]ダイアログボックスの[デスティネーション情報]領域の設定が完了している必要があります。
+* このタスクを実行するには、 Workflow Automation をセットアップしておく必要があります。
+
+
+.手順
+. [ 保護の設定 ] ダイアログ・ボックスの [ * SnapMirror * ] タブまたは [ * SnapVault * ] タブで、 [ * 関係設定 * ] 領域の [ * スケジュールの作成 ] リンクをクリックします。
++
+[Create Schedule]ダイアログボックスが表示されます。
+
+. ［ * スケジュール名 * ］ フィールドに、スケジュールに付ける名前を入力します。
+. 次のいずれかを選択します。
++
+** * 基本 *
++
+間隔で指定する基本的なスケジュールを作成する場合に選択します。
+
+** * 詳細 *
++
+cron形式のスケジュールを作成する場合に選択します。
+
+
+
+. [ 作成（ Create ） ] をクリックします。
++
+新しいスケジュールは、 SnapMirror Schedule または SnapVault Schedule ドロップダウンリストに表示されます。
+
+

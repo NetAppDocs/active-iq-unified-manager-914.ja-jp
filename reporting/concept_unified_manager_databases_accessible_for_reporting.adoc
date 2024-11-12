@@ -1,0 +1,99 @@
+---
+permalink: reporting/concept_unified_manager_databases_accessible_for_reporting.html 
+sidebar: sidebar 
+keywords: unified manager, databases, access, custom, reporting 
+summary: Unified Manager では、監視対象のクラスタからのデータを MySQL データベースを使用して格納します。データは、MySQLデータベース内のさまざまなスキーマに保持されます。 
+---
+= カスタムレポートを作成するためのUnified Managerデータベースへのアクセス
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Manager では、監視対象のクラスタからのデータを MySQL データベースを使用して格納します。データは、MySQLデータベース内のさまざまなスキーマに保持されます。
+
+次のデータベースのすべてのテーブルデータを使用できます。
+
+[cols="2*"]
+|===
+| データベース | 製品説明 
+
+
+ a| 
+NetAppモデル
+ a| 
+ONTAPコントローラ上のオブジェクトに関するデータ。
+
+
+
+ a| 
+NetAppモデルビュー
+ a| 
+ONTAPコントローラ上のオブジェクトに関するデータ。レポートツールの使用に適しています。
+
+
+
+ a| 
+NetAppパフォーマンス
+ a| 
+クラスタ固有のパフォーマンスカウンタ。
+
+
+
+ a| 
+ocum
+ a| 
+Unified Manager のアプリケーションデータと、 UI で一部の派生フィールドのフィルタ、ソート、計算に使用される情報。
+
+
+
+ a| 
+ocum_report
+ a| 
+インベントリ構成および容量関連の情報のデータ。
+
+
+
+ a| 
+ocum_report_birt
+ a| 
+インベントリ構成と容量関連データを表示するビュー。レポートツールでの使用に適しています。
+
+
+
+ a| 
+OPM
+ a| 
+パフォーマンスの設定としきい値の情報。
+
+
+
+ a| 
+スキャレモニタ
+ a| 
+Unified Manager のアプリケーションの健常性とパフォーマンスの問題に関するデータ。
+
+
+
+ a| 
+vmware_model
+ a| 
+NetAppストレージでホストされているデータストアのVMwareオブジェクトデータ。
+
+
+
+ a| 
+vmware_model_view
+ a| 
+NetAppストレージでホストされているデータストアのVMwareオブジェクトデータのビュー。レポートツールの使用に適しています。
+
+
+
+ a| 
+vmware_performance
+ a| 
+NetAppストレージでホストされているデータストアのVMwareパフォーマンスカウンタデータ。
+
+|===
+レポートスキーマロールを持つデータベースユーザは、これらのテーブルのデータにアクセスできます。このユーザには、レポートおよびその他のデータベースビューに Unified Manager データベースから直接アクセスするための読み取り専用アクセスが付与されます。このユーザには、ユーザデータやクラスタクレデンシャル情報を含むテーブルにアクセスする権限はありません。

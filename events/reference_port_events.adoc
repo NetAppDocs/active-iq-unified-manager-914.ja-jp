@@ -1,0 +1,128 @@
+---
+permalink: events/reference_port_events.html 
+sidebar: sidebar 
+keywords: port, events, impact area, availability, performance 
+summary: ポートイベントは、クラスタポートのステータスを提供します。これにより、ポートでの変更や問題（ポートが停止しているかどうかなど）を監視できます。 
+---
+= ポートイベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ポートイベントは、クラスタポートのステータスを提供します。これにより、ポートでの変更や問題（ポートが停止しているかどうかなど）を監視できます。
+
+
+
+== 影響範囲：可用性
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+ポートステータス-停止（ocumEvtPortStatusDown）
+ a| 
+インシデント
+ a| 
+ノード
+ a| 
+重大
+
+|===
+
+
+== 影響範囲：パフォーマンス
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+ネットワークポートMBpsの重大しきい値を超過（ocumNetworkPortMbpsIncident）
+ a| 
+インシデント
+ a| 
+ポート
+ a| 
+重大
+
+
+
+ a| 
+ネットワークポートMBpsの警告しきい値を超過（ocumNetworkPortMbpsWarning）
+ a| 
+リスク
+ a| 
+ポート
+ a| 
+警告
+
+
+
+ a| 
+FCPポートMBpsの重大しきい値を超過（ocumFcpPortMbpsIncident）
+ a| 
+インシデント
+ a| 
+ポート
+ a| 
+重大
+
+
+
+ a| 
+FCPポートMBpsの警告しきい値を超過（ocumFcpPortMbpsWarning）
+ a| 
+リスク
+ a| 
+ポート
+ a| 
+警告
+
+
+
+ a| 
+ネットワークポート利用率の重大しきい値を超過（ocumNetworkPortUtilizationIncident）
+ a| 
+インシデント
+ a| 
+ポート
+ a| 
+重大
+
+
+
+ a| 
+ネットワークポート利用率の警告しきい値を超過（ocumNetworkPortUtilizationWarning）
+ a| 
+リスク
+ a| 
+ポート
+ a| 
+警告
+
+
+
+ a| 
+FCPポート利用率の重大しきい値を超過（ocumFCpPortUtilizationIncident）
+ a| 
+インシデント
+ a| 
+ポート
+ a| 
+重大
+
+
+
+ a| 
+FCPポート利用率の警告しきい値を超過（ocumFCpPortUtilizationWarning）
+ a| 
+リスク
+ a| 
+ポート
+ a| 
+警告
+
+|===

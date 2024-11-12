@@ -1,0 +1,184 @@
+---
+permalink: data-protection/reference_select_source_snapshot_copy_dialog_box.html 
+sidebar: sidebar 
+keywords: select, source, snapshot, copy, dialog box 
+summary: '[ソースのSnapshotコピーの選択]ダイアログボックスを使用して、保護関係間でデータを転送する特定のSnapshotコピーを選択するか、またはデフォルトの動作を選択します。デフォルトの動作は、関係を初期化、更新、再同期するか、および関係がSnapMirrorかSnapVaultかによって異なります。' 
+---
+= [Select Source Snapshot Copy]ダイアログボックス
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[ソースのSnapshotコピーの選択]ダイアログボックスを使用して、保護関係間でデータを転送する特定のSnapshotコピーを選択するか、またはデフォルトの動作を選択します。デフォルトの動作は、関係を初期化、更新、再同期するか、および関係がSnapMirrorかSnapVaultかによって異なります。
+
+
+
+== デフォルト
+
+SnapVault関係とSnapMirror関係の初期化、更新、および転送の再同期に使用されるSnapshotコピーを決定する際のデフォルトの動作を選択できます。
+
+SnapVault転送を実行する場合、各処理のデフォルトの動作は次のとおりです。
+
+[cols="3*"]
+|===
+| 操作 | ソースが読み取り / 書き込みの場合のデフォルトの SnapVault の動作 | ソースがデータ保護（ DP ）の場合のデフォルトの SnapVault の動作 
+
+
+ a| 
+初期化
+ a| 
+新しいSnapshotコピーを作成して転送します。
+ a| 
+最後にエクスポートされたSnapshotコピーを転送します。
+
+
+
+ a| 
+更新
+ a| 
+ポリシーの指定に従って、ラベルが設定されたSnapshotコピーだけを転送します。
+ a| 
+最後にエクスポートされたSnapshotコピーを転送します。
+
+
+
+ a| 
+再同期
+ a| 
+最も新しい共通のSnapshotコピーのあとに作成され、ラベルが設定されたSnapshotコピーをすべて転送します。
+ a| 
+ラベルが設定された最新のSnapshotコピーを転送します。
+
+|===
+SnapMirror転送を実行する場合、各処理のデフォルトの動作は次のとおりです。
+
+[cols="3*"]
+|===
+| 操作 | デフォルトの SnapMirror の動作 | 関係が SnapMirror-to-SnapMirror カスケードの 2 番目のホップである場合の、デフォルトの SnapMirror の動作 
+
+
+ a| 
+初期化
+ a| 
+新しいSnapshotコピーを作成し、そのSnapshotコピーおよびその前に作成されたすべてのSnapshotコピーを転送します。
+ a| 
+ソースからすべてのSnapshotコピーを転送します。
+
+
+
+ a| 
+更新
+ a| 
+新しいSnapshotコピーを作成し、そのSnapshotコピーおよびその前に作成されたすべてのSnapshotコピーを転送します。
+ a| 
+すべてのSnapshotコピーを転送します。
+
+
+
+ a| 
+再同期
+ a| 
+新しいSnapshotコピーを作成し、ソースからすべてのSnapshotコピーを転送します。
+ a| 
+セカンダリボリュームから3番目のボリュームにすべてのSnapshotコピーを転送し、最も新しい共通のSnapshotコピーの作成後に追加されたデータを削除します。
+
+|===
+
+
+== 既存のSnapshotコピー
+
+既存のSnapshotコピーをリストから選択できます（その処理でSnapshotコピーを選択できる場合）。
+
+* * Snapshot コピー *
++
+転送用に選択できる既存のSnapshotコピーが表示されます。
+
+* * 作成日 *
++
+Snapshotコピーが作成された日時が表示されます。最新のSnapshotコピーがリストの先頭に表示されます。
+
+
+
+SnapVault転送を実行しているときに、ソースからデスティネーションに転送する既存のSnapshotコピーを選択すると、各処理の動作は次のようになります。
+
+[cols="3*"]
+|===
+| 操作 | Snapshot コピーを指定する場合の SnapVault の動作 | カスケード構成の Snapshot コピーを指定する場合の SnapVault の動作 
+
+
+ a| 
+初期化
+ a| 
+指定したSnapshotコピーを転送します。
+ a| 
+データ保護ボリュームでは、ソースSnapshotコピーの選択はサポートされません。
+
+
+
+ a| 
+更新
+ a| 
+指定したSnapshotコピーを転送します。
+ a| 
+データ保護ボリュームでは、ソースSnapshotコピーの選択はサポートされません。
+
+
+
+ a| 
+再同期
+ a| 
+選択したSnapshotコピーを転送します。
+ a| 
+データ保護ボリュームでは、ソースSnapshotコピーの選択はサポートされません。
+
+|===
+SnapMirror転送を実行しているときに、ソースからデスティネーションに転送する既存のSnapshotコピーを選択すると、各処理の動作は次のようになります。
+
+[cols="3*"]
+|===
+| 操作 | Snapshot コピーを指定する場合の SnapMirror の動作 | カスケード構成の Snapshot コピーを指定する場合の SnapMirror の動作 
+
+
+ a| 
+初期化
+ a| 
+ソース上のすべてのSnapshotコピー（指定したSnapshotコピーまで）を転送します。
+ a| 
+データ保護ボリュームでは、ソースSnapshotコピーの選択はサポートされません。
+
+
+
+ a| 
+更新
+ a| 
+ソース上のすべてのSnapshotコピー（指定したSnapshotコピーまで）を転送します。
+ a| 
+データ保護ボリュームでは、ソースSnapshotコピーの選択はサポートされません。
+
+
+
+ a| 
+再同期
+ a| 
+ソースから選択したSnapshotコピーまでのすべてのSnapshotコピーを転送し、最も新しい共通のSnapshotコピーの作成後に追加されたデータを削除します。
+ a| 
+データ保護ボリュームでは、ソースSnapshotコピーの選択はサポートされません。
+
+|===
+
+
+== コマンドボタン
+
+各コマンドボタンを使用して次のタスクを実行できます。
+
+* * 送信 *
++
+選択内容を送信し、[ソースSnapshotコピーの選択]ダイアログボックスを閉じます。
+
+* * キャンセル *
++
+選択内容を破棄して、[ソースSnapshotコピーの選択]ダイアログボックスを閉じます。
+
+

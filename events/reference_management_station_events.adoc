@@ -1,0 +1,188 @@
+---
+permalink: events/reference_management_station_events.html 
+sidebar: sidebar 
+keywords: management, station, events, impact area, configuration, performance 
+summary: 管理ステーションイベントは、 Unified Manager がインストールされているサーバのステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= 管理ステーションイベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+管理ステーションイベントは、 Unified Manager がインストールされているサーバのステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：構成
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+管理サーバのディスクスペースがほぼフル（ocumEvtUnifiedManagerDiskSpaceNearlyFull）
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+警告
+
+
+
+ a| 
+管理サーバのディスクスペースがフル（ocumEvtUnifiedManagerDiskSpaceFull）
+ a| 
+インシデント
+ a| 
+管理ステーション
+ a| 
+重大
+
+
+
+ a| 
+管理サーバのメモリが減少（ocumEvtUnifiedManagerMemoryLow）
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+警告
+
+
+
+ a| 
+管理サーバのメモリがほとんどありません（ocumEvtUnifiedManagerMemoryAlmostOut）
+ a| 
+インシデント
+ a| 
+管理ステーション
+ a| 
+重大
+
+
+
+ a| 
+MySQLログファイルのサイズが拡張されました。再起動が必要です（ocumEvtMysqlLogFileSizeWarning）
+ a| 
+インシデント
+ a| 
+管理ステーション
+ a| 
+警告
+
+
+
+ a| 
+監査ログの合計サイズ割り当てがフルになりそうです
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+警告
+
+
+
+ a| 
+syslogサーバ証明書の有効期限が近づいています
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+警告
+
+
+
+ a| 
+syslogサーバ証明書の有効期限が切れました
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+エラー
+
+
+
+ a| 
+監査ログファイルが改ざんされました
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+警告
+
+
+
+ a| 
+監査ログファイルが削除されました
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+警告
+
+
+
+ a| 
+syslog サーバ接続エラー
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+エラー
+
+
+
+ a| 
+syslogサーバ設定が変更されました
+ a| 
+イベント
+ a| 
+管理ステーション
+ a| 
+警告
+
+|===
+
+
+== 影響範囲：パフォーマンス
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+パフォーマンスデータ分析への影響（ocumEvtUnifiedManagerDataMissingAnalyze）
+ a| 
+リスク
+ a| 
+管理ステーション
+ a| 
+警告
+
+
+
+ a| 
+パフォーマンスデータ収集への影響（ocumEvtUnifiedManagerDataMissingCollection）
+ a| 
+インシデント
+ a| 
+管理ステーション
+ a| 
+重大
+
+|===
+[NOTE]
+====
+最後の2つのパフォーマンスイベントは、Unified Manager 7.2でのみ使用できました。これらのイベントのいずれかが「新規」状態である場合、Unified Managerソフトウェアを新しいバージョンにアップグレードしても、イベントは自動的にパージされません。イベントを解決済みの状態に手動で移動する必要があります。
+
+====

@@ -1,0 +1,86 @@
+---
+permalink: api-automation/concept_administration_apis.html 
+sidebar: sidebar 
+keywords: perform, administrative, tasks 
+summary: 管理カテゴリの API を使用して、バックアップ設定を変更したり、バックアップファイル情報とクラスタ証明書を確認したり、 ONTAP クラスタを Active IQ Unified Manager データソースとして管理したりできます。 
+---
+= APIを使用した管理タスクの実行
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+のAPIを使用してカテゴリことができます `administration`、バックアップ設定の変更、バックアップファイルの情報とクラスタ証明書の検証、およびONTAPクラスタのActive IQ Unified Managerデータソースとしての管理を行う。
+
+[NOTE]
+====
+これらの処理を実行するには、アプリケーション管理者ロールが必要です。これらの設定は、Unified Manager Web UIを使用して行うこともできます。
+
+====
+[cols="3*"]
+|===
+| HTTP動詞 | パス | 製品説明 
+
+
+ a| 
+`GET`
+
+`PATCH`
+ a| 
+`/admin/backup-settings`
+
+`/admin/backup-settings`
+ a| 
+メソッドを使用すると、Unified Managerでデフォルトで設定されているバックアップスケジュールの設定を表示できます `GET`。次のことを確認できます。
+
+* スケジュールが有効か無効か
+* スケジュールされたバックアップの頻度（毎日または毎週）
+* バックアップの時刻
+* アプリケーションで保持するバックアップファイルの最大数
+
+
+バックアップの時刻はサーバのタイムゾーンです。
+
+Unified Managerではデータベースのバックアップ設定をデフォルトで使用でき、バックアップスケジュールを作成することはできません。ただし、メソッドを使用すると、デフォルト設定を変更できます `PATCH`。
+
+
+
+ a| 
+`GET`
+ a| 
+`/admin/backup-file-info`
+ a| 
+バックアップダンプファイルは、Unified Managerのバックアップスケジュールが変更されるたびに生成されます。このメソッドを使用すると、変更したバックアップ設定に従ってバックアップファイルが生成されたかどうか、およびファイルの情報が変更した設定と一致するかどうかを確認できます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/admin/datasource-certificate`
+ a| 
+このメソッドを使用すると、信頼ストアからデータソース（クラスタ）証明書を表示できます。ONTAPクラスタをUnified Managerデータソースとして追加する前に、証明書を検証する必要があります。
+
+
+
+ a| 
+`GET`
+
+`POST`
+
+`PATCH`
+
+`DELETE`
+ a| 
+`/admin/datasources/clusters`
+
+`/admin/datasources/clusters/\{key}`
+ a| 
+メソッドを使用すると、Unified Managerで管理されているデータソース（ONTAPクラスタ）の詳細を取得できます `GET`。
+
+また、新しいクラスタをデータソースとしてUnified Managerに追加することもできます。クラスタを追加するには、ホスト名、ユーザ名、パスワードが必要です。
+
+Unified Managerでデータソースとして管理されているクラスタを変更および削除するには、ONTAPクラスタキーを使用します。
+
+|===

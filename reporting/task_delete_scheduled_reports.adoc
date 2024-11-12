@@ -1,0 +1,44 @@
+---
+permalink: reporting/task_delete_scheduled_reports.html 
+sidebar: sidebar 
+keywords: delete, reports 
+summary: 'スケジュールを設定したレポートは、[Report Schedules]ページで削除できます。' 
+---
+= スケジュール済みレポートの削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+スケジュールを設定したレポートは、[Report Schedules]ページで削除できます。
+
+* 必要なもの *
+
+* アプリケーション管理者またはストレージ管理者のロールが必要です。
+
+
+.手順
+. 左側のナビゲーションペインで、 * ストレージ管理 * > * レポートスケジュール * をクリックします。
++
+image::../media/scheduled_reports_2.gif[スケジュールされたレポートを示すUIスクリーンショット。]
+
++
+[NOTE]
+====
+適切な権限があれば、システム内のすべてのレポートとそのスケジュールを削除できます。
+
+====
+. 削除するスケジュールの詳細アイコンをクリックしimage:../media/more_icon.gif[""]ます。
+. [ 削除（ Delete ） ] をクリックします。
+. 操作を確定します。
++
+スケジュール済みレポートがリストから削除され、設定したスケジュールで生成および配布されなくなります。
+
++
+[NOTE]
+====
+インベントリページからカスタムビューを削除すると、そのビューを使用するカスタムExcelファイルまたはスケジュール済みレポートもすべて削除されます。
+
+====
+

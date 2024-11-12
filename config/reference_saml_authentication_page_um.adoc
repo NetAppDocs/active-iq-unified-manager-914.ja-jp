@@ -1,0 +1,58 @@
+---
+permalink: config/reference_saml_authentication_page_um.html 
+sidebar: sidebar 
+keywords: saml authentication page 
+summary: '[SAML認証]ページでは、Unified Manager Web UIにログインするリモートユーザをSAMLを使用してセキュアなアイデンティティプロバイダ（IdP）で認証するようにUnified Managerを設定できます。' 
+---
+= SAML Authentication ページ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[SAML認証]ページでは、Unified Manager Web UIにログインするリモートユーザをSAMLを使用してセキュアなアイデンティティプロバイダ（IdP）で認証するようにUnified Managerを設定できます。
+
+* SAML設定を作成または変更するには、アプリケーション管理者ロールが必要です。
+* リモート認証を設定しておく必要があります。
+* リモートユーザまたはリモートグループを少なくとも1つ設定しておく必要があります。
+
+
+リモート認証とリモートユーザの設定が完了したら、[SAML認証を有効にする]チェックボックスを選択して、セキュアなアイデンティティプロバイダを使用した認証を有効にすることができます。
+
+* * IdP URI *
++
+Unified Manager サーバから IdP にアクセスするための URI 。URIの例を次に示します。
+
++
+ADFS URIの例：
+
++
+`+https://win2016-dc.ntap2016.local/federationmetadata/2007-06/federationmetadata.xml+`
+
++
+ShibbolethのURIの例：
+
++
+`+https://centos7.ntap2016.local/idp/shibboleth+`
+
+* * IdP メタデータ *
++
+XML形式のIdPメタデータ。
+
++
+Unified Manager サーバから IdP の URL にアクセスできる場合は、「 * IdP メタデータの取得方法 * 」ボタンをクリックしてこのフィールドに値を入力できます。
+
+* * ホストシステム（ FQDN ） *
++
+インストール時に定義された Unified Manager ホストシステムの FQDN 。この値は必要に応じて変更できます。
+
+* *ホストURI *
++
+IdP から Unified Manager ホストシステムにアクセスするための URI 。
+
+* * ホストメタデータ *
++
+XML形式のホストシステムメタデータ。
+
+

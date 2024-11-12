@@ -1,0 +1,44 @@
+---
+permalink: events/reference_metrocluster_bridge_events.html 
+sidebar: sidebar 
+keywords: metrocluster, bridge, events, impact area, availability 
+summary: MetroClusterブリッジイベントは、ブリッジのステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= MetroClusterブリッジイベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+MetroClusterブリッジイベントは、ブリッジのステータス情報を提供します。これにより、MetroCluster over FC構成の潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：可用性
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+Bridge Unreachable（ocumEvtBridgeUnreachable）
+ a| 
+インシデント
+ a| 
+MetroClusterブリッジ
+ a| 
+重大
+
+
+
+ a| 
+ブリッジの温度が異常（ocumEvtBridgeTemperatureAbnormal）
+ a| 
+インシデント
+ a| 
+MetroClusterブリッジ
+ a| 
+重大
+
+|===

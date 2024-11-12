@@ -1,0 +1,23 @@
+---
+permalink: install-vapp/task_upgrade_unified_manager_vapp.html 
+sidebar: sidebar 
+keywords: upgrade, unified manager 
+summary: VMware vSphere 上の Unified Manager にアップグレードできます 
+---
+= Unified Managerのアップグレード
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQ Unified Managerをリリース9.12または9.13からリリース9.14にアップグレードできるのは、リリース9.12または9.13からのみです。
+
+アップグレードプロセスの実行中は、Unified Managerを使用できなくなります。実行中の処理がある場合は、Unified Managerをアップグレードする前に完了してください。
+
+Unified ManagerをOnCommand Workflow Automationのインスタンスとペアにしていて、両方の製品で新しいバージョンのソフトウェアを使用できる場合は、2つの製品の接続を解除し、アップグレードの実行後に新しいWorkflow Automation接続をセットアップする必要があります。いずれかの製品のみをアップグレードする場合は、アップグレード後にWorkflow Automationにログインし、Unified Managerからデータを取得していることを確認します。
+
+.手順
+. の手順に従います link:task_download_unified_manager_iso_image_vapp.html["Unified Manager の ISO イメージをダウンロードします"]。
+. さらに、で説明されている手順を実行しlink:task_upgrade_unified_manager_virtual_appliance_vapp.html["Unified Manager をアップグレードします"]ます。
+

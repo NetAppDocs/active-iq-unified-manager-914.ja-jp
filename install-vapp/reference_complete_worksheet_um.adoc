@@ -1,0 +1,226 @@
+---
+permalink: install-vapp/reference_complete_worksheet_um.html 
+sidebar: sidebar 
+keywords: complete, worksheet, installation, information, unified manager 
+summary: Unified Manager をインストールして設定する前に、環境に関する特定の情報を確認しておく必要があります。ワークシートに情報を記録できます。 
+---
+= ワークシートへの記入
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Manager をインストールして設定する前に、環境に関する特定の情報を確認しておく必要があります。ワークシートに情報を記録できます。
+
+
+
+== Unified Managerのインストール情報
+
+Unified Manager をインストールする際に必要な情報を記入します。
+
+[cols="2*"]
+|===
+| ソフトウェアが導入されているシステム | あなたの価値 
+
+
+ a| 
+ESXiサーバのIPアドレス
+ a| 
+
+
+
+ a| 
+ホストの完全修飾ドメイン名
+ a| 
+
+
+
+ a| 
+ホストIPアドレス
+ a| 
+
+
+
+ a| 
+ネットワークマスク
+ a| 
+
+
+
+ a| 
+ゲートウェイのIPアドレス
+ a| 
+
+
+
+ a| 
+プライマリDNSアドレス
+ a| 
+
+
+
+ a| 
+セカンダリDNSアドレス
+ a| 
+
+
+
+ a| 
+検索ドメイン
+ a| 
+
+
+
+ a| 
+メンテナンスユーザの名前
+ a| 
+
+
+
+ a| 
+メンテナンスユウサノハスワアト
+ a| 
+
+|===
+
+
+== Unified Managerの設定情報
+
+インストール後に Unified Manager を設定するための情報を記入します。構成に応じて、一部の値はオプションです。
+
+[cols="2*"]
+|===
+| 設定 | あなたの価値 
+
+
+ a| 
+メンテナンスユーザのEメールアドレス
+ a| 
+
+
+
+ a| 
+NTPサーバ
+ a| 
+
+
+
+ a| 
+SMTPサーバのホスト名またはIPアドレス
+ a| 
+
+
+
+ a| 
+SMTPのユーザ名
+ a| 
+
+
+
+ a| 
+SMTPパスワード
+ a| 
+
+
+
+ a| 
+SMTP ポート
+ a| 
+25（デフォルト値）
+
+
+
+ a| 
+アラート通知の送信元Eメール
+ a| 
+
+
+
+ a| 
+認証サーバのホスト名またはIPアドレス
+ a| 
+
+
+
+ a| 
+Active Directory管理者名またはLDAPのバインド識別名
+ a| 
+
+
+
+ a| 
+Active DirectoryパスワードまたはLDAPバインドパスワード
+ a| 
+
+
+
+ a| 
+認証サーバのベース識別名
+ a| 
+
+
+
+ a| 
+アイデンティティプロバイダ（IdP）のURL
+ a| 
+
+
+
+ a| 
+アイデンティティプロバイダ（IdP）メタデータ
+ a| 
+
+
+
+ a| 
+SNMPトラップの送信先ホストのIPアドレス
+ a| 
+
+
+
+ a| 
+SNMP ポート
+ a| 
+
+|===
+
+
+== クラスタ情報
+
+Unified Managerを使用して管理するストレージシステムの詳細を記入します。
+
+[cols="2*"]
+|===
+| クラスタ 1 / N | あなたの価値 
+
+
+ a| 
+ホスト名またはクラスタ管理IPアドレス
+ a| 
+
+
+
+ a| 
+ONTAP管理者のユーザ名
+
+[NOTE]
+====
+管理者には「 admin 」ロールが割り当てられている必要があります。
+
+==== a| 
+
+
+
+ a| 
+ONTAP管理者のパスワード
+ a| 
+
+
+
+ a| 
+プロトコル
+ a| 
+HTTPS
+
+|===

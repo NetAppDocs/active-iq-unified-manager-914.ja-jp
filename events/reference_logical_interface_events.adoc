@@ -1,0 +1,157 @@
+---
+permalink: events/reference_logical_interface_events.html 
+sidebar: sidebar 
+keywords: 'network, interface, (lif) events, impact area, availability, configuration, performance' 
+summary: ネットワークインターフェイスイベントは、ネットワークインターフェイス（LIF）のステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= ネットワークインターフェイス（LIF）イベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ネットワークインターフェイスイベントは、ネットワークインターフェイス（LIF）のステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：可用性
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+ネットワークインターフェイスのステータスが停止（ocumEvtLifStatusDown）
+ a| 
+リスク
+ a| 
+インターフェイス
+ a| 
+エラー
+
+
+
+ a| 
+FC / FCoEネットワークインターフェイスのステータス-停止（ocumEvtFCLifStatusDown）
+ a| 
+リスク
+ a| 
+インターフェイス
+ a| 
+エラー
+
+
+
+ a| 
+ネットワークインターフェイスのフェイルオーバーが実行できない（ocumEvtLifFailoverNotPosible）
+ a| 
+リスク
+ a| 
+インターフェイス
+ a| 
+警告
+
+
+
+ a| 
+ネットワークインターフェイスがホームポートにない（ocumEvtLifNotAtHomePort）
+ a| 
+リスク
+ a| 
+インターフェイス
+ a| 
+警告
+
+|===
+
+
+== 影響範囲：構成
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+ネットワークインターフェイスのルートが設定されていません（該当なし）
+ a| 
+イベント
+ a| 
+インターフェイス
+ a| 
+情報
+
+|===
+
+
+== 影響範囲：パフォーマンス
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+ネットワークインターフェイスMBpsの重大しきい値を超過（ocumNetworkLifMbpsIncident）
+ a| 
+インシデント
+ a| 
+インターフェイス
+ a| 
+重大
+
+
+
+ a| 
+ネットワークインターフェイスMBpsの警告しきい値を超過（ocumNetworkLifMbpsWarning）
+ a| 
+リスク
+ a| 
+インターフェイス
+ a| 
+警告
+
+
+
+ a| 
+FCネットワークインターフェイスMBpsの重大しきい値を超過（ocumFCpLifMbpsIncident）
+ a| 
+インシデント
+ a| 
+インターフェイス
+ a| 
+重大
+
+
+
+ a| 
+FCネットワークインターフェイスMBpsの警告しきい値を超過（ocumFCpLifMbpsWarning）
+ a| 
+リスク
+ a| 
+インターフェイス
+ a| 
+警告
+
+
+
+ a| 
+NVMf FCネットワークインターフェイスMBpsの重大しきい値を超過（ocumNvmfFCLifMbpsIncident）
+ a| 
+インシデント
+ a| 
+インターフェイス
+ a| 
+重大
+
+
+
+ a| 
+NVMf FCネットワークインターフェイスMBpsの警告しきい値を超過（ocumNvmfFCLifMbpsWarning）
+ a| 
+リスク
+ a| 
+インターフェイス
+ a| 
+警告
+
+|===

@@ -1,0 +1,662 @@
+---
+permalink: events/reference_cluster_events.html 
+sidebar: sidebar 
+keywords: cluster events, impact, area, availability, capacity, configuration, performance, security 
+summary: クラスタイベントは、クラスタのステータスに関する情報を提供します。これにより、クラスタの潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベント名、トラップ名、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= クラスタイベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタイベントは、クラスタのステータスに関する情報を提供します。これにより、クラスタの潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベント名、トラップ名、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：可用性
+
+アスタリスク（ * ）は、 Unified Manager イベントに変換された EMS イベントを示します。
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+クラスタにスペアディスクがありません（ocumEvtDisksNoSpares）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタに到達できません（ocumEvtClusterUnreachable）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+エラー
+
+
+
+ a| 
+クラスタの監視に失敗しました（ocumEvtClusterMonitoringFailed）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタのFabricPoolライセンス容量制限を超過（ocumEvtExternalCapacityTierSpaceFull）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+NVMF の猶予期間 - 開始 * （ nvmetfGracePeriodStart ）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+NVMF の猶予期間 - アクティブ * （ nvmetfGracePeriodActive ）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+NVMF の猶予期間 - 終了 * （ nvmetfGracePeriodExpired ）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+オブジェクトのメンテナンス時間を開始（objectMaintenanceWindowStarted）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+重大
+
+
+
+ a| 
+オブジェクトのメンテナンス時間を終了（objectMaintenanceWindowEnded）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+情報
+
+
+
+ a| 
+MetroCluster残ったスペアディスク（ocumEvtSpareDiskLeftBehind）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+エラー
+
+
+
+ a| 
+MetroCluster自動計画外スイッチオーバーが無効（ocumEvtMccAutomaticUnplannedSwitchOverDisabled）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタユーザパスワードが変更されました * （ cluster.passwd.changed ）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+情報
+
+|===
+
+
+== 影響範囲：容量
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+クラスタ容量の不均衡しきい値を超過（ocumConformanceNodeImbalanceWarning）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタのクラウド階層の計画（clusterCloudTierPlanningWarning）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+FabricPool ミラーレプリケーションの再同期が完了 * （ waflCaResyncComplete ）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+FabricPool スペースがほぼフル * （ fabricpoolNearlyFull ）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+エラー
+
+|===
+
+
+== 影響範囲：構成
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+ノードが追加されました（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+情報
+
+
+
+ a| 
+ノードが削除されました（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+情報
+
+
+
+ a| 
+クラスタの削除（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+情報
+
+
+
+ a| 
+クラスタ追加失敗（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+エラー
+
+
+
+ a| 
+クラスタ名が変更されました（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+情報
+
+
+
+ a| 
+緊急の EMS を受信（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+重大
+
+
+
+ a| 
+重大な EMS を受信（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+重大
+
+
+
+ a| 
+アラートの EMS を受信（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+エラー
+
+
+
+ a| 
+エラーの EMS を受信（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+警告の EMS を受信（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+デバッグの EMS を受信（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+通知の EMS を受信（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+情報の EMS を受信（該当なし）
+ a| 
+イベント
+ a| 
+クラスタ
+ a| 
+警告
+
+|===
+ONTAP EMS イベントは、 Unified Manager イベントの 3 つの重大度レベルに分類されます。
+
+|===
+
+
+| Unified Manager イベントの重大度レベル | ONTAP EMSイベントの重大度レベル 
+
+
+ a| 
+重大
+ a| 
+緊急
+
+重大
+
+
+
+ a| 
+エラー
+ a| 
+アラート
+
+
+
+ a| 
+警告
+ a| 
+エラー
+
+警告
+
+デバッグ
+
+通知
+
+情報
+
+|===
+
+
+== 影響範囲：パフォーマンス
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+クラスタ負荷の不均衡しきい値を超過（）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタIOPSの重大しきい値を超過（ocumClusterIopsIncident）
+ a| 
+インシデント
+ a| 
+クラスタ
+ a| 
+重大
+
+
+
+ a| 
+クラスタIOPSの警告しきい値を超過（ocumClusterIopsWarning）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタMBpsの重大しきい値を超過（ocumClusterMbpsIncident）
+ a| 
+インシデント
+ a| 
+クラスタ
+ a| 
+重大
+
+
+
+ a| 
+クラスタMBpsの警告しきい値を超過（ocumClusterMbpsWarning）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタ動的しきい値を超過（ocumClusterDynamicEventWarning）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+|===
+
+
+== 影響範囲：セキュリティ
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+AutoSupport HTTPS転送が無効（ocumClusterASUPHttpsConfiguredDisabled）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+ログ転送が暗号化されていない（ocumClusterAuditLogUnencrypted）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+デフォルトのローカル管理ユーザが有効（ocumClusterDefaultAdminEnabled）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+FIPSモードが無効（ocumClusterFipsDisabled）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+ログインバナーが無効（ocumClusterLoginBannerDisabled）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+ログインバナーが変更されました（ocumClusterLoginBannerChanged）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+ログ転送先が変更されました（ocumLogForwardDestinationsChanged）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+NTPサーバ名が変更されました（ocumNtpServerNamesChanged）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+NTPサーバ数が少ない（securityConfigNTPServerCountLowRisk）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタピア通信が暗号化されていません（ocumClusterPeerEncryptionDisabled）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+SSHでセキュアでない暗号が使用されている（ocumClusterSSHInsecure）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+Telnetプロトコルが有効（ocumClusterTelnetEnabled）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+一部のONTAPユーザアカウントのパスワードでは、安全性の低いMD5ハッシュ関数を使用する（ocumClusterMD5PasswordHashUsed）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタで自己署名証明書が使用される（ocumClusterSelfSignedCertificate）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタリモートシェルが有効（ocumClusterRshDisabled）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタ証明書の有効期限が近づいています（ocumEvtClusterCertificateAboutToExpire）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+クラスタ証明書の有効期間が終了しました（ocumEvtClusterCertificateExpired）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+エラー
+
+|===

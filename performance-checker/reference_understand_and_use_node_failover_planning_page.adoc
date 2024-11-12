@@ -1,0 +1,20 @@
+---
+permalink: performance-checker/reference_understand_and_use_node_failover_planning_page.html 
+sidebar: sidebar 
+keywords: understanding, node, failover, planning page 
+summary: 'ノードのハイアベイラビリティ（ HA ）パートナーノードに障害が発生した場合のノードのパフォーマンスへの影響は、 [Performance/NodeFailover Planning] ページで推定されます。Unified Manager は、 HA ペアの各ノードのパフォーマンス履歴に基づいて見積もりを行います。' 
+---
+= [Node Failover Planning]ページの概要と使用方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Performance/Node Failover Planning]ページでは、そのノードのハイアベイラビリティ（HA）パートナーノードで障害が発生した場合のノードのパフォーマンスへの影響を見積もります。Unified Manager は、 HA ペアの各ノードのパフォーマンス履歴に基づいて見積もりを行います。
+
+フェイルオーバーのパフォーマンスへの影響を見積もることで、次のシナリオに備えて計画することができます。
+
+* フェイルオーバーによってテイクオーバーノードの推定パフォーマンスが常に許容できないレベルまで低下している場合は、フェイルオーバーによるパフォーマンスへの影響を軽減するための対処を検討できます。
+* ハードウェアのメンテナンスタスクを実行するために手動フェイルオーバーを開始する前に、フェイルオーバーがテイクオーバーノードのパフォーマンスに与える影響を見積もって、タスクを実行する最適なタイミングを判断することができます。
+

@@ -1,0 +1,38 @@
+---
+permalink: data-protection/task_monitor_storage_vms_using_relationships_page.html 
+sidebar: sidebar 
+keywords: relationships page, monitor, storage, vm 
+summary: 'Storage VMディザスタリカバリ関係は、インベントリの[Protection]セクションにある[Relationships]ページで監視できます。デフォルトでは、コンスティチュエント関係フィルタが適用されると、[関係]ページに最上位の関係のみが表示されます。' 
+---
+= [Relationships]ページを使用したStorage VMの監視
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Storage VMディザスタリカバリ関係は、インベントリの[Protection]セクションにある[Relationships]ページで監視できます。デフォルトでは、コンスティチュエント関係フィルタが適用されると、[関係]ページに最上位の関係のみが表示されます。
+
+* 必要なもの *
+
+アプリケーション管理者またはストレージ管理者のロールが必要です。
+
+フィルタを使用してStorage VMディザスタリカバリ関係を表示できます。
+
+.手順
+. 左側のナビゲーションペインで、 * protection * > * Relationships * （保護 * > * 関係 * ）をクリックします。
++
+すべてのタイプの関係（ボリューム、整合性グループ、Storage VM関係）がページに表示されます。
+
+. フィルタ * をクリックし、 * 関係オブジェクトタイプ * および * Storage VM * を選択して、 Storage VM のディザスタリカバリ関係のみを表示します。
+. [ フィルタを適用（ Apply Filter ） ] をクリックする。
++
+[NOTE]
+====
+保護関係をすべて表示するには、コンスティチュエント関係のフィルタをクリアする必要があります。
+
+====
++
+ページには、Storage VMディザスタリカバリ関係のみが表示されます。
+
+

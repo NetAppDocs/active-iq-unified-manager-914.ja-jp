@@ -1,0 +1,21 @@
+---
+permalink: performance-checker/task_display_counter_charts_zoom_view.html 
+sidebar: sidebar 
+keywords: display, counter charts, zoom, view 
+summary: '[Counter Charts Zoom View]では、選択したカウンタチャートと関連するタイムラインの詳細を確認できます。カウンタグラフのデータが拡大され、パフォーマンスイベントとその原因をより正確に把握できるようになります。' 
+---
+= カウンタグラフズームビューの表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Counter Charts Zoom View]では、選択したカウンタチャートと関連するタイムラインの詳細を確認できます。カウンタグラフのデータが拡大され、パフォーマンスイベントとその原因をより正確に把握できるようになります。
+
+[Counter Charts Zoom View]は、任意のカウンタチャートについて表示できます。
+
+.手順
+. 選択したグラフを新しいブラウザウィンドウで開くには、 * ズームビュー * をクリックします。
+. 内訳グラフを表示している場合は、 * ズームビュー * をクリックすると、内訳グラフがズームビューに表示されます。表示オプションを変更する場合は、ズームビューで * 合計 * を選択できます。
+

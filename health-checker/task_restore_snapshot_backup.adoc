@@ -1,0 +1,47 @@
+---
+permalink: health-checker/task_restore_snapshot_backup.html 
+sidebar: sidebar 
+keywords: restore, unified manager, snapshot copy, copies, 
+summary: データ損失やデータ破損が発生した場合、 Unified Manager を以前の安定した状態にリストアすることでデータ損失を最小限に抑えることができます。Unified ManagerのSnapshotデータベースは、Unified Managerメンテナンスコンソールを使用してローカルまたはリモートのオペレーティングシステムにリストアできます。 
+---
+= Snapshotコピーを使用したUnified Managerのリストア
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+データ損失やデータ破損が発生した場合、 Unified Manager を以前の安定した状態にリストアすることでデータ損失を最小限に抑えることができます。Unified ManagerのSnapshotデータベースは、Unified Managerメンテナンスコンソールを使用してローカルまたはリモートのオペレーティングシステムにリストアできます。
+
+* 必要なもの *
+
+* Unified ManagerがインストールされているLinuxホストおよび管理Privileges（Windowsホストマシン）のrootユーザのクレデンシャルが必要です。
+* Unified Managerサーバのメンテナンスコンソールへのログインが許可されているユーザIDとパスワードが必要です。
+
+
+リストア機能は、プラットフォームおよびバージョンに固有の機能です。Unified Manager のバックアップは、同じバージョンの Unified Manager にのみリストアできます。
+
+.手順
+. Unified ManagerシステムのIPアドレスまたは完全修飾ドメイン名に接続します。
++
+** Linux：Secure Shellの略
+** Windows：PowerShell
+
+
+. rootユーザのクレデンシャルでシステムにログインします。
+. コマンドを入力し `maintenance_console`、Enterキーを押します。
+. メンテナンスコンソール*メインメニュー*で、*バックアップリストア*オプションに4を入力します。
+. 「* NetApp Snapshotを使用したバックアップとリストア」を選択するには、2を入力します。
++
+新しいサーバへのリストアを実行する場合は、Unified Managerのインストールの完了後に、UIを起動したり、クラスタ、ユーザ、または認証設定を設定したりしないでください。Configure NetApp Snapshot Backup*を選択するには1を入力し、元のシステムと同様にSnapshotコピーの設定を行います。
+
+. 「3」と入力して、「NetApp Snapshotを使用してリストア」を選択します。
+. Unified Managerのリストアに使用するSnapshotコピーを選択します。Enter キーを押します。
+. リストアプロセスが完了したら、Unified Managerのユーザインターフェイスにログインします。
+
+
+バックアップのリストア後にWorkflow Automationサーバが動作しない場合は、次の手順を実行します。
+
+. Workflow Automationサーバで、Unified ManagerサーバのIPアドレスを最新のマシンを指すように変更します。
+. 手順1で取得に失敗した場合は、Unified Managerサーバでデータベースパスワードをリセットします。
+

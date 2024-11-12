@@ -1,0 +1,14 @@
+---
+permalink: reporting/concept_customize_nfs_share_reports.html 
+sidebar: sidebar 
+keywords: customize, nfs, share, reports 
+summary: ストレージシステム上のボリュームに対するNFSエクスポートのポリシーとルールに関する情報を分析できるように、NFS共有レポートをカスタマイズできます。たとえば、アクセスできないマウントパスのボリュームやデフォルトのエクスポートポリシーを使用するボリュームを表示するようにレポートをカスタマイズできます。 
+---
+= NFS共有レポートのカスタマイズ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージシステム上のボリュームに対するNFSエクスポートのポリシーとルールに関する情報を分析できるように、NFS共有レポートをカスタマイズできます。たとえば、アクセスできないマウントパスのボリュームやデフォルトのエクスポートポリシーを使用するボリュームを表示するようにレポートをカスタマイズできます。

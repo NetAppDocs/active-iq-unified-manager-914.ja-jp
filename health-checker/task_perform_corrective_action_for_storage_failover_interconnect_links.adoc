@@ -1,0 +1,62 @@
+---
+permalink: health-checker/task_perform_corrective_action_for_storage_failover_interconnect_links.html 
+sidebar: sidebar 
+keywords: perform, corrective action, storage failover, interconnect links 
+summary: 'ストレージフェイルオーバー関連のイベントの[イベントの詳細]ページでは、ページの概要情報を確認して、イベントの緊急性、問題の考えられる原因、および問題の解決策を特定できます。' 
+---
+= ストレージフェイルオーバーインターコネクトリンクが停止した場合の対処方法の実行
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージフェイルオーバー関連のイベントの[イベントの詳細]ページでは、ページの概要情報を確認して、イベントの緊急性、問題の考えられる原因、および問題の解決策を特定できます。
+
+* 必要なもの *
+
+オペレータ、アプリケーション管理者、またはストレージ管理者のロールが必要です。
+
+この例では、[イベントの詳細]ページに表示されるイベントの概要に、ストレージフェイルオーバーインターコネクトリンクの停止状態に関する次の情報が表示されます。
+
+[listing]
+----
+Event: Storage Failover Interconnect One or More Links Down
+
+Summary
+
+Severity: Warning
+State: New
+Impact Level: Risk
+Impact Area: Availability
+Source: aardvark
+Source Type: Node
+Acknowledged By:
+Resolved By:
+Assigned To:
+Cause: At least one storage failover interconnected link
+       between the nodes aardvark and bonobo is down.
+       RDMA interconnect is up (Link0 up, Link1 down)
+----
+このイベント情報から、 HA ペアの aardvark ノードと bonobo ノードの間のストレージフェイルオーバーインターコネクトリンク Link1 が停止している一方で、 Apple と Boy の間の Link0 はアクティブであることがわかります。1つのリンクがアクティブであるため、Remote Dynamic Memory Access（RDMA；リモート動的メモリアクセス）は引き続き機能し、ストレージフェイルオーバージョブも成功します。
+
+ただし、両方のリンクで障害が発生し、ストレージフェイルオーバー保護が完全に無効になるのを防ぐために、Link1が停止した理由を詳しく診断することにします。
+
+.手順
+. イベント * の詳細ページで、ソースフィールドで指定されたイベントへのリンクをクリックすると、ストレージフェイルオーバーインターコネクトリンクの停止状態に関連するその他のイベントの詳細を確認できます。
++
+この例では、aardvarkというノードがイベントのソースです。このノード名をクリックすると、[Cluster/Health]詳細ページの[Nodes]タブに、該当するHAペア（ツチブタおよびbonobo）のHAの詳細と、該当するHAペアで最近発生したその他のイベントが表示されます。
+
+. イベントに関連する詳細情報については、 HA の詳細を確認してください。
++
+この例では、[Events]テーブルに関連情報が表示されます。この表には、「ストレージフェイルオーバー接続 1 つ以上のリンク停止」イベント、イベントが生成された時刻、およびこのイベントの生成元のノードが表示されます。
+
+
+
+[HA Details]のノードの場所情報を使用して、該当するHAペアノードで発生したストレージフェイルオーバーの問題の物理的な調査と修復を依頼するか、担当者に依頼します。
+
+* 関連情報 *
+
+link:../events/reference_event_details_page.html["[Event]詳細ページ"]
+
+link:../config/reference_unified_manager_roles_and_capabilities.html["Unified Managerのユーザロールと機能"]

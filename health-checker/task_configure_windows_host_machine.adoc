@@ -1,0 +1,30 @@
+---
+permalink: health-checker/task_configure_windows_host_machine.html 
+sidebar: sidebar 
+keywords: netapp, snapshot copy, copies windows, configure, windows host machine 
+summary: NetAppスナップショットを使用してActive IQ Unified Managerをバックアップおよびリストアするには、Windowsホストマシンを設定する必要があります。Windows ホストマシンで Microsoft iSCSI イニシエータを起動するには、検索バーに「 iscsi 」と入力し、 iSCSI イニシエータをクリックします。 
+---
+= Windowsホストマシンの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetAppスナップショットを使用してActive IQ Unified Managerをバックアップおよびリストアするには、Windowsホストマシンを設定する必要があります。Windows ホスト・マシン上で Microsoft iSCSI イニシエータを起動するには ' 検索バーに「 iscsi 」と入力し '[* iSCSI Initiator *] をクリックします
+
+* 必要なもの *
+
+ホストマシンの以前の設定をすべてクリーンアップする必要があります。
+
+Windowsの新規インストール時にiSCSIイニシエータを起動しようとすると、確認を求めるプロンプトが表示され、確認後に[iSCSIのプロパティ]ダイアログボックスが表示されます。既存のWindowsインストールの場合は、アクティブでないターゲットまたは接続しようとしているターゲットを示す[iSCSIのプロパティ]ダイアログボックスが表示されます。そのため、Windowsホスト上の以前の設定がすべて削除されていることを確認する必要があります。
+
+.手順
+. ホストマシンの以前の設定をすべてクリーンアップします。
+. ターゲットポータルを検出します。
+. ターゲットポータルに接続します。
+. マルチパスを使用してターゲットポータルに接続します。
+. 両方のLIFを検出します。
+. Windowsマシンでデバイスとして設定されているLUNを検出します。
+. 検出したLUNをWindowsで新しいボリュームドライブとして設定します。
+

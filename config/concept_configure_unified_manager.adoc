@@ -1,0 +1,16 @@
+---
+permalink: config/concept_configure_unified_manager.html 
+sidebar: sidebar 
+keywords: configure, active iq unified manager 
+summary: Active IQ Unified Manager（旧OnCommand Unified Manager）をインストールしたら、Web UIにアクセスするための初期セットアップ（初期設定ウィザード）を完了する必要があります。その後、クラスタの追加、リモート認証の設定、ユーザの追加、アラートの追加など、追加の設定タスクを実行できます。 
+---
+= Active IQ Unified Managerの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQ Unified Manager（旧OnCommand Unified Manager）をインストールしたら、Web UIにアクセスするための初期セットアップ（初期設定ウィザード）を完了する必要があります。その後、クラスタの追加、リモート認証の設定、ユーザの追加、アラートの追加など、追加の設定タスクを実行できます。
+
+このマニュアルに記載されている手順の一部は、 Unified Manager インスタンスの初期セットアップを完了するための必須の手順です。その他の手順は、新しいインスタンスをセットアップする際に推奨される設定や、ONTAPシステムの定期的な監視を開始する前に把握しておくことを推奨します。

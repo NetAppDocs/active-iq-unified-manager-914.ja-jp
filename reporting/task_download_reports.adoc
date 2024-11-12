@@ -1,0 +1,44 @@
+---
+permalink: reporting/task_download_reports.html 
+sidebar: sidebar 
+keywords: download, reports 
+summary: レポートをダウンロードし、データをカンマ区切り値（CSV）ファイル、Microsoft Excel（.xlsx）ファイル、またはPDFファイルとしてローカルドライブまたはネットワークドライブに保存できます。CSVファイルとXLSXファイルはMicrosoft Excelなどのスプレッドシートアプリケーションで、PDFファイルはAdobe Acrobatなどのリーダーで開くことができます。 
+---
+= レポートのダウンロード
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+レポートをダウンロードし、データをカンマ区切り値（CSV）ファイル、Microsoft Excel（.xlsx）ファイル、またはPDFファイルとしてローカルドライブまたはネットワークドライブに保存できます。CSVファイルとXLSXファイルはMicrosoft Excelなどのスプレッドシートアプリケーションで、PDFファイルはAdobe Acrobatなどのリーダーで開くことができます。
+
+.手順
+. [*Reports] ボタンをクリックして、次のいずれかの方法でレポートをダウンロードします。
++
+[cols="2*"]
+|===
+| 選択 | 目的 
+
+
+ a| 
+CSVをダウンロード
+ a| 
+レポートをカンマ区切り値（CSV）ファイルとして保存します。
+
+
+
+ a| 
+PDFのダウンロード
+ a| 
+レポートを.pdfファイルとして保存します。
+
+
+
+ a| 
+Excelをダウンロード
+ a| 
+レポートをMicrosoft Excel（XLSX）ファイルとして保存します。
+
+|===
+

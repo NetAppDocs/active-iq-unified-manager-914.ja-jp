@@ -1,0 +1,14 @@
+---
+permalink: config/concept_page_descriptions_for_certificate_management.html 
+sidebar: sidebar 
+keywords: page descriptions, certificate management 
+summary: '[HTTPS Certificate]ページを使用して、現在のセキュリティ証明書を表示したり、新しいHTTPS証明書を生成したりできます。' 
+---
+= 証明書管理のページの説明
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[HTTPS Certificate]ページを使用して、現在のセキュリティ証明書を表示したり、新しいHTTPS証明書を生成したりできます。

@@ -1,0 +1,54 @@
+---
+permalink: health-checker/task_view_details_about_cifs_shares.html 
+sidebar: sidebar 
+keywords: smb, cifs, view, shares, details 
+summary: すべてのSMB / CIFS共有に関する詳細を表示できます。これには、共有名、ジャンクションパス、コンテナオブジェクト、セキュリティ設定、共有に対して定義されているエクスポートポリシーなどの情報が含まれます。すべての監視対象クラスタ上のすべての SMB 共有を表示するには Health ： All SMB Shares ビューを使用し、 Storage VM/Health 詳細ページを使用して特定の Storage Virtual Machine （ SVM ）上のすべての SMB 共有を表示します。 
+---
+= SMB/CIFS共有に関する詳細の表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+すべてのSMB / CIFS共有に関する詳細を表示できます。これには、共有名、ジャンクションパス、コンテナオブジェクト、セキュリティ設定、共有に対して定義されているエクスポートポリシーなどの情報が含まれます。すべての監視対象クラスタ上のすべての SMB 共有を表示するには Health ： All SMB Shares ビューを使用し、 Storage VM/Health 詳細ページを使用して特定の Storage Virtual Machine （ SVM ）上のすべての SMB 共有を表示します。
+
+* 必要なもの *
+
+* クラスタでCIFSライセンスが有効になっている必要があります。
+* SMB / CIFS共有を提供するネットワークインターフェイスが設定されている必要があります。
+* オペレータ、アプリケーション管理者、またはストレージ管理者のロールが必要です。
+
+
+[NOTE]
+====
+フォルダ内の共有は表示されません。
+
+====
+.ステップ
+. すべての SMB / CIFS 共有を表示するか特定の SVM の共有を表示するかに応じて、左側のナビゲーションペインで次の手順を実行します。
++
+[cols="2*"]
+|===
+| 目的 | 実行する手順 
+
+
+ a| 
+すべてのSMB/CIFS共有を表示
+ a| 
+[ストレージ]*>*[SMB共有]*をクリックします。
+
+
+
+ a| 
+単一の SVM の SMB/CIFS 共有を表示します
+ a| 
+.. Storage * > * Storage VM* をクリックします
+.. SMB / CIFS 共有の詳細を表示する SVM をクリックします。
+.. [Storage VM /健全性の詳細]ページで、*[SMB共有]*タブをクリックします。
+
+
+|===
+
+
+詳細については、を参照してください link:../api-automation/concept_provision_file_share.html["APIを使用したCIFSおよびNFSファイル共有のプロビジョニング"]。

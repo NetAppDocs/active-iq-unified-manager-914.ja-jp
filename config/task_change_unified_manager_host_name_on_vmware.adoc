@@ -1,0 +1,39 @@
+---
+permalink: config/task_change_unified_manager_host_name_on_vmware.html 
+sidebar: sidebar 
+keywords: change, unified manager, virtual, appliance, host name 
+summary: ネットワークホストの名前は、 Unified Manager 仮想アプライアンスの導入時に割り当てられます。このホスト名は導入後に変更することができます。ホスト名を変更した場合は、HTTPS証明書も再生成する必要があります。 
+---
+= Unified Manager 仮想アプライアンスのホスト名を変更する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ネットワークホストの名前は、 Unified Manager 仮想アプライアンスの導入時に割り当てられます。このホスト名は導入後に変更することができます。ホスト名を変更した場合は、HTTPS証明書も再生成する必要があります。
+
+* 必要なもの *
+
+このタスクを実行するには、 Unified Manager にメンテナンスユーザとしてログインするか、アプリケーション管理者ロールが割り当てられている必要があります。
+
+Unified Manager Web UI には、ホスト名（またはホストの IP アドレス）を使用してアクセスできます。導入時にネットワークに静的IPアドレスを設定した場合は、ネットワークホストの名前を指定します。DHCPを使用してネットワークを設定した場合は、DNSからホスト名を取得する必要があります。DHCP または DNS が適切に設定されていないと、ホスト名「 Unified Manager 」が自動的に割り当てられ、セキュリティ証明書に関連付けられます。
+
+ホスト名を変更した場合、 Unified Manager Web UI へのアクセスに新しいホスト名を使用するには、ホスト名の元の割り当て方法に関係なく、必ず新しいセキュリティ証明書を生成する必要があります。
+
+ホスト名ではなくサーバのIPアドレスを使用してWeb UIにアクセスする場合は、ホスト名を変更しても新しい証明書を生成する必要はありません。ただし、証明書のホスト名が実際のホスト名と同じになるように証明書を更新することを推奨します。
+
+Unified Managerでホスト名を変更した場合は、OnCommand Workflow Automation（WFA）でホスト名を手動で更新する必要があります。ホスト名はWFAで自動的に更新されません。
+
+新しい証明書は、 Unified Manager 仮想マシンを再起動するまで有効になりません。
+
+.手順
+. xref:task_generate_an_https_security_certificate_ocf.adoc[HTTPSセキュリティ証明書の生成]
++
+新しいホスト名を使用して Unified Manager Web UI にアクセスする場合は、 HTTPS 証明書を再生成して新しいホスト名に関連付ける必要があります。
+
+. xref:task_restart_unified_manager_virtual_machine.adoc[Unified Manager仮想マシンを再起動する]
++
+HTTPS 証明書を再生成したら、 Unified Manager 仮想マシンを再起動する必要があります。
+
+

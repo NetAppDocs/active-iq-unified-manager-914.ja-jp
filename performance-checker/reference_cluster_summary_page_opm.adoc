@@ -1,0 +1,14 @@
+---
+permalink: performance-checker/reference_cluster_summary_page_opm.html 
+sidebar: sidebar 
+keywords: performance, cluster, summary page 
+summary: Performance Cluster Summary ページには、クラスタのアクティブなイベント、 IOPS パフォーマンス、および MBps パフォーマンスの概要が表示されます。また、クラスタ内のストレージオブジェクトの総数も表示されます。 
+---
+= [パフォーマンスクラスタサマリ]ページ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Performance Cluster Summary ページには、クラスタのアクティブなイベント、 IOPS パフォーマンス、および MBps パフォーマンスの概要が表示されます。また、クラスタ内のストレージオブジェクトの総数も表示されます。

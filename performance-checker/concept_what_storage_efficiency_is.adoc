@@ -1,0 +1,24 @@
+---
+permalink: performance-checker/concept_what_storage_efficiency_is.html 
+sidebar: sidebar 
+keywords: storage, efficiency 
+summary: Storage Efficiencyを使用すると、コストを最小限に抑えながら最大限のデータを格納し、スペースを削減しながら急増するデータに対応できます。NetAppのストレージ効率化戦略は、コアオペレーティングシステムであるONTAPとWrite Anywhere File Layout（WAFL）ファイルシステムが提供するストレージ仮想化とユニファイドストレージに基づいています。 
+---
+= Storage Efficiencyとは
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Storage Efficiencyを使用すると、コストを最小限に抑えながら最大限のデータを格納し、スペースを削減しながら急増するデータに対応できます。NetAppのストレージ効率化戦略は、コアオペレーティングシステムであるONTAPとWrite Anywhere File Layout（WAFL）ファイルシステムが提供するストレージ仮想化とユニファイドストレージに基づいています。
+
+Storage Efficiency では、シンプロビジョニング、 Snapshot コピー、重複排除、データ圧縮、 FlexClone 、 SnapVault および Volume SnapMirror 、 RAID-DP 、 Flash Cache 、 Flash Pool アグリゲート、および FabricPool 対応アグリゲートを使用したシンレプリケーション。ストレージ利用率の向上とストレージコストの削減に役立ちます。
+
+ユニファイドストレージアーキテクチャを使用すると、Storage Area Network（SAN；ストレージエリアネットワーク）、Network-Attached Storage（NAS；ネットワーク接続型ストレージ）、およびセカンダリストレージを1つのプラットフォームに効率的に統合できます。
+
+Serial Advanced Technology Attachment （ SATA ）ドライブなどの高密度ディスクドライブを、 Flash Pool アグリゲート内で、または Flash Cache や RAID-DP テクノロジを使用して構成すると、パフォーマンスと耐障害性を低下させることなく効率性を向上させることができます。
+
+FabricPool対応アグリゲートには、ローカルのパフォーマンス階層としてのオールSSDアグリゲートまたはHDDアグリゲート（ONTAP 9 8以降）と、クラウド階層として指定するオブジェクトストアが含まれます。FabricPoolを設定すると、アクセス頻度に基づいてデータを格納するストレージ階層（ローカル階層またはクラウド階層）を管理する際に役立ちます。
+
+シンプロビジョニング、Snapshotコピー、重複排除、データ圧縮、SnapVaultとVolume SnapMirrorを使用したシンレプリケーション、FlexCloneなどのテクノロジは、さらに削減効果を高めます。これらのテクノロジを個別に、または組み合わせて使用することで、ストレージ効率を最大限に高めることができます。

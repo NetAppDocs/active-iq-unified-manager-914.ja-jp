@@ -1,0 +1,66 @@
+---
+permalink: events/reference_user_and_group_quota_events.html 
+sidebar: sidebar 
+keywords: user, group, quota, events, impact area, capacity 
+summary: ユーザクォータとグループクォータのイベントは、ユーザクォータとユーザグループクォータの容量、およびファイルとディスクの制限に関する情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= ユーザクォータおよびグループクォータイベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ユーザクォータとグループクォータのイベントは、ユーザクォータとユーザグループクォータの容量、およびファイルとディスクの制限に関する情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：容量
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+ユーザクォータまたはグループクォータのディスクスペースがソフトリミットを超過（ocumEvtUserOrGroupQuotaDiskSpaceSoftLimitBreached）
+ a| 
+リスク
+ a| 
+ユーザクォータまたはグループクォータ
+ a| 
+警告
+
+
+
+ a| 
+ユーザクォータまたはグループクォータのディスクスペースがハードリミットに達しました（ocumEvtUserOrGroupQuotaDiskSpaceHardLimitReached）
+ a| 
+インシデント
+ a| 
+ユーザクォータまたはグループクォータ
+ a| 
+重大
+
+
+
+ a| 
+ユーザクォータまたはグループクォータのファイル数がソフトリミットを超過（ocumEvtUserOrGroupQuotaFileCountSoftLimitBreached）
+ a| 
+リスク
+ a| 
+ユーザクォータまたはグループクォータ
+ a| 
+警告
+
+
+
+ a| 
+ユーザクォータまたはグループクォータのファイル数がハードリミットに達しました（ocumEvtUserOrGroupQuotaFileCountHardLimitReached）
+ a| 
+インシデント
+ a| 
+ユーザクォータまたはグループクォータ
+ a| 
+重大
+
+|===

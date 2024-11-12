@@ -1,0 +1,107 @@
+---
+permalink: storage-mgmt/task_monitor_metrocluster_configurations.html 
+sidebar: sidebar 
+keywords: monitor, metrocluster, configurations 
+summary: MetroCluster構成の接続の問題を監視できます。これには、クラスタ内のコンポーネントと接続のステータス、およびMetroCluster構成内のクラスタ間の接続ステータスが含まれます。 
+---
+= MetroCluster設定の監視
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+MetroCluster構成の接続の問題を監視できます。これには、クラスタ内のコンポーネントと接続のステータス、およびMetroCluster構成内のクラスタ間の接続ステータスが含まれます。ここでは、MetroCluster over FC構成とMetroCluster over IP構成で保護されたクラスタの接続の問題を監視する方法を学習します。
+
+MetroClusterの設定は、Active IQ Unified Managerの左側のナビゲーションペインから次のビューで監視できます。
+
+* *ストレージ*>*クラスタ*>*保護：MetroCluster *ビュー
+* *保護*>*関係*>*関係：MetroCluster *ビュー
+
+
+Unified Managerは、システムヘルスアラートを使用して、MetroCluster構成のコンポーネントと接続のステータスを示します。
+
+* 必要なもの *
+
+* MetroCluster構成のローカルクラスタとリモートクラスタの両方をActive IQ Unified Managerに追加する必要があります。
+* MetroCluster over IP構成でメディエーターをサポートする場合は、対応するAPIを使用してメディエーターを設定し、クラスタに追加する必要があります。
+* オペレータ、アプリケーション管理者、またはストレージ管理者のロールが必要です。
+
+
+
+
+== MetroCluster over FC構成の接続の問題を監視する
+
+MetroCluster over FC構成のクラスタの場合は、接続グラフが* Cluster/Health * detailsページに表示されます。次の手順を実行します。
+
+.手順
+. 左側のナビゲーションペインで、 * Storage * > * Clusters * をクリックします。
++
+監視対象であるすべてのクラスタのリストが表示されます。
+
+. Protection：MetroCluster *ビューで、MetroCluster over FC構成の詳細を表示するクラスタの名前をクリックします。または、MetroCluster構成のクラスタでフィルタリングすることもできます。
+. [ * クラスタ / ヘルス * の詳細 ] ページで、 [ * MetroCluster 接続性 * ] タブをクリックします。MetroCluster 接続*タブは、MetroCluster over FC構成でのみ使用できます。
++
+image::../media/opm_um_mcc_connectivity_tab_png.gif[Unified Manager の MetroCluster の接続タブ]
+
++
+対応するクラスタオブジェクト領域にMetroCluster構成のトポロジが表示されます。[クラスタ/健全性の詳細]ページに表示される情報を使用して、接続の問題を修正できます。たとえば、クラスタ内のノードとスイッチの間の接続が停止している場合は、次のアイコンが表示されます。
+
+
+
+image::../media/node_switch_connectivity.gif[ノードスイッチ接続アイコン]
+
+アイコンにカーソルを合わせると、生成されたイベントに関する詳細情報が表示されます。
+
+MetroCluster構成で接続の問題が見つかった場合は、System ManagerにログインするかONTAP CLIにアクセスして問題を解決する必要があります。
+
+クラスタの健全性の判断の詳細については、を参照してくださいlink:../health-checker/task_check_health_of_clusters_in_metrocluster_configuration.html#determining-cluster-health-in-metrocluster-over-fc-configuration["MetroCluster over FC構成のクラスタの健全性の確認"]。
+
+
+
+== MetroCluster over IP構成の接続の問題を監視する
+
+MetroCluster over IP構成のクラスタの場合は、接続グラフが*クラスタ*ページに表示されます。次の手順を実行します。
+
+.手順
+. 左側のナビゲーションペインで、 * Storage * > * Clusters * をクリックします。
++
+監視対象であるすべてのクラスタのリストが表示されます。
+
+. Protection：MetroClusters *ビューで、MetroCluster over IP構成の詳細を表示するクラスタの名前をクリックします。または、MetroCluster構成のクラスタでフィルタリングすることもできます。
+. キャレットアイコンをクリックして行を展開し `v`ます。キャレットアイコンは、MetroCluster over IP構成で保護されているクラスタに対してのみ表示されます。
++
+ソースサイトとミラーサイトのトポロジ、および接続に使用されているメディエーター（ある場合）を表示できます。次の情報を表示できます。
+
++
+** サイト間の接続
+** 両方のサイトの健常性と可用性の問題（存在する場合）
+** メディエーター関連の問題
+** レプリケーションに関連する問題。
++
+
+NOTE: 報告されるステータスは、Critical（image:sev_critical_um60.png[""]）、Error（）、image:sev_error_um60.png[""]Normal（image:sev_normal_um60.png[""]）です。同じトポロジ内のプライマリデータとミラーデータのアグリゲートデータレプリケーションステータスを表示することもできます。
+
++
+次の図では、ソースクラスタとデスティネーションクラスタの間のサイト間接続は使用できず、クラスタ間のメディエーターも設定されていません。
+
++
+image:mcc-ip-conn-status.png["ソースサイト、ミラーサイト、およびメディエーターのトポロジを示すUIのスクリーンショット。"]
+
+
+
+. ステータスアイコンをクリックします。エラー定義を含むメッセージが表示されます。MetroCluster over IP構成で問題 のイベントが発生した場合は、メッセージの*イベントの表示*ボタンをクリックしてイベントの詳細を確認できます。問題とイベントを解決すると、このトポロジのステータスアイコンが正常（）に変わりますimage:sev_normal_um60.png[""]。
+. さらに詳しい設定情報は、クラスタ/ヘルス*の詳細ページの*構成*タブにある* MetroCluster の概要*および*保護*のセクションで確認できます。
+
+
+
+NOTE: MetroCluster over IP構成の場合にのみ、クラスタトポロジを*クラスタ*ページで表示できます。MetroCluster over FC構成のクラスタの場合、クラスタ/健常性*の詳細ページの* MetroCluster Connectivity *タブにトポロジが表示されます。
+
+* 関連情報 *
+
+* link:../health-checker/reference_health_cluster_details_page.html["[クラスタ/健全性の詳細]ページ"]
+* 関係：MetroCluster *ビューの詳細については、を参照してくださいlink:../storage-mgmt/task_monitor_metrocluster_configurations.html["MetroCluster設定の監視"]。
+* [関係：過去1カ月の転送ステータス]*ビューの詳細については、を参照してくださいlink:../data-protection/reference_relationship_last_1_month_transfer_status_view.html["関係：過去 1 カ月の転送ステータス画面"]。
+* [関係：過去1カ月の転送速度]*ビューの詳細については、を参照してくださいlink:../data-protection/reference_relationship_last_1_month_transfer_rate_view.html["関係：過去 1 カ月の転送速度ビュー"]。
+* [関係：すべての関係]*ビューの詳細については、を参照してくださいlink:../data-protection/reference_relationship_all_relationships_view.html["関係：すべての関係ビュー"]。
+

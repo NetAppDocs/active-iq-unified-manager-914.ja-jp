@@ -1,0 +1,46 @@
+---
+permalink: health-checker/task_delete_snapshot_copies.html 
+sidebar: sidebar 
+keywords: delete, snapshot copies 
+summary: スペースを節約したりディスクスペースを解放したりする場合、またはSnapshotコピーが不要になった場合、Snapshotコピーを削除できます。 
+---
+= Snapshotコピーの削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+スペースを節約したりディスクスペースを解放したりする場合、またはSnapshotコピーが不要になった場合、Snapshotコピーを削除できます。
+
+* 必要なもの *
+
+アプリケーション管理者またはストレージ管理者のロールが必要です。
+
+ボリュームはオンラインである必要があります。
+
+使用中またはロック状態のSnapshotコピーを削除するには、Snapshotコピーを使用していたアプリケーションからそのコピーを解放しておく必要があります。
+
+* FlexCloneが親ボリューム内のベースSnapshotコピーを使用している場合、そのSnapshotコピーは削除できません。
++
+ベースのSnapshotコピーはFlexCloneボリュームを作成するために使用されるSnapshotコピーで、親ボリュームと同様にステータスとアプリケーション依存関係が `Busy, Vclone`表示されます `Busy`。
+
+* SnapMirror関係で使用されているロックされたSnapshotコピーは削除できません。
++
+このSnapshotコピーはロックされており、次回の更新に必要です。
+
+
+
+.手順
+. 左側のナビゲーションペインで、 * Storage * > * Volumes * をクリックします。
+. * Health ： All Volumes * ビューで、表示する Snapshot コピーが含まれているボリュームを選択します。
++
+Snapshotコピーのリストが表示されます。
+
+. [* Volume/Health * details] ページで、 [* Capacity* ] タブをクリックします。
+. [ 容量 * ] タブの [ * 詳細 * ] ペインの [ その他の詳細 ] セクションで、 [ * Snapshot コピー * ] の横のリンクをクリックします。
++
+Snapshotコピーの数はリンクになっており、Snapshotコピーのリストが表示されます。
+
+. Snapshot コピー * ビューで、削除する Snapshot コピーを選択し、 * 選択した削除 * をクリックします。
+

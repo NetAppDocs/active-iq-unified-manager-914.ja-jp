@@ -1,0 +1,41 @@
+---
+permalink: storage-mgmt/task_create_rules_to_generate_email_addresses.html 
+sidebar: sidebar 
+keywords: create, rules, generate, email, addresses 
+summary: クラスタ、Storage Virtual Machine（SVM）、ボリューム、qtree、ユーザ、またはユーザグループに関連付けられたユーザクォータに基づいて、Eメールアドレスを指定するルールを作成できます。クォータに違反が発生すると、指定したEメールアドレスに通知が送信されます。 
+---
+= Eメールアドレスを生成するルールの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタ、Storage Virtual Machine（SVM）、ボリューム、qtree、ユーザ、またはユーザグループに関連付けられたユーザクォータに基づいて、Eメールアドレスを指定するルールを作成できます。クォータに違反が発生すると、指定したEメールアドレスに通知が送信されます。
+
+* 必要なもの *
+
+* アプリケーション管理者またはストレージ管理者のロールが必要です。
+* [Rules to Generate User and Group Quota Email Address] ページのガイドラインを確認しておく必要があります。
+
+
+クォータEメールアドレスのルールを定義し、実行順序で入力する必要があります。たとえば、abcのクォータ違反に関する通知をEメールアドレスabc@xyz.comで受信し、他のすべてのグループにEメールアドレスDL-$GROUP@$DOMAINを使用する場合は、ルールを次の順序で指定する必要があります。
+
+* if（$user =='abc'）then abc@xyz.com
+* if（$GROUP ==*）THEN DL-$GROUP@$DOMAIN
+
+
+指定したルールの条件が1つも満たされない場合は、デフォルトのルールが使用されます。
+
+（$USER_OR_GROUP==*）の場合、$USER_OR_GROUP@$DOMAIN
+
+.手順
+. 左側のナビゲーションペインで、 * General * > * Quota Email Rules * をクリックします。
+. 条件に基づいてルールを入力します。
+. [*Validate] をクリックして、ルールの構文を検証します。
++
+ルールの構文が正しくない場合は、エラーメッセージが表示されます。構文を修正して、もう一度 * 検証 * をクリックする必要があります。
+
+. [ 保存（ Save ） ] をクリックします。
+. 作成した E メールアドレスが Storage * VM / Health * details ページの * User and Group Quotas * タブに表示されていることを確認します。
+

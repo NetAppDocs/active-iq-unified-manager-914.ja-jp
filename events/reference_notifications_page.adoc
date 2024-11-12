@@ -1,0 +1,122 @@
+---
+permalink: events/reference_notifications_page.html 
+sidebar: sidebar 
+keywords: notifications page, email, smtp, server, snmp 
+summary: Unified Managerサーバでは、イベントが生成されたときやユーザに割り当てられたときに通知を送信するように設定できます。通知メカニズムを設定することもできます。たとえば、通知をEメールやSNMPトラップとして送信できます。 
+---
+= [通知]ページ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Managerサーバでは、イベントが生成されたときやユーザに割り当てられたときに通知を送信するように設定できます。通知メカニズムを設定することもできます。たとえば、通知をEメールやSNMPトラップとして送信できます。
+
+アプリケーション管理者またはストレージ管理者のロールが必要です。
+
+
+
+== Eメール
+
+この領域では、アラート通知の次のEメール設定を行うことができます。
+
+* * 送信元アドレス *
++
+アラート通知の送信元Eメールアドレスを指定します。この値は、共有時にレポートの送信元アドレスとしても使用されます。[送信元アドレス]に「ActiveIQUnifiedManager@localhost.com」というアドレスが事前に入力されている場合、すべてのEメール通知が正しく送信されるように実際のEメール アドレスに変更する必要があります。
+
+
+
+
+
+== SMTPサーバ
+
+この領域では、次のSMTPサーバを設定できます。
+
+* * ホスト名または IP アドレス *
++
+SMTPホストサーバのホスト名を指定します。このホスト名は、指定した受信者にアラート通知を送信するために使用されます。
+
+* * ユーザー名 *
++
+SMTPユーザ名を指定します。SMTPユーザ名が必要なのは、SMTPサーバでSMTPAUTHが有効になっている場合だけです。
+
+* * パスワード *
++
+SMTPパスワードを指定します。SMTPユーザ名が必要なのは、SMTPサーバでSMTPAUTHが有効になっている場合だけです。
+
+* * ポート *
++
+アラート通知の送信にSMTPホストサーバが使用するポートを指定します。
+
++
+デフォルト値は25です。
+
+* * START/TLS* を使用します
++
+このチェックボックスをオンにすると、TLS/SSLプロトコル（start_tlsおよびStartTLSとも呼ばれます）を使用したSMTPサーバと管理サーバの間のセキュアな通信が確立されます。
+
+* * SSL * を使用します
++
+このチェックボックスをオンにすると、SSLプロトコルを使用したSMTPサーバと管理サーバの間のセキュアな通信が確立されます。
+
+
+
+
+
+== SNMP
+
+この領域では、次のSNMPトラップ設定を行うことができます。
+
+* * バージョン *
++
+必要なセキュリティのタイプに応じて、使用するSNMPのバージョンを指定します。オプションには、[Version 1]、[Version 3]、[Version 3 With Authentication]、[Version 3 With Authentication and Encryption]があります。デフォルト値はバージョン1です。
+
+* * トラップ送信先ホスト *
++
+管理サーバから送信されるSNMPトラップを受信するホスト名またはIPアドレス（IPv4またはIPv6）を指定します。トラップ送信先を複数指定するには、各ホストをカンマで区切ります。
+
++
+[NOTE]
+====
+他のSNMP設定（「バージョン」や「アウトバウンドポート」など）は、リスト内のすべてのホストで同じにする必要があります。
+
+====
+* * アウトバウンドトラップポート *
++
+管理サーバから送信されたトラップをSNMPサーバが受信するポートを指定します。
+
++
+デフォルト値は162です。
+
+* * コミュニティ *
++
+ホストにアクセスするためのコミュニティストリング。
+
+* * エンジン ID *
++
+SNMPエージェントの一意の識別子を指定します。管理サーバによって自動的に生成されます。[Engine ID]は、[SNMP Version 3]、[SNMP Version 3 with Authentication]、および[SNMP Version 3 with Authentication and Encryption]で使用できます。
+
+* * ユーザー名 *
++
+SNMPユーザ名を指定します。[User name]は、[SNMP Version 3]、[SNMP Version 3 with Authentication]、および[SNMP Version 3 with Authentication and Encryption]で使用できます。
+
+* * 認証プロトコル *
++
+ユーザの認証に使用するプロトコルを指定します。プロトコルオプションには、MD5とSHAがあります。デフォルト値はMD5です。認証プロトコルは、[SNMP Version 3 with Authentication]および[SNMP Version 3 with Authentication and Encryption]で使用できます。
+
+* * 認証パスワード *
++
+ユーザの認証時に使用するパスワードを指定します。[Authentication password]は、[SNMP Version 3 with Authentication]および[SNMP Version 3 with Authentication and Encryption]で使用できます。
+
+* * プライバシープロトコル *
++
+SNMPメッセージの暗号化に使用するプライバシープロトコルを指定します。プロトコルオプションには、AES 128およびDESがあります。デフォルト値はAES 128です。プライバシープロトコルは、[SNMPバージョン3、認証と暗号化を使用]で使用できます。
+
+* * プライバシーパスワード *
++
+プライバシープロトコルを使用するときのパスワードを指定します。[プライバシーパスワード]は、[SNMPバージョン3、認証と暗号化を使用]とともに使用できます。
+
+
+
+SNMPのオブジェクトとトラップの詳細については、NetAppサポートサイトからをダウンロードしてlink:https://mysupport.netapp.com/site/tools/tool-eula/aiqum-mib["Active IQ Unified Manager MIBです"^]ください。

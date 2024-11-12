@@ -1,0 +1,54 @@
+---
+permalink: config/task_perform_initial_setup_of_unified_manager_web_ui.html 
+sidebar: sidebar 
+keywords: perform, initial, setup, unified manager web ui 
+summary: Unified Managerを使用するには、NTPサーバ、メンテナンスユーザのEメールアドレス、SMTPサーバのホストを最初に設定し、ONTAPクラスタを追加する必要があります。 
+---
+= Unified Manager Web UIの初期セットアップの実行
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Managerを使用するには、NTPサーバ、メンテナンスユーザのEメールアドレス、SMTPサーバのホストを最初に設定し、ONTAPクラスタを追加する必要があります。
+
+* 必要なもの *
+
+次の作業を完了しておきます。
+
+* インストール後に表示されたURLを使用してUnified Manager Web UIを起動します。
+* インストール時に作成したメンテナンスユーザ（Linux環境の場合はumadminユーザ）の名前とパスワードを使用してログインします。
+
+
+Active IQ Unified Managerの[はじめに]ページは、Web UIへの初回アクセス時にのみ表示されます。次のページは、VMwareへのインストールからのものです。
+
+image::../media/first_experience_wizard.JPG[VMwareへのインストールからのページを示すUIのスクリーンショット。]
+
+これらのオプションをあとで変更する場合は、Unified Managerの左側のナビゲーションペインの[全般]オプションから選択できます。NTP設定はVMware環境専用で、あとからUnified Managerメンテナンスコンソールを使用して変更できます。
+
+.手順
+. Active IQ Unified Manager初期セットアップページで、メンテナンスユーザのEメールアドレス、SMTPサーバのホスト名とその他のSMTPオプション、およびNTPサーバを入力します（VMwareの場合のみ）。[* Continue （続行） ] をクリックします。
++
+[NOTE]
+====
+[*Use STARTTLS *]または[*Use SSL *]オプションを選択した場合は、[*Continue*]ボタンをクリックすると証明書ページが表示されます。証明書の詳細を確認し、証明書を受け入れてWeb UIの初期セットアップ設定に進みます。
+
+====
+. AutoSupport ページで「 * Agree and Continue 」をクリックして、 Unified Manager から NetAppActive IQ への AutoSupport メッセージの送信を有効にします。
++
+AutoSupport コンテンツの送信用にインターネットアクセスを提供するためにプロキシを指定する必要がある場合や、 AutoSupport を無効にする場合は、 Web UI から「 * General * > * AutoSupport * 」オプションを使用します。
+
+. Red HatおよびCentOSのシステムの場合、umadminユーザのパスワードをデフォルトの「admin」から独自のパスワードに変更します。
+. [APIゲートウェイのセットアップ]ページで、監視対象のONTAPクラスタをONTAP REST APIを使用してUnified Managerで管理できるようにAPIゲートウェイ機能を使用するかどうかを選択します。[* Continue （続行） ] をクリックします。
++
+この設定は、 Web UI の * General * > * Feature Settings * > * API Gateway * で後から有効または無効にできます。APIの詳細については、を参照してくださいlink:../api-automation/concept_get_started_with_um_apis.html["Active IQ Unified Manager REST APIでの作業の開始"]。
+
+. Unified Manager で管理するクラスタを追加し、 * Next * をクリックします。管理するクラスタごとに、ホスト名またはクラスタ管理 IP アドレス（ IPv4 または IPv6 ）、ユーザ名およびパスワードクレデンシャルが必要です。ユーザには「 admin 」ロールが必要です。
++
+この手順はオプションです。クラスタは、 Web UI の * Storage Management * > * Cluster Setup * からあとから追加できます。
+
+. [ 概要 ] ページで、すべての設定が正しいことを確認し、 [ 完了 *] をクリックします。
+
+
+[はじめに]ページが閉じ、Unified Managerの[ダッシュボード]ページが表示されます。

@@ -1,0 +1,276 @@
+---
+permalink: api-automation/concept_provision_luns.html 
+sidebar: sidebar 
+keywords: provision, luns 
+summary: Active IQ Unified Manager に付属のプロビジョニング API を使用して、 Storage Virtual Machine （ SVM ）に LUN をプロビジョニングできます。このプロビジョニングワークフローでは、LUNを作成する前にSVM、パフォーマンスサービスレベル、およびストレージ効率化ポリシーのキーを取得する手順について詳しく説明します。 
+---
+= APIを使用したLUNのプロビジョニング
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQ Unified Manager に付属のプロビジョニング API を使用して、 Storage Virtual Machine （ SVM ）に LUN をプロビジョニングできます。このプロビジョニングワークフローでは、LUNを作成する前にSVM、パフォーマンスサービスレベル、およびストレージ効率化ポリシーのキーを取得する手順について詳しく説明します。
+
+次の図は、LUNのプロビジョニングワークフローの手順を示しています。
+
+image::../media/create_luns.gif[LUNs を作成します]
+
+[NOTE]
+====
+このワークフローは、 ONTAP クラスタが Unified Manager に追加され、クラスタキーが取得されていることを前提としています。また、SVMがクラスタに作成済みであることも前提としています。
+
+====
+. LUN を作成する SVM の SVM キーを取得します。詳細については、「クラスタテノ SVM ノサクシヨ _ ワークフロー」のトピックを参照してください。
+. 次のAPIを実行し、応答からパフォーマンスサービスレベルのキーを取得します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/performance-service-levels`
+
+|===
++
+[NOTE]
+====
+システム定義のパフォーマンスサービスレベルの詳細を取得するには、入力パラメータをに `true`設定し `system_defined`ます。出力から、LUNに適用するパフォーマンスサービスレベルのキーを取得します。
+
+====
+. 必要に応じて、次のAPIを実行し、応答からLUNに適用するストレージ効率化ポリシーのキーを取得します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/storage-efficiency-policies`
+
+|===
+. 作成するLUNターゲットへのアクセスを許可するイニシエータグループ（igroup）が作成されているかどうかを確認します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+データセンター
+ a| 
+取得
+ a| 
+`/datacenter/protocols/san/igroups`  `/datacenter/protocols/san/igroups/\{key}`
+
+|===
++
+igroupがアクセスを許可するSVMをパラメータ値で入力する必要があります。また、特定のigroupを照会する場合は、入力パラメータとしてigroup名（キー）を入力します。
+
+. アクセスを許可するigroupが出力に表示されたら、キーを取得します。それ以外の場合はigroupを作成します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+データセンター
+ a| 
+投稿
+ a| 
+`/datacenter/protocols/san/igroups`
+
+|===
++
+作成するigroupの詳細を入力パラメータとして入力する必要があります。これは同期呼び出しであり、igroupの作成を出力で確認できます。エラーが発生した場合は、トラブルシューティングしてAPIを再実行するように求めるメッセージが表示されます。
+
+. LUNを作成
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+投稿
+ a| 
+`/storage-provider/luns`
+
+|===
++
+LUNを作成する場合は、取得した値を必須パラメータとして追加しておきます。
+
++
+[NOTE]
+====
+ストレージ効率化ポリシーは、LUNを作成する場合のオプションパラメータです。
+
+====
++
+* cURL の例 *
+
++
+作成するLUNのすべての詳細を入力パラメータとして入力する必要があります。
+
++
+JSON出力にジョブ オブジェクト キーが表示され、作成したLUNの検証に使用できます。
+
+. ジョブの照会で返されたジョブオブジェクトキーを使用して、LUNの作成を確認します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+management-server
+ a| 
+取得
+ a| 
+`/management-server/jobs/\{key}`
+
+|===
++
+応答の最後に、作成されたLUNのキーが表示されます。
+
+. 返されたキーを指定して次のAPIを実行し、LUNの作成を確認します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/luns/\{key}`
+
+|===
++
+* JSON 出力の例 *
+
++
+のPOSTメソッドは、 `/storage-provider/luns`各関数に必要なすべてのAPIを内部的に呼び出し、オブジェクトを作成します。たとえば、LUNにパフォーマンスサービスレベルを割り当てるAPIを呼び出し `/storage-provider/performance-service-levels/`ます。
+
++
+= LUNの作成またはマッピングに失敗した場合のトラブルシューティング手順
+
+
+
+このワークフローを完了しても、LUNの作成に失敗することがあります。LUNの作成に成功した場合でも、LUNを作成するノードにSAN LIFまたはアクセスエンドポイントがないことが原因で、igroupとのLUNマッピングが失敗することがあります。障害が発生した場合は、次のメッセージが表示されます。
+
+[listing]
+----
+The nodes <node_name> and <partner_node_name> have no LIFs configured with the iSCSI or FCP protocol for Vserver <server_name>. Use the access-endpoints API to create a LIF for the LUN.
+----
+この問題を回避するには、次のトラブルシューティング手順を実行します。
+
+. LUNを作成しようとしたSVMに、iSCSI / FCPプロトコルをサポートするアクセスエンドポイントを作成します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+投稿
+ a| 
+`/storage-provider/access-endpoints`
+
+|===
++
+* cURL の例 *
+
++
+作成するアクセスエンドポイントの詳細を入力パラメータとして入力する必要があります。
+
++
+[NOTE]
+====
+入力パラメータに、LUNのホームノードを示すアドレスと、ホームノードのパートナーノードを示すha_addressが追加されていることを確認します。この処理を実行すると、ホームノードとパートナーノードの両方にアクセスエンドポイントが作成されます。
+
+====
+. JSON出力で返されたジョブオブジェクトキーを使用してジョブを照会し、SVMにアクセスエンドポイントを追加するジョブが正常に実行されたこと、およびSVMでiSCSI / FCPサービスが有効になっていることを確認します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+management-server
+ a| 
+取得
+ a| 
+`/management-server/jobs/\{key}`
+
+|===
++
+* JSON 出力の例 *
+
++
+出力の最後に、作成されたアクセスエンドポイントのキーが表示されます。次の出力では、「 name 」：「 accessEndpointKey 」値は LUN のホームノードに作成されたアクセスエンドポイントを示します。このキーは 9c964258-14ef-11ea95e2-00a098e32c28 です。「 name 」：「 accessEndpointHAKey 」値は、ホームノードのパートナーノードに作成されたアクセスエンドポイントを示します。このキーは 9d347006-14ef-11ea-8760-00a098e3215f です。
+
+. LUNを変更してigroupマッピングを更新します。ワークフローの変更の詳細については、「ストレージワークロードの変更」を参照してください。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+パッチ
+ a| 
+`/storage-provider/lun/\{key}`
+
+|===
++
+入力で、LUNマッピングの更新に使用するigroupキーとLUNキーを指定します。
+
++
+* cURL の例 *
+
++
+JSON出力にジョブオブジェクトキーが表示され、マッピングが成功したかどうかの確認に使用できます。
+
+. LUNキーを指定して照会して、LUNマッピングを確認します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/luns/\{key}`
+
+|===
++
+* JSON 出力の例 *
+
++
+出力から、LUNのプロビジョニング時に使用したigroup（key d19ec2fa-fec7-11E8-b23d-00a098e32c28）にLUNが正常にマッピングされていることがわかります。
+
+

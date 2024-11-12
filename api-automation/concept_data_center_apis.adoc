@@ -1,0 +1,257 @@
+---
+permalink: api-automation/concept_data_center_apis.html 
+sidebar: sidebar 
+keywords: manage, storage, objects, data center 
+summary: データセンターカテゴリの REST API を使用して、クラスタ、ノード、アグリゲート、 Storage VM など、データセンター内のストレージオブジェクトを管理できます。 ボリューム、 LUN 、ファイル共有、ネームスペース。これらのAPIはオブジェクトの設定の照会に使用できますが、一部のAPIではオブジェクトの追加、削除、変更の処理を実行できます。 
+---
+= APIを使用したデータセンター内のストレージオブジェクトの管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+カテゴリのREST APIを `datacenter`使用すると、クラスタ、ノード、アグリゲート、Storage VM、ボリューム、LUN、ファイル共有、ネームスペースなど、データセンター内のストレージオブジェクトを管理できます。これらのAPIはオブジェクトの設定の照会に使用できますが、一部のAPIではオブジェクトの追加、削除、変更の処理を実行できます。
+
+これらのAPIのほとんどは、フィルタリング、ソート、およびページネーションをサポートするクラスタ間集約を提供するGET呼び出しです。これらのAPIを実行すると、データベースからデータが返されます。したがって、新たに作成されたオブジェクトは、次の取得サイクルで検出されるまで応答に表示されません。
+
+特定のオブジェクトの詳細を照会する場合は、そのオブジェクトの一意のIDを入力して詳細を表示する必要があります。たとえば、ストレージオブジェクトの指標と分析の情報については、を参照してくださいlink:concept_metrics_apis.html["パフォーマンス指標の表示"]。
+
+[listing]
+----
+curl -X GET "https://<hostname>/api/datacenter/cluster/clusters/4c6bf721-2e3f-11e9-a3e2-00a0985badbb" -H "accept: application/json" -H "Authorization: Basic <Base64EncodedCredentials>"
+----
+[NOTE]
+====
+curlコマンド、例、要求、およびAPIへの応答は、Swagger APIインターフェイスで使用できます。Swaggerに示されているように、特定のパラメータで結果をフィルタおよび順序付けることができます。これらのAPIを使用して、クラスタ、ボリューム、Storage VMなどの特定のストレージオブジェクトに対して結果をフィルタリングできます。
+
+====
+
+
+== データセンター内のストレージオブジェクト用API
+
+[cols="3*"]
+|===
+| HTTP動詞 | パス | 製品説明 
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/cluster/clusters`
+
+`/datacenter/cluster/clusters/\{key}`
+ a| 
+このメソッドを使用して、データセンター全体のONTAPクラスタの詳細を表示できます。APIから返される情報には、クラスタのIPv4アドレスまたはIPv6アドレス、ノードに関する情報（ノードの健常性、パフォーマンス容量、ハイアベイラビリティ（HA）ペアなど）、クラスタがオールSANアレイかどうかが含まれます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/cluster/licensing/licenses /datacenter/cluster/licensing/licenses/\{key}`
+ a| 
+データセンター内のクラスタにインストールされているライセンスの詳細が返されます。必要な条件に基づいて結果をフィルタリングできます。ライセンスキー、クラスタキー、有効期限、ライセンス範囲などの情報が返されます。ライセンスキーを入力して、特定のライセンスの詳細を取得できます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/cluster/nodes`
+
+`/datacenter/cluster/nodes/\{key}`
+ a| 
+このメソッドを使用して、データセンター内のノードの詳細を表示できます。ノードのクラスタ、ノードの健全性、パフォーマンス容量、およびハイアベイラビリティ（HA）ペアに関する情報を表示できます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/protocols/cifs/shares`
+
+`/datacenter/protocols/cifs/shares/\{key}`
+ a| 
+このメソッドを使用して、データセンター内のCIFS共有の詳細を表示できます。クラスタ、SVM、およびボリュームの詳細とは別に、アクセス制御リスト（ACL）に関する情報も返されます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/protocols/nfs/export-policies`
+
+`/datacenter/protocols/nfs/export-policies/\{key}`
+ a| 
+このメソッドを使用して、サポートされているNFSサービスのエクスポートポリシーの詳細を表示できます。
+
+クラスタまたはStorage VMのエクスポートポリシーを照会し、そのエクスポートポリシーキーをNFSファイル共有のプロビジョニングに再利用できます。ワークロードでのエクスポートポリシーの割り当てと再利用の詳細については、「 CIFS および NFS ファイル共有のプロビジョニング」を参照してください。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/storage/aggregates`
+
+`/datacenter/storage/aggregates/\{key}`
+ a| 
+このメソッドを使用して、データセンター内の一連のアグリゲートや特定のアグリゲートを表示し、ワークロードのプロビジョニングや監視に使用できます。クラスタとノードの詳細、使用済みパフォーマンス容量、使用可能スペースと使用済みスペース、Storage Efficiencyなどの情報が返されます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/storage/luns`
+
+`/datacenter/storage/luns/\{key}`
+ a| 
+このメソッドを使用して、データセンター全体の一連のLUNを表示できます。LUNに関する情報（クラスタとSVMの詳細、QoSポリシー、igroupなど）を確認できます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/storage/qos/policies`
+
+`/datacenter/storage/qos/policies/\{key}`
+ a| 
+このメソッドを使用して、データセンター内のストレージオブジェクトに適用されるすべてのQoSポリシーの詳細を表示できます。クラスタとSVMの詳細、固定またはアダプティブのポリシーの詳細、そのポリシーに該当するオブジェクトの数などの情報が返されます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/storage/qtrees`
+
+`/datacenter/storage/qtrees/\{key}`
+ a| 
+このメソッドを使用して、すべてのFlexVolまたはFlexGroupボリュームについて、データセンター全体のqtreeの詳細を表示できます。クラスタとSVMの詳細、FlexVol volume、エクスポートポリシーなどの情報が返されます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/storage/volumes`
+
+`/datacenter/storage/volumes/{key}`
+ a| 
+このメソッドを使用して、データセンター内のすべてのボリュームを表示できます。ボリュームに関する情報（SVMとクラスタの詳細、QoSとエクスポートポリシー、ボリュームのタイプが読み書き可能、データ保護、負荷共有のいずれであるかなど）が返されます。
+
+FlexVolボリュームとFlexCloneボリュームについては、それぞれのアグリゲートに関する情報を表示できます。FlexGroupボリュームの場合、コンスティチュエントアグリゲートのリストが返されます。
+
+
+
+ a| 
+`GET`
+
+`POST`
+
+`DELETE`
+
+`PATCH`
+ a| 
+`/datacenter/protocols/san/igroups`
+
+`/datacenter/protocols/san/igroups/{key}`
+ a| 
+特定のLUNターゲットへのアクセスを許可されたイニシエータグループ（igroup）を割り当てることができます。既存のigroupがある場合は割り当てることができます。igroupを作成してLUNに割り当てることもできます。
+
+これらのメソッドを使用して、igroupの照会、作成、削除、および変更をそれぞれ実行できます。
+
+注意事項：
+
+* `POST:`igroupの作成時に、アクセスを割り当てるStorage VMを指定できます。
+* `DELETE:`特定のigroupを削除するには、igroupキーを入力パラメータとして指定する必要があります。すでにLUNに割り当てられているigroupは削除できません。
+* `PATCH:`特定のigroupを変更するには、igroupキーを入力パラメータとして指定する必要があります。また、更新するプロパティとその値を入力する必要があります。
+
+
+
+
+ a| 
+`GET`
+
+`POST`
+
+`DELETE`
+
+`PATCH`
+ a| 
+`/datacenter/svm/svms`
+
+`/datacenter/svm/svms/\{key}`
+ a| 
+これらのメソッドを使用して、Storage Virtual Machine（Storage VM）を表示、作成、削除、および変更できます。
+
+* `POST:`作成するStorage VMオブジェクトを入力パラメータとして入力する必要があります。カスタムのStorage VMを作成して、必要なプロパティを割り当てることができます。
+* `DELETE:`特定のStorage VMを削除するには、Storage VMキーを指定する必要があります。
+* `PATCH:`特定のStorage VMを変更するには、Storage VMキーを指定する必要があります。また、更新するプロパティとその値を入力する必要があります。
+
+
+|===
+
+NOTE: 注意事項：
+
+環境でSLOベースのワークロードプロビジョニングを有効にしている場合は、Storage VMの作成時に、LUNとファイル共有のプロビジョニングに必要なすべてのプロトコル（CIFS、SMB、NFS、FCP、iSCSIなど）がサポートされていることを確認してください。Storage VMが必要なサービスをサポートしていないと、プロビジョニングワークフローが失敗することがあります。それぞれのワークロードタイプのサービスも有効にすることを推奨します。
+
+環境でSLOベースのワークロードプロビジョニングを有効にしている場合、ストレージワークロードがプロビジョニングされているStorage VMは削除できません。CIFSサーバまたはSMBサーバが設定されているStorage VMを削除すると、CIFSサーバまたはSMBサーバとローカルのActive Directory設定も削除されます。ただし、CIFSサーバまたはSMBサーバ名はActive Directory設定に残っているため、Active Directoryサーバから手動で削除する必要があります。
+
+
+
+== データセンターのネットワーク要素用API
+
+datacenterカテゴリの次のAPIは、環境内のポートとネットワークインターフェイス（特にFCポート、FCインターフェイス、イーサネットポート、IPインターフェイス）に関する情報を取得します。
+
+[cols="3*"]
+|===
+| HTTP動詞 | パス | 製品説明 
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/network/ethernet/ports`
+
+`/datacenter/network/ethernet/ports/{key}`
+ a| 
+データセンター環境内のすべてのイーサネットポートに関する情報を取得します。ポートキーを入力パラメータとして使用すると、その特定のポートの情報を表示できます。取得される情報は、クラスタの詳細、ブロードキャストドメイン、ポートの詳細（状態、速度、タイプなど）、ポートが有効かどうかなどです。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/network/fc/interfaces`
+
+`/datacenter/network/fc/interfaces/{key}`
+ a| 
+このメソッドを使用して、データセンター環境内のFCインターフェイスの詳細を表示できます。インターフェイスキーを入力パラメータとして使用すると、そのインターフェイスの情報を表示できます。クラスタの詳細、ホームノードの詳細、ホームポートの詳細などの情報が取得されます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/network/fc/ports`
+
+`/datacenter/network/fc/ports/{key}`
+ a| 
+データセンター環境のノードで使用されているすべてのFCポートに関する情報を取得します。ポートキーを入力パラメータとして使用すると、その特定のポートの情報を表示できます。クラスタの詳細、ポートの説明、サポートされるプロトコル、ポートの状態などの情報が取得されます。
+
+
+
+ a| 
+`GET`
+ a| 
+`/datacenter/network/ip/interfaces`
+
+`/datacenter/network/ip/interfaces/{key}`
+ a| 
+このメソッドを使用して、データセンター環境のIPインターフェイスの詳細を表示できます。インターフェイスキーを入力パラメータとして使用すると、そのインターフェイスの情報を表示できます。クラスタの詳細、IPspaceの詳細、ホームノードの詳細、フェイルオーバーが有効かどうかなどの情報が取得されます。
+
+|===

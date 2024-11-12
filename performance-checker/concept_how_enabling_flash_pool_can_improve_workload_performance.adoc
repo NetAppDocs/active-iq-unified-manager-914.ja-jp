@@ -1,0 +1,20 @@
+---
+permalink: performance-checker/concept_how_enabling_flash_pool_can_improve_workload_performance.html 
+sidebar: sidebar 
+keywords: enable, flash pool, storage, aggregate, improve, workload, performance 
+summary: アグリゲートで Flash Pool 機能を有効にすることで、ワークロードパフォーマンスを改善できます。Flash Pool は、 HDD と SSD の両方が組み込まれているアグリゲートです。プライマリストレージにはHDDを使用し、SSDを使用すると読み取り/書き込みキャッシュのパフォーマンスが向上し、アグリゲートのパフォーマンスが向上します。 
+---
+= ストレージアグリゲートでFlash Poolを有効にしてワークロードパフォーマンスを向上させる仕組み
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アグリゲートで Flash Pool 機能を有効にすることで、ワークロードパフォーマンスを改善できます。Flash Pool は、 HDD と SSD の両方が組み込まれているアグリゲートです。プライマリストレージにはHDDを使用し、SSDを使用すると読み取り/書き込みキャッシュのパフォーマンスが向上し、アグリゲートのパフォーマンスが向上します。
+
+Unified Managerの[イベントの詳細]ページには、競合状態にあるアグリゲートの名前が表示されます。ONTAP System ManagerまたはONTAPコマンドを使用して、アグリゲートでFlash Poolが有効になっているかどうかを確認できます。SSDが取り付けられている場合は、コマンドラインインターフェイスを使用して有効にできます。SSDが搭載されている場合は、アグリゲートで次のコマンドを実行して、Flash Poolが有効になっているかどうかを確認できます。 `*cluster::> storage aggregate show -aggregate aggr_name -field hybrid-enabled*`
+
+このコマンドの `_aggr_name_`はアグリゲートの名前です（競合状態にあるアグリゲートなど）。
+
+Flash Pool とその使用要件の詳細については、『 clustered Data ONTAP 物理ストレージ管理ガイド』を参照してください。

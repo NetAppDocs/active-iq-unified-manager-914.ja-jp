@@ -1,0 +1,14 @@
+---
+permalink: events/reference_description_of_event_windows_and_dialog_boxes.html 
+sidebar: sidebar 
+keywords: description, event, windows, dialog boxes 
+summary: '環境内の問題はイベントを通じて通知されます。[イベント管理]インベントリページと[イベントの詳細]ページを使用して、すべてのイベントを監視できます。通知を設定するには、[Notification Setup Options]ダイアログボックスを使用します。[Event Setup]ページを使用して、イベントを無効または有効にできます。' 
+---
+= イベントのウィンドウとダイアログボックスの説明
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+環境内の問題はイベントを通じて通知されます。[イベント管理]インベントリページと[イベントの詳細]ページを使用して、すべてのイベントを監視できます。通知を設定するには、[Notification Setup Options]ダイアログボックスを使用します。[Event Setup]ページを使用して、イベントを無効または有効にできます。

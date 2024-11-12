@@ -1,0 +1,22 @@
+---
+permalink: events/concept_resolve_active_iq_platform_events.html 
+sidebar: sidebar 
+keywords: active iq, resolve, events 
+summary: 'Active IQプラットフォームのインシデントとリスクは、他のUnified Managerイベントと似ています。これらのイベントは解決のために他のユーザに割り当てることができ、使用可能な状態も同じであるためです。ただし、 [ 修正 ] ボタンを使用してこれらのタイプのイベントを解決すると、解決を数時間以内に検証できます。' 
+---
+= Active IQプラットフォームイベントの解決
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQプラットフォームのインシデントとリスクは、他のUnified Managerイベントと似ています。これらのイベントは解決のために他のユーザに割り当てることができ、使用可能な状態も同じであるためです。ただし、 [ 修正 ] ボタンを使用してこれらのタイプのイベントを解決すると、解決を数時間以内に検証できます。
+
+次の図は、Active IQプラットフォームから生成されたイベントの解決時に実行する必要がある操作（緑）とUnified Managerで実行する操作（黒）を示しています。
+
+image::../media/aiq_and_um_event_resolution.png[UIのスクリーンショット。イベントの解決時に実行する必要がある操作とUnified Managerで実行する操作が表示されます。]
+
+手動で解決する場合は、System ManagerまたはONTAPコマンドラインインターフェイスにログインして問題を修正する必要があります。問題を確認できるのは、午前0時にクラスタで新しいAutoSupportメッセージが生成されたあとです。
+
+[Fix it* （修正） ] ボタンを使用して半自動の解決を実行する場合、修正が数時間以内に正常に完了したことを確認できます。

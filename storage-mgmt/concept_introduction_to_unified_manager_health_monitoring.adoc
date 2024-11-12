@@ -1,0 +1,90 @@
+---
+permalink: storage-mgmt/concept_introduction_to_unified_manager_health_monitoring.html 
+sidebar: sidebar 
+keywords: introduction, active iq unified manager, throughput, Mbps, Kbps, GiB, TiB, logical capacity, PiB, Capacity measurement units 
+summary: 容量の単位物理容量と論理容量 
+---
+= Active IQ Unified Managerの健常性監視の概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQ Unified Manager（旧OnCommand Unified Manager）を使用すると、ONTAPソフトウェアを実行する多数のシステムを、一元化されたユーザインターフェイスで監視できます。Unified Managerサーバインフラは拡張性とサポート性に優れ、高度な監視機能と通知機能を備えています。
+
+Unified Managerの主な機能には、クラスタの可用性と容量の監視とアラート生成、管理、保護機能の管理、診断データの収集とテクニカルサポートへの送信があります。
+
+Unified Managerを使用してクラスタを監視できます。クラスタで問題が発生すると、Unified Managerのイベントを通じて問題の詳細が通知されます。一部のイベントでは、問題を修正するための対処方法も提供されます。問題が発生したときにEメールやSNMPトラップで通知されるように、イベントにアラートを設定することができます。
+
+Unified Managerでは、アノテーションを関連付けることで環境内のストレージオブジェクトを管理できます。カスタムアノテーションを作成し、ルールに基づいて動的にクラスタ、Storage Virtual Machine（SVM）、およびボリュームを関連付けることができます。
+
+また、それぞれのクラスタオブジェクトについて、容量と健全性のグラフに表示される情報を使用して、クラスタオブジェクトのストレージ要件を計画することもできます。
+
+
+
+== 物理容量と論理容量
+
+Unified Managerでは、ONTAPストレージオブジェクトに使用される物理スペースと論理スペースの概念を使用しています。
+
+* 物理容量：物理スペースは、ボリュームで使用されているストレージの物理ブロックを表します。「使用済み物理容量」は、Storage Efficiency機能（重複排除や圧縮など）によってデータが削減されるため、通常は使用済み論理容量よりも小さくなります。
+* 論理容量：論理スペースは、ボリューム内の使用可能なスペース（論理ブロック）を表します。論理スペースとは、重複排除や圧縮の結果を考慮せずに理論上のスペースをどのように使用できるかを指します。「使用済み論理スペース」は、使用済みの物理スペースと、設定されているStorage Efficiency機能（重複排除や圧縮など）による削減量を足したものです。この測定値は、データ圧縮などの物理スペースの削減量を反映していないため、使用済み物理容量よりも大きく表示されることがよくあります。したがって、合計論理容量がプロビジョニング済みスペースよりも大きくなる可能性があります。
+
+
+
+
+== 容量の測定単位
+
+Unified Manager は、 1024 （ 2^10^ ）バイトのバイナリ単位に基づいてストレージ容量を計算します。ONTAP 9 .10.0以前では、これらの単位はKB、MB、GB、TB、およびPBとして表示されていました。ONTAP 9 .10.1以降では、Unified ManagerでKiB、MiB、GiB、TiB、およびPiBとして表示されます。
+
+
+NOTE: スループットに使用される単位は、ONTAPのすべてのリリースで、1秒あたりのキロバイト数（Kbps）、1秒あたりのメガバイト数（Mbps）、1秒あたりのギガバイト数（Gbps）、1秒あたりのテラバイト数（Tbps）などです。
+
+[cols="4*"]
+|===
+| Unified Manager for ONTAP 9.10.0 以前の容量ユニットが表示されます | Unified Manager for ONTAP 9.10.1 で表示される容量の単位 | 計算 | バイト単位の値 
+
+
+ a| 
+KB
+ a| 
+KiB
+ a| 
+1024
+ a| 
+1024バイト
+
+
+
+ a| 
+MB
+ a| 
+MIB
+ a| 
+1024 * 1024
+ a| 
+1、048、576バイト
+
+
+
+ a| 
+GB
+ a| 
+GIB
+ a| 
+1024 * 1024 * 1024
+ a| 
+1、073、741、824バイト
+
+
+
+ a| 
+TB
+ a| 
+TiB
+ a| 
+1024 * 1024 * 1024 * 1024
+ a| 
+1、099、511、627、776バイト
+
+|===

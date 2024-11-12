@@ -1,0 +1,77 @@
+---
+permalink: health-checker/task_check_health_of_clusters_in_metrocluster_configuration.html 
+sidebar: sidebar 
+keywords: check, health, clusters, metrocluster, configuration 
+summary: Unified Manager を使用して、 MetroCluster 構成のクラスタとそのコンポーネントの運用の健常性を確認できます。Unified Manager によって検出されたパフォーマンスイベントにクラスタが関連している場合は、健常性ステータスを確認することで、ハードウェアまたはソフトウェアの問題がイベントの一因となったかどうかを判断できます。 
+---
+= MetroCluster構成のクラスタの健全性の確認
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+MetroCluster over FC構成およびMetroCluster over IP構成では、Active IQ Unified Manager（Unified Manager）を使用してクラスタとそのコンポーネントの運用の健全性を確認できます。Unified Manager によって検出されたパフォーマンスイベントにクラスタが関連している場合は、健常性ステータスを確認することで、ハードウェアまたはソフトウェアの問題がイベントの一因となったかどうかを判断できます。
+
+* 必要なもの *
+
+* オペレータ、アプリケーション管理者、またはストレージ管理者のロールが必要です。
+* MetroCluster構成のパフォーマンスイベントを分析し、関連するクラスタの名前を取得しておく必要があります。
+* FCおよびIPを介したMetroCluster構成の両方のクラスタを、同じUnified Managerインスタンスで監視する必要があります。
+
+
+
+
+== MetroCluster over FC構成のクラスタの健全性の確認
+
+MetroCluster over FC構成のクラスタの健全性を確認するには、次の手順を実行します。
+
+.手順
+. 左側のナビゲーションペインで、 * イベント管理 * をクリックしてイベントリストを表示します。
+. フィルタパネルで、「 * ソースタイプ * 」カテゴリの下の「すべての MetroCluster 」フィルタを選択します。すべてのMetroCluster構成について、環境で発生したすべてのイベントが表示されます。
+. MetroClusterイベントの横にあるクラスタの名前をクリックします。
++
+[NOTE]
+====
+MetroClusterイベントが表示されない場合は、検索バーを使用して、MetroCluster over FC構成に関連するイベントに関連するクラスタの名前を検索できます。
+
+====
++
+Health ： All Clusters ビューにイベントに関する詳細情報が表示されます。
+
+. MetroCluster Connectivity * タブを選択して、選択したクラスタとそのパートナークラスタ間の接続のヘルスを表示します。
++
+image::../media/opm_um_mcc_connectivity_tab_png.gif[Unified Manager の MetroCluster の接続タブ]
+
++
+この例では、ローカルクラスタとそのパートナークラスタの名前とコンポーネントが表示されています。黄色または赤のアイコンは、強調表示されているコンポーネントの健常性イベントを示しています。接続アイコンは、クラスタ間のリンクを表します。アイコンにマウスカーソルを合わせるとイベント情報が表示され、アイコンをクリックするとイベントが表示されます。いずれかのクラスタでの健常性の問題がパフォーマンスイベントの原因となった可能性があります。
+
++
+Unified Manager は、クラスタ間のリンクの NVRAM コンポーネントを監視します。ローカルクラスタまたはパートナークラスタの FC スイッチアイコンまたは接続アイコンが赤の場合は、問題がパフォーマンスイベントの原因となっている可能性があります。
+
+. MetroCluster レプリケーション * タブを選択します。
++
+image::../media/opm_um_mcc_replication_tab_png.gif[Unified Manager の MetroCluster の [ レプリケーション ] タブ]
+
++
+この例では、ローカルクラスタまたはパートナークラスタのNVRAMアイコンが黄色または赤の場合、NVRAMの健常性の問題がパフォーマンスイベントの原因である可能性があります。ページに赤または黄色のアイコンがない場合は、パートナークラスタのパフォーマンスの問題がパフォーマンスイベントの原因である可能性があります。
+
+
+
+
+
+== MetroCluster over IP構成でのクラスタの健全性の確認
+
+MetroCluster over IP構成でクラスタの健全性を確認するには、次の手順を実行します。
+
+.手順
+. 左側のナビゲーションペインで、 * イベント管理 * をクリックしてイベントリストを表示します。
+. フィルタパネルの*ソースタイプ*カテゴリで、フィルタを選択します `MetroCluster Relationship`。すべてのMetroCluster構成について、環境で発生したすべてのイベントが表示されます。
++
+[NOTE]
+====
+報告されたMetroClusterイベントが表示されない場合は、検索バーを使用して、MetroCluster over IP構成に関連するイベントに関連したクラスタの名前で検索できます。
+
+====
+. 関連するMetroClusterイベントの横にあるクラスタの名前をクリックします。[Clusters]ページに、そのクラスタの詳細が表示されます。正常性に関する問題の特定については、を参照してくださいlink:../storage-mgmt/task_monitor_metrocluster_configurations.html["MetroCluster over IP構成の接続の問題を監視する"]。
+

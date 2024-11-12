@@ -1,0 +1,142 @@
+---
+permalink: api-automation/concept_verify_svm_workflow.html 
+sidebar: sidebar 
+keywords: verify, svms, clusters 
+summary: ファイル共有またはLUNをプロビジョニングする前に、クラスタにStorage Virtual Machine（SVM）が作成されているかどうかを確認する必要があります。 
+---
+= APIを使用したクラスタのSVMの確認
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ファイル共有またはLUNをプロビジョニングする前に、クラスタにStorage Virtual Machine（SVM）が作成されているかどうかを確認する必要があります。
+
+[NOTE]
+====
+このワークフローは、 ONTAP クラスタが Unified Manager に追加され、クラスタキーが取得されていることを前提としています。クラスタには、LUNとファイル共有をプロビジョニングするためのライセンスが必要です。
+
+====
+. クラスタにSVMが作成されているかどうかを確認します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+データセンター
+ a| 
+取得
+ a| 
+`/datacenter/svm/svms`
+`/datacenter/svm/svms/\{key}`
+
+|===
++
+* cURL の例 *
+
++
+[listing]
+----
+curl -X GET "https://<hostname>/api/datacenter/svm/svms" -H "accept: application/json" -H "Authorization: Basic <Base64EncodedCredentials>"
+----
+. SVMキーが返されない場合は、SVMを作成します。SVMを作成するには、SVMをプロビジョニングするクラスタキーが必要です。SVM名も指定する必要があります。次の手順を実行します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+データセンター
+ a| 
+取得
+ a| 
+`/datacenter/cluster/clusters`
+`/datacenter/cluster/clusters/\{key}`
+
+|===
++
+クラスタキーを取得します。
+
++
+* cURL の例 *
+
++
+[listing]
+----
+curl -X GET "https://<hostname>/api/datacenter/cluster/clusters" -H "accept: application/json" -H "Authorization: Basic <Base64EncodedCredentials>"
+----
+. 出力からクラスタキーを取得し、SVMを作成するための入力として使用します。
++
+[NOTE]
+====
+SVMの作成時には、LUNとファイル共有のプロビジョニングに必要なすべてのプロトコル（CIFS、NFS、FCP、iSCSIなど）をサポートするようにしてください。SVMが必要なサービスをサポートしていないと、プロビジョニングワークフローが失敗することがあります。対応するワークロードタイプのサービスも有効にすることを推奨します。
+
+====
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+データセンター
+ a| 
+投稿
+ a| 
+`/datacenter/svm/svms`
+
+|===
++
+* cURL の例 *
+
++
+SVMオブジェクトの詳細を入力パラメータとして入力します。
+
++
+[listing]
+----
+curl -X POST "https://<hostname>/api/datacenter/svm/svms" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Basic <Base64EncodedCredentials>" "{ \"aggregates\": [ { \"_links\": {}, \"key\": \"1cd8a442-86d1,type=objecttype,uuid=1cd8a442-86d1-11e0-ae1c-9876567890123\",
+\"name\": \"cluster2\", \"uuid\": \"02c9e252-41be-11e9-81d5-00a0986138f7\" } ],
+\"cifs\": { \"ad_domain\": { \"fqdn\": \"string\", \"password\": \"string\",
+\"user\": \"string\" }, \"enabled\": true, \"name\": \"CIFS1\" },
+\"cluster\": { \"key\": \"1cd8a442-86d1-11e0-ae1c-123478563412,type=object type,uuid=1cd8a442-86d1-11e0-ae1c-9876567890123\" },
+\"dns\": { \"domains\": [ \"example.com\", \"example2.example3.com\" ],
+\"servers\": [ \"10.224.65.20\", \"2001:db08:a0b:12f0::1\" ] },
+\"fcp\": { \"enabled\": true }, \"ip_interface\": [ { \"enabled\": true,
+\"ip\": { \"address\": \"10.10.10.7\", \"netmask\": \"24\" },
+\"location\": { \"home_node\": { \"name\": \"node1\" } }, \"name\":
+\"dataLif1\" } ], \"ipspace\": { \"name\": \"exchange\" },
+\"iscsi\": { \"enabled\": true }, \"language\": \"c.utf_8\",
+\"ldap\": { \"ad_domain\": \"string\", \"base_dn\": \"string\",
+\"bind_dn\": \"string\", \"enabled\": true, \"servers\": [ \"string\" ] },
+\"name\": \"svm1\", \"nfs\": { \"enabled\": true },
+\"nis\": { \"domain\": \"string\", \"enabled\": true,
+\"servers\": [ \"string\" ] }, \"nvme\": { \"enabled\": true },
+\"routes\": [ { \"destination\": { \"address\": \"10.10.10.7\",
+\"netmask\": \"24\" }, \"gateway\": \"string\" } ],
+\"snapshot_policy\": { \"name\": \"default\" },
+\"state\": \"running\", \"subtype\": \"default\"}"
+----
++
+JSON出力にジョブオブジェクトキーが表示され、作成したSVMの検証に使用できます。
+
+. ジョブオブジェクトキーを使用してクエリを実行し、SVMの作成を確認します。SVMが正常に作成されると、SVMキーが応答に返されます。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+management-server
+ a| 
+取得
+ a| 
+`/management-server/jobs/\{key}`
+
+|===
+

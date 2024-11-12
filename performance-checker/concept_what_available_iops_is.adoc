@@ -1,0 +1,34 @@
+---
+permalink: performance-checker/concept_what_available_iops_is.html 
+sidebar: sidebar 
+keywords: available, iops, total iops, aggregate iops, volume iops 
+summary: 使用可能なIOPSカウンタは、リソースが上限に達する前にノードまたはアグリゲートに追加できる残りのIOPSの数を示します。ノードで提供できる合計IOPSは、CPUの数、CPUの速度、RAMの容量など、ノードの物理特性によって決まります。アグリゲートで提供できる合計IOPSは、ディスクの物理プロパティ（SATA、SAS、SSDのディスクなど）に基づきます。 
+---
+= 使用可能なIOPSとは
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用可能なIOPSカウンタは、リソースが上限に達する前にノードまたはアグリゲートに追加できる残りのIOPSの数を示します。
+
+ノードで提供できる合計IOPSは、CPUの数、CPUの速度、RAMの容量など、ノードの物理特性によって決まります。アグリゲートで提供できる合計IOPSは、ディスクの物理プロパティ（SATA、SAS、SSDディスクなど）に基づいて決まります。
+
+アグリゲート内のすべてのボリュームの合計IOPSがアグリゲートの合計IOPSと一致しないことがあります。これについては、次のナレッジベースの記事で説明しています。KBlink:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Infrastructure_Management/Active_IQ_Unified_Manager/Why_does_the_sum_of_all_volume_IOPs_in_an_aggregate_not_match_the_aggregate_IOPs%3F["アグリゲート内のすべてのボリュームの IOPS の合計がアグリゲートの IOPS と一致しないのはなぜですか。"]
+
+空きパフォーマンス容量カウンタは使用可能な残りのリソースの割合を示しますが、使用可能なIOPSカウンタは最大パフォーマンス容量に達するまでにリソースに追加できるIOPS（ワークロード）の正確な数を示します。
+
+たとえば、FAS2520とFAS8060のストレージシステムをペアで使用している場合、空きパフォーマンス容量の値が30%であれば、空きパフォーマンス容量がいくらかあることを意味します。ただし、この値では、それらのノードに導入できるワークロードの数は可視化されません。[Available IOPS]カウンタに、使用可能なIOPSはFAS8060では500、FAS2520では100と表示されることがあります。
+
+ノードのレイテンシとIOPSの関係を示す曲線の例を次の図に示します。
+
+image::../media/available_iops.gif[ノードのレイテンシとIOPSの関係を示すUIのスクリーンショット。]
+
+リソースが提供できる最大IOPSは、使用済みパフォーマンス容量カウンタが100%（最適ポイント）のときのIOPSの数です。運用ポイントから、このノードの現在のIOPSは10万、レイテンシは1.0ミリ秒/処理であることがわかります。ノードからキャプチャされたUnified Managerの統計によると、ノードの最大IOPSは160Kであり、60Kの空きIOPSまたは使用可能なIOPSがあることがわかります。したがって、このノードにさらにワークロードを追加することで、システムをより効率的に使用することができます。
+
+[NOTE]
+====
+ユーザアクティビティが最小限のリソースについては、一般的なワークロードを想定してCPUコアあたりのIOPSが約4、500であると仮定して、使用可能なIOPSの値が計算されます。これは、提供されるワークロードの特性を正確に見積もるためのデータがUnified Managerにないためです。
+
+====

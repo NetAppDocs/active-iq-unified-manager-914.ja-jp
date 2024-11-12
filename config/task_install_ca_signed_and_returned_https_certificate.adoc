@@ -1,0 +1,62 @@
+---
+permalink: config/task_install_ca_signed_and_returned_https_certificate.html 
+sidebar: sidebar 
+keywords: install, ca signed, returned, https, certificate 
+summary: 認証局から署名を受けて返されたセキュリティ証明書を、アップロードしてインストールすることができます。アップロードしてインストールするファイルは、既存の自己署名証明書の署名済みバージョンである必要があります。CA署名証明書は、中間者攻撃を防止し、自己署名証明書よりもセキュリティ保護を強化するのに役立ちます。 
+---
+= CA署名済みおよび返されたHTTPS証明書のインストール
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+認証局から署名を受けて返されたセキュリティ証明書を、アップロードしてインストールすることができます。アップロードしてインストールするファイルは、既存の自己署名証明書の署名済みバージョンである必要があります。CA署名証明書は、中間者攻撃を防止し、自己署名証明書よりもセキュリティ保護を強化するのに役立ちます。
+
+* 必要なもの *
+
+次の操作を完了しておく必要があります。
+
+* 証明書署名要求ファイルをダウンロードし、認証局によって署名された
+* 証明書チェーンをPEM形式で保存しました
+* チェーンに含まれるすべての証明書について、 Unified Manager サーバ証明書からルート署名証明書への中間証明書も含めます
+
+
+アプリケーション管理者のロールが必要です。
+
+[NOTE]
+====
+CSRが作成された証明書の有効期間が397日を超える場合は、CAによって証明書に署名して返送される前に、証明書の有効期間が397日に短縮されます。
+
+====
+.手順
+. 左側のナビゲーションペインで、 * General * > * HTTPS Certificate * をクリックします。
+. ［ * HTTPS 証明書のインストール * ］ をクリックします。
+. 表示されるダイアログボックスで、「 * ファイルを選択 ... * 」をクリックして、アップロードするファイルを探します。
+. ファイルを選択し、 * Install * をクリックしてファイルをインストールします。
++
+詳細については、を参照してください link:concept_install_https_certificate_generated_using_external_tools.html["外部ツールを使用して生成されたHTTPS証明書のインストール"]。
+
+
+
+
+
+== 証明書チェーンの例
+
+次に、証明書チェーンファイルの表示例を示します。
+
+[listing]
+----
+-----BEGIN CERTIFICATE-----
+<*Server certificate*>
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+<*Intermediate certificate \#1 (if present)*>
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+<*Intermediate certificate \#2 (if present)*>
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+<*Root signing certificate*>
+-----END CERTIFICATE-----
+----

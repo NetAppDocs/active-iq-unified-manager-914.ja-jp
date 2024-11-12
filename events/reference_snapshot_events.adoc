@@ -1,0 +1,55 @@
+---
+permalink: events/reference_snapshot_events.html 
+sidebar: sidebar 
+keywords: snapshot, events, impact area, availability 
+summary: Snapshotイベントは、Snapshotのステータス情報を提供します。これにより、Snapshotの潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベント名、トラップ名、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= Snapshotイベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Snapshotイベントは、Snapshotのステータス情報を提供します。これにより、Snapshotの潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベント名、トラップ名、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：可用性
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+Snapshot の自動削除が無効（該当なし）
+ a| 
+イベント
+ a| 
+ボリューム
+ a| 
+情報
+
+
+
+ a| 
+Snapshot の自動削除が有効（該当なし）
+ a| 
+イベント
+ a| 
+ボリューム
+ a| 
+情報
+
+
+
+ a| 
+Snapshotの自動削除設定が変更されました（該当なし）
+ a| 
+イベント
+ a| 
+ボリューム
+ a| 
+情報
+
+|===

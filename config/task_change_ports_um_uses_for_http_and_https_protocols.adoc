@@ -1,0 +1,44 @@
+---
+permalink: config/task_change_ports_um_uses_for_http_and_https_protocols.html 
+sidebar: sidebar 
+keywords: change, ports, unified manager, uses, http, https, protocols 
+summary: Unified Manager が HTTP および HTTPS プロトコルに使用するデフォルトのポートは、セキュリティ上の理由からインストール後に変更することができます。デフォルトのポートは、HTTPの場合は80、HTTPSの場合は443です。 
+---
+= Unified Manager が HTTP および HTTPS プロトコルに使用するポートを変更する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Manager が HTTP および HTTPS プロトコルに使用するデフォルトのポートは、セキュリティ上の理由からインストール後に変更することができます。デフォルトのポートは、HTTPの場合は80、HTTPSの場合は443です。
+
+* 必要なもの *
+
+Unified Managerサーバのメンテナンスコンソールへのログインが許可されているユーザIDとパスワードが必要です。
+
+[NOTE]
+====
+Mozilla FirefoxまたはGoogle Chromeブラウザを使用する場合、安全でないとみなされるポートがいくつかあります。HTTPおよびHTTPSトラフィックに新しいポート番号を割り当てる前に、ブラウザで確認してください。安全でないポートを選択すると、システムにアクセスできなくなる可能性があります。その場合は、カスタマーサポートに連絡して解決を依頼する必要があります。
+
+====
+ポートを変更すると Unified Manager のインスタンスが自動的に再起動されるため、システムを短時間停止しても問題のないタイミングであることを確認してください。
+
+. SSH を使用して、 Unified Manager ホストにメンテナンスユーザとしてログインします。
++
+Unified Managerメンテナンスコンソールのプロンプトが表示されます。
+
+. 「 * アプリケーションポートの表示 / 変更 * 」というラベルの付いたメニューオプションの番号を入力し、 Enter キーを押します。
+. プロンプトが表示されたら、メンテナンスユーザのパスワードをもう一度入力します。
+. HTTPポートとHTTPSポートの新しいポート番号を入力し、Enterキーを押します。
++
+ポート番号を空白のままにすると、プロトコルのデフォルトポートが割り当てられます。
+
++
+ポートを変更して Unified Manager をすぐに再起動するかどうかを確認するメッセージが表示されます。
+
+. 「 * y * 」と入力してポートを変更し、 Unified Manager を再起動します。
+. メンテナンスコンソールを終了します。
+
+
+変更後は、Unified Manager Web UIにアクセスするためのURLに新しいポート番号を含める必要があります（例：+ https://host.company.com:1234+,+ https://12.13.14.15:1122+,、+ https://[2001:db8:0:1]:2123+.）。

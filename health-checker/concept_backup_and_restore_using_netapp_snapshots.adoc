@@ -1,0 +1,20 @@
+---
+permalink: health-checker/concept_backup_and_restore_using_netapp_snapshots.html 
+sidebar: sidebar 
+keywords: snapshot copy, copies, restore, using, netapp, snapshots 
+summary: NetAppのSnapshotコピーを作成すると、Unified Managerデータベースと構成ファイルのポイントインタイムイメージが作成されます。このイメージを使用して、システム障害やデータ損失が発生した場合のリストアに使用できます。Snapshotコピーは、いずれかのONTAPクラスタ上のボリュームに定期的に書き込まれるようにスケジュールを設定して、常に最新のコピーが保持されるようにします。 
+---
+= NetAppスナップショットを使用したバックアップとリストア
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetAppのSnapshotコピーを作成すると、Unified Managerデータベースと構成ファイルのポイントインタイムイメージが作成されます。このイメージを使用して、システム障害やデータ損失が発生した場合のリストアに使用できます。Snapshotコピーは、いずれかのONTAPクラスタ上のボリュームに定期的に書き込まれるようにスケジュールを設定して、常に最新のコピーが保持されるようにします。
+
+[NOTE]
+====
+この機能は、仮想アプライアンスにインストールされているActive IQ Unified Managerでは使用できません。
+
+====

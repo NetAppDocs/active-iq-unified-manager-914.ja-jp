@@ -1,0 +1,26 @@
+---
+permalink: performance-checker/concept_understand_performance_cluster_landing_page.html 
+sidebar: sidebar 
+keywords: understand, performance, cluster, landing page 
+summary: '[Performance Cluster Landing]ページには、選択したクラスタのパフォーマンスの概要とクラスタ内の上位10個のオブジェクトのパフォーマンスステータスが表示されます。パフォーマンスの問題は、ページ上部の[All Events on this Cluster]パネルに表示されます。' 
+---
+= [パフォーマンスクラスタランディング]ページの概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Performance Cluster Landing]ページには、選択したクラスタのパフォーマンスの概要とクラスタ内の上位10個のオブジェクトのパフォーマンスステータスが表示されます。パフォーマンスの問題は、ページ上部の[All Events on this Cluster]パネルに表示されます。
+
+[Performance Cluster Landing]ページには、Unified Managerのインスタンスで管理されている各クラスタの概要が表示されます。このページでは、イベントとパフォーマンスに関する情報が提供され、クラスタの監視とトラブルシューティングを行うことができます。次の図は、opm-mobilityというクラスタの[Performance Cluster Landing]ページの例を示しています。
+
+image::../media/opm_cluster_landing_page_draft.gif[opm-mobilityというクラスタの[Performance Cluster Landing]ページの例を示すUIスクリーンショット。]
+
+[Cluster Summary]ページのイベント数が[Performance Event Inventory]ページのイベント数と一致しないことがあります。これは、組み合わせしきい値ポリシーに違反している場合は[Cluster Summary]ページの[Latency]バーと[Utilization]バーにそれぞれ1つのイベントが表示されるのに対し、[Performance Event Inventory]ページのイベントは組み合わせポリシーに違反している場合は1つだけ表示されるためです。
+
+[NOTE]
+====
+クラスタが Unified Manager の管理対象から除外されると、ページ上部のクラスタ名の右側にステータス * Removed * が表示されます。
+
+====

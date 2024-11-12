@@ -1,0 +1,408 @@
+---
+permalink: events/reference_lun_events.html 
+sidebar: sidebar 
+keywords: lun, events, impact area, availability, capacity, configuration, performance 
+summary: LUNイベントは、LUNのステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= LUNイベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+LUNイベントは、LUNのステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：可用性
+
+アスタリスク（ * ）は、 Unified Manager イベントに変換された EMS イベントを示します。
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+LUNはオフライン（ocumEvtLunOffline）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUN を破棄 * （ lunDestroy ）
+ a| 
+イベント
+ a| 
+LUN
+ a| 
+情報
+
+
+
+ a| 
+igroupでサポート対象外のオペレーティングシステムにLUNがマッピングされている（igroupUnsupportedOsType）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNにアクセスするためのアクティブな単一パス（ocumEvtLunSingleActivePath）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNにアクセスするためのアクティブなパスがない（ocumEvtLunNotReachable）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNにアクセスするための最適パスがない（ocumEvtLunOptimizedPathInactive）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+HAパートナーからLUNにアクセスするためのパスがありません（ocumEvtLunHaPathInactive）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+HAペアの一方のノードからLUNにアクセスするためのパスがない（ocumEvtLunNodePathStatusDown）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+エラー
+
+|===
+
+
+== 影響範囲：容量
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+LUN Snapshotコピー用の十分なスペースがありません（ocumEvtLunSnapshotNotPosible）
+ a| 
+リスク
+ a| 
+ボリューム
+ a| 
+警告
+
+|===
+
+
+== 影響範囲：構成
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+igroupでサポート対象外のオペレーティングシステムにLUNがマッピングされている（igroupUnsupportedOsType）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+|===
+
+
+== 影響範囲：パフォーマンス
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+LUN IOPSの重大しきい値を超過（ocumLunIopsIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUN IOPSの警告しきい値を超過（ocumLunIopsWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUN MBpsの重大しきい値を超過（ocumLunMbpsIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUN MBpsの警告しきい値を超過（ocumLunMbpsWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNレイテンシ（ミリ秒/処理）の重大しきい値を超過（ocumLunLatencyIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNレイテンシ（ミリ秒/処理）の警告しきい値を超過（ocumLunLatencyWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNレイテンシ/ LUN IOPSの重大しきい値を超過（ocumLunLatencyIopsIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNレイテンシ/ LUN IOPSの警告しきい値を超過（ocumLunLatencyIopsWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNレイテンシ/ LUN MBpsの重大しきい値を超過（ocumLunLatencyMbpsIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNレイテンシ/ LUN MBpsの警告しきい値を超過（ocumLunLatencyMbpsWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNレイテンシ/アグリゲート使用済みパフォーマンス容量の重大しきい値を超過（ocumLunLatencyAggregatePerfCapacityUsedIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNレイテンシ/アグリゲート使用済みパフォーマンス容量の警告しきい値を超過（ocumLunLatencyAggregatePerfCapacityUsedWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNレイテンシ/アグリゲート利用率の重大しきい値を超過（ocumLunLatencyAggregateUtilizationIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNレイテンシ/アグリゲート利用率の警告しきい値を超過（ocumLunLatencyAggregateUtilizationWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNレイテンシ/ノード使用済みパフォーマンス容量の重大しきい値を超過（ocumLunLatencyNodePerfCapacityUsedIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNレイテンシ/ノード使用済みパフォーマンス容量の警告しきい値を超過（ocumLunLatencyNodePerfCapacityUsedWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNレイテンシ/ノードの使用済みパフォーマンス容量-テイクオーバーの重大しきい値を超過（ocumLunLatencyAggregatePerfCapacityUsedTakeoverIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNレイテンシ/ノードの使用済みパフォーマンス容量-テイクオーバーの警告しきい値を超過（ocumLunLatencyAggregatePerfCapacityUsedTakeoverWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+LUNレイテンシ/ノード利用率の重大しきい値を超過（ocumLunLatencyNodeUtilizationIncident）
+ a| 
+インシデント
+ a| 
+LUN
+ a| 
+重大
+
+
+
+ a| 
+LUNレイテンシ/ノード利用率の警告しきい値を超過（ocumLunLatencyNodeUtilizationWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+QoS LUN最大IOPSの警告しきい値を超過（ocumQosLunMaxIopsWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+QoS LUN最大MBpsの警告しきい値を超過（ocumQosLunMaxMbpsWarning）
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+
+
+ a| 
+パフォーマンスサービスレベルポリシー（ocumConformanceLatencyWarning）に定義されたワークロードのLUNレイテンシしきい値を超過
+ a| 
+リスク
+ a| 
+LUN
+ a| 
+警告
+
+|===

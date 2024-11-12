@@ -1,0 +1,31 @@
+---
+permalink: api-automation/concept_storage_resource_model.html 
+sidebar: sidebar 
+keywords: storage, resource, ONTAP 
+summary: ONTAP のストレージリソースは、物理ストレージリソースと論理ストレージリソースに大きく分類できます。Active IQ Unified Managerに用意されているAPIを使用してONTAPシステムを効果的に管理するには、ストレージリソースモデルとさまざまなストレージリソース間の関係を理解しておく必要があります。 
+---
+= ONTAPのストレージリソース
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP のストレージリソースは、 _physical storage resources_ や _logical ストレージリソースに大きく分類できます。 _ Active IQ Unified Manager で提供される API を使用して ONTAP システムを効率的に管理するには、ストレージリソースモデルおよびさまざまなストレージリソース間の関係を理解しておく必要があります。
+
+* * 物理ストレージ・リソース *
++
+ONTAPが提供する物理ストレージオブジェクトです。物理ストレージリソースには、ディスク、クラスタ、ストレージコントローラ、ノード、アグリゲートがあります。
+
+* * 論理ストレージ・リソース *
++
+物理リソースに関連付けられていない、ONTAPが提供するストレージリソースのことです。これらのリソースはStorage Virtual Machine（SVM、旧Vserver）に関連付けられており、ディスク、アレイLUN、アグリゲートなどの特定の物理ストレージリソースからは独立して存在します。
+
++
+論理ストレージリソースには、すべてのタイプのボリュームとqtreeのほか、Snapshotコピー、重複排除、圧縮、クォータなど、これらのリソースで使用できる機能と設定が含まれます。
+
+
+
+次の図は、2ノードクラスタのストレージリソースを示しています。
+
+image::../media/storage_resource_model.gif[2ノードクラスタのストレージリソースを示すUIのスクリーンショット。]

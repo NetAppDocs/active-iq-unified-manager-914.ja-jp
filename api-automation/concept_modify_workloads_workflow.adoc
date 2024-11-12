@@ -1,0 +1,346 @@
+---
+permalink: api-automation/concept_modify_workloads_workflow.html 
+sidebar: sidebar 
+keywords: modify, storage, workloads 
+summary: ストレージワークロードを変更するには、パラメータが指定されていないLUNまたはファイル共有を更新するか、既存のパラメータを変更します。 
+---
+= APIを使用したストレージワークロードの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージワークロードを変更するには、パラメータが指定されていないLUNまたはファイル共有を更新するか、既存のパラメータを変更します。
+
+このワークフローは、LUNとファイル共有のパフォーマンスサービスレベルを更新する例を示しています。
+
+[NOTE]
+====
+このワークフローは、LUNまたはファイル共有がパフォーマンスサービスレベルでプロビジョニングされていることを前提としています。
+
+====
+
+
+== ファイル共有の変更
+
+ファイル共有の変更では、次のパラメータを更新できます。
+
+* 容量またはサイズ。
+* オンラインまたはオフラインの設定
+* ストレージ効率化ポリシー
+* パフォーマンスサービスレベル：
+* Access Control List（ACL;アクセスコントロールリスト）の設定。
+* エクスポートポリシーの設定。エクスポートポリシーパラメータを削除して、ファイル共有のデフォルト（空）のエクスポートポリシールールに戻すこともできます。
+
+
+[NOTE]
+====
+1回のAPI実行で更新できるパラメータは1つだけです。
+
+====
+この手順では、パフォーマンスサービスレベルをファイル共有に追加する方法について説明します。その他のファイル共有プロパティを更新する場合にも、同じ手順を使用できます。
+
+. 更新するファイル共有のCIFS共有キーまたはNFSファイル共有キーを取得します。このAPIは、データセンター上のすべてのファイル共有を照会します。ファイル共有キーがすでにわかっている場合は、この手順を省略してください。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/file-shares`
+
+|===
+. 取得したファイル共有キーを指定して次のAPIを実行し、ファイル共有の詳細を表示します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/file-shares/\{key}`
+
+|===
++
+出力内のファイル共有の詳細を確認します。
+
++
+[listing]
+----
+"assigned_performance_service_level": {
+        "key": null,
+        "name": "Unassigned",
+        "peak_iops": null,
+        "expected_iops": null,
+        "_links": {}
+      },
+----
+. このファイル共有に割り当てるパフォーマンスサービスレベルのキーを取得します。現在、ポリシーは割り当てられていません。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+パフォーマンスサービスレベル
+ a| 
+取得
+ a| 
+`/storage-provider/performance-service-levels`
+
+|===
++
+[NOTE]
+====
+システム定義のパフォーマンスサービスレベルの詳細を取得するには、入力パラメータをに `true`設定し `system_defined`ます。出力から、ファイル共有に適用するパフォーマンスサービスレベルのキーを取得します。
+
+====
+. ファイル共有にパフォーマンスサービスレベルを適用します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+パッチ
+ a| 
+`/storage-provider/file-shares/\{key}`
+
+|===
++
+入力では、更新するパラメータのみをファイル共有キーとともに指定する必要があります。この場合は、パフォーマンスサービスレベルのキーです。
+
++
+* cURL の例 *
+
++
+[listing]
+----
+curl -X POST "https://<hostname>/api/storage-provider/file-shares"`-H "accept: application/json" -H "Authorization: Basic <Base64EncodedCredentials>" -d
+"{
+\"performance_service_level\": { \"key\": \"1251e51b-069f-11ea-980d-fa163e82bbf2\" },
+}"
+----
++
+JSON出力にジョブオブジェクトが表示され、ホームノードとパートナーノードのアクセスエンドポイントが作成されたかどうかを確認できます。
+
+. 出力に表示されたジョブオブジェクトキーを使用して、パフォーマンスサービスレベルがファイル共有に追加されているかどうかを確認します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+管理サーバ
+ a| 
+取得
+ a| 
+`/management-server/jobs/\{key}`
+
+|===
++
+ジョブオブジェクトのIDで照会すると、ファイル共有が更新されたかどうかが表示されます。障害が発生した場合は、障害をトラブルシューティングしてAPIを再度実行します。作成が完了したら、ファイル共有を照会して変更されたオブジェクトを確認します。
+
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/file-shares/\{key}`
+
+|===
++
+出力内のファイル共有の詳細を確認します。
+
++
+[listing]
+----
+"assigned_performance_service_level": {
+        "key": "1251e51b-069f-11ea-980d-fa163e82bbf2",
+        "name": "Value",
+        "peak_iops": 75,
+        "expected_iops": 75,
+        "_links": {
+            "self": {
+                "href": "/api/storage-provider/performance-service-levels/1251e51b-069f-11ea-980d-fa163e82bbf2"
+            }
+        }
+----
+
+
+
+
+== LUNの更新
+
+LUNの更新時に変更できるパラメータは次のとおりです。
+
+* 容量またはサイズ
+* オンラインまたはオフラインの設定
+* ストレージ効率化ポリシー
+* パフォーマンスサービスレベル
+* LUN マップ
+
+
+[NOTE]
+====
+1回のAPI実行で更新できるパラメータは1つだけです。
+
+====
+この手順では、パフォーマンスサービスレベルをLUNに追加する方法について説明します。他のLUNプロパティも同じ手順で更新できます。
+
+. 更新するLUNのLUNキーを取得します。このAPIは、データセンター内のすべてのLUNの詳細を返します。LUNキーがすでにわかっている場合は、この手順をスキップします。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/luns`
+
+|===
+. 取得したLUNキーを指定して次のAPIを実行し、LUNの詳細を表示します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/luns/\{key}`
+
+|===
++
+の出力でLUNの詳細を確認します。このLUNにはパフォーマンスサービスレベルが割り当てられていません。
+
++
+* JSON 出力の例 *
+
++
+[listing]
+----
+
+  "assigned_performance_service_level": {
+        "key": null,
+        "name": "Unassigned",
+        "peak_iops": null,
+        "expected_iops": null,
+        "_links": {}
+      },
+----
+. LUNに割り当てるパフォーマンスサービスレベルのキーを取得します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+パフォーマンスサービスレベル
+ a| 
+取得
+ a| 
+`/storage-provider/performance-service-levels`
+
+|===
++
+[NOTE]
+====
+システム定義のパフォーマンスサービスレベルの詳細を取得するには、入力パラメータをに `true`設定し `system_defined`ます。出力から、LUNに適用するパフォーマンスサービスレベルのキーを取得します。
+
+====
+. LUNにパフォーマンスサービスレベルを適用します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+パッチ
+ a| 
+`/storage-provider/lun/\{key}`
+
+|===
++
+入力では、更新するパラメータのみをLUNキーと一緒に指定する必要があります。ここでは、パフォーマンスサービスレベルのキーです。
+
++
+* cURL の例 *
+
++
+[listing]
+----
+curl -X PATCH "https://<hostname>/api/storage-provider/luns/7d5a59b3-953a-11e8-8857-00a098dcc959" -H "accept: application/json" -H "Content-Type: application/json" H "Authorization: Basic <Base64EncodedCredentials>" -d
+"{ \"performance_service_level\": { \"key\": \"1251e51b-069f-11ea-980d-fa163e82bbf2\" }"
+----
++
+JSON出力にジョブオブジェクトキーが表示され、更新したLUNの検証に使用できます。
+
+. 取得したLUNキーを指定して次のAPIを実行し、LUNの詳細を表示します。
++
+[cols="3*"]
+|===
+| カテゴリ | HTTP動詞 | パス 
+
+
+ a| 
+ストレージプロバイダ
+ a| 
+取得
+ a| 
+`/storage-provider/luns/\{key}`
+
+|===
++
+の出力でLUNの詳細を確認します。このLUNにパフォーマンスサービスレベルが割り当てられていることがわかります。
+
++
+* JSON 出力の例 *
+
++
+[listing]
+----
+
+     "assigned_performance_service_level": {
+        "key": "1251e51b-069f-11ea-980d-fa163e82bbf2",
+        "name": "Value",
+        "peak_iops": 75,
+        "expected_iops": 75,
+        "_links": {
+            "self": {
+                "href": "/api/storage-provider/performance-service-levels/1251e51b-069f-11ea-980d-fa163e82bbf2"
+            }
+----
+

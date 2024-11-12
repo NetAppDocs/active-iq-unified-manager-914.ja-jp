@@ -1,0 +1,18 @@
+---
+permalink: storage-mgmt/concept_use_unified_manager_rest_apis_ocum.html 
+sidebar: sidebar 
+keywords: use, unified manager, rest, apis 
+summary: Active IQ Unified Managerには、ストレージ環境の監視と管理に関する情報を表示するためのREST APIが用意されています。また、ポリシーに基づいてストレージオブジェクトをプロビジョニングおよび管理することもできます。 
+---
+= Unified Manager REST APIの使用
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Active IQ Unified Managerには、ストレージ環境の監視と管理に関する情報を表示するためのREST APIが用意されています。また、ポリシーに基づいてストレージオブジェクトをプロビジョニングおよび管理することもできます。
+
+Unified ManagerでサポートされるAPIゲートウェイを使用して、ONTAP管理のすべてのクラスタに対してONTAP APIを実行することもできます。
+
+Unified Manager REST APIの詳細については、を参照してくださいlink:../api-automation/concept_get_started_with_um_apis.html["Active IQ Unified Manager REST APIでの作業の開始"]。

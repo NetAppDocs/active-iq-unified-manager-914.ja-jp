@@ -1,0 +1,28 @@
+---
+permalink: storage-mgmt/concept_typical_window_layouts_um_6_x.html 
+sidebar: sidebar 
+keywords: typical, window, layouts, object, list, details 
+summary: 一般的なウィンドウレイアウトを理解すると、Active IQ Unified Managerを効果的にナビゲートして使用するのに役立ちます。Unified Manager のほとんどのウィンドウは、オブジェクトリストまたは詳細の 2 つの一般的なレイアウトの 1 つに似ています。推奨される表示設定は、1280×1024ピクセル以上です。 
+---
+= 一般的なウィンドウレイアウト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+一般的なウィンドウレイアウトを理解すると、Active IQ Unified Managerを効果的にナビゲートして使用するのに役立ちます。Unified Manager のほとんどのウィンドウは、オブジェクトリストまたは詳細の 2 つの一般的なレイアウトの 1 つに似ています。推奨される表示設定は、1280×1024ピクセル以上です。
+
+次の図のすべての要素がすべてのウィンドウに含まれているわけではありません。
+
+
+
+== オブジェクトリストウィンドウのレイアウト
+
+image::../media/object_list.png[オブジェクトリスト]
+
+
+
+== オブジェクト詳細ウィンドウのレイアウト
+
+image::../media/object_details.gif[オブジェクトの詳細]

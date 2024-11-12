@@ -1,0 +1,220 @@
+---
+permalink: install-linux/reference_protocol_and_port_requirements.html 
+sidebar: sidebar 
+keywords: unified manager, port, requirements, protocol, server 
+summary: 必要なポートとプロトコルを使用して、Unified Managerサーバと管理対象のストレージシステム、サーバ、その他のコンポーネントの間で通信できます。 
+---
+= プロトコルとポートの要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必要なポートとプロトコルを使用して、Unified Managerサーバと管理対象のストレージシステム、サーバ、その他のコンポーネントの間で通信できます。
+
+
+
+== Unified Managerサーバへの接続
+
+一般的な環境では、Unified Manager Web UIへの接続時に常にデフォルトのポートが使用されるため、ポート番号を指定する必要はありません。たとえば、Unified Managerは常にデフォルトのポートで実行されるため、の代わりに `+https://<host>:443+`と入力できます `+https://<host>+`。
+
+Unified Managerサーバでは、特定のプロトコルを使用して次のインターフェイスにアクセスします。
+
+[cols="4*"]
+|===
+| インターフェイス | プロトコル | ポート | 製品説明 
+
+
+ a| 
+Unified Manager Web UI
+ a| 
+HTTP
+ a| 
+80
+ a| 
+Unified Manager Web UIへのアクセスに使用され、自動的にセキュアポート443にリダイレクトされます。
+
+
+
+ a| 
+Unified Manager Web UIおよびAPIを使用するプログラム
+ a| 
+HTTPS
+ a| 
+443
+ a| 
+Unified Manager Web UIへのセキュアなアクセスやAPI呼び出しに使用されます。API呼び出しはHTTPSでのみ実行できます。
+
+
+
+ a| 
+メンテナンスコンソール
+ a| 
+SSH / SFTP
+ a| 
+22
+ a| 
+メンテナンスコンソールへのアクセスとサポートバンドルの取得に使用されます。
+
+
+
+ a| 
+Linuxコマンドライン
+ a| 
+SSH / SFTP
+ a| 
+22
+ a| 
+Red Hat Enterprise LinuxまたはCentOSのコマンドラインにアクセスしてサポートバンドルを取得する際に使用されます。
+
+
+
+ a| 
+MySQLデータベース
+ a| 
+MySQL
+ a| 
+3306
+ a| 
+OnCommand Workflow AutomationおよびOnCommand APIサービスからUnified Managerへのアクセスで使用されます。
+
+
+
+ a| 
+syslog
+ a| 
+UDP
+ a| 
+514
+ a| 
+ONTAPシステムからサブスクリプションベースのEMSメッセージにアクセスし、メッセージに基づいてイベントを作成する場合に使用されます。
+
+
+
+ a| 
+REST
+ a| 
+HTTPS
+ a| 
+9443
+ a| 
+認証されたONTAPシステムからのREST APIベースのリアルタイムEMSイベントにアクセスするために使用されます。
+
+|===
+[NOTE]
+====
+MySQLのデフォルトポート3306は、LinuxシステムへのUnified Managerのインストール時にlocalhostに制限されます。これは、以前の設定が維持されているアップグレードシナリオには影響しません。この設定を変更したり、メンテナンスコンソールのオプションを使用して他のホストに接続を許可したりすることができ `Control access to MySQL port 3306`ます。詳細については、を参照してください link:../config/reference_additional_menu_options.html["その他のメニューオプション"]。HTTP通信とHTTPS通信に使用するポート（ポート80と443）は、Unified Managerメンテナンスコンソールを使用して変更できます。詳細については、を参照してください link:../config/concept_maintenance_console_menu.html["メンテナンスコンソールのメニュー"]。
+
+====
+
+
+== Unified Managerサーバからの接続
+
+ファイアウォールの設定で、Unified Managerサーバと管理対象のストレージシステム、サーバ、その他のコンポーネントの間の通信に使用するポートを開いておく必要があります。ポートが開いていない場合、通信は失敗します。
+
+環境に応じて、Unified Managerサーバから特定の接続先への接続に使用するポートとプロトコルを変更することもできます。
+
+Unified Managerサーバは、次のプロトコルとポートを使用して、管理対象のストレージシステム、サーバ、その他のコンポーネントに接続します。
+
+[cols="4*"]
+|===
+| デスティネーション | プロトコル | ポート | 製品説明 
+
+
+ a| 
+ストレージシステム
+ a| 
+HTTPS
+ a| 
+443 / TCP
+ a| 
+ストレージシステムの監視と管理に使用されます。
+
+
+
+ a| 
+ストレージシステム
+ a| 
+NDMP
+ a| 
+10000 / TCP
+ a| 
+特定のSnapshotリストア処理に使用されます。
+
+
+
+ a| 
+AutoSupportサーバ
+ a| 
+HTTPS
+ a| 
+443
+ a| 
+AutoSupport情報の送信に使用されます。この機能を実行するには、インターネットアクセスが必要です。
+
+
+
+ a| 
+認証サーバ
+ a| 
+LDAP
+ a| 
+389
+ a| 
+認証要求、およびユーザとグループの検索要求に使用されます。
+
+
+
+ a| 
+LDAPS
+ a| 
+636
+ a| 
+セキュアなLDAP通信に使用されます。
+
+
+
+ a| 
+メールサーバ
+ a| 
+SMTP
+ a| 
+25
+ a| 
+アラート通知Eメールの送信に使用されます。
+
+
+
+ a| 
+SNMPトラップの送信者
+ a| 
+SNMPv1またはSNMPv3
+ a| 
+162 / UDP
+ a| 
+アラート通知SNMPトラップの送信に使用されます。
+
+
+
+ a| 
+外部データプロバイダサーバ
+ a| 
+TCP
+ a| 
+2003
+ a| 
+外部のデータプロバイダ（Graphiteなど）にパフォーマンスデータを送信するために使用されます。
+
+
+
+ a| 
+NTPサーバ
+ a| 
+NTP
+ a| 
+123 / UDP
+ a| 
+Unified Managerサーバの時刻を外部のNTPタイムサーバと同期するために使用されます。（VMwareシステムのみ）
+
+|===

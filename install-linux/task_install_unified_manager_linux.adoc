@@ -1,0 +1,166 @@
+---
+permalink: install-linux/task_install_unified_manager_linux.html 
+sidebar: sidebar 
+keywords: install, unified manager 
+summary: Unified Managerは、Red Hat Enterprise LinuxまたはCentOSの物理プラットフォームまたは仮想プラットフォームにインストールできます。 
+---
+= Unified Managerのインストール
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Managerは、Red Hat Enterprise LinuxまたはCentOSの物理プラットフォームまたは仮想プラットフォームにインストールできます。
+
+* 必要なもの *
+
+* Unified Managerをインストールするシステムがシステム要件とソフトウェア要件を満たしている必要があります。
++
+を参照して link:concept_virtual_infrastructure_or_hardware_system_requirements.html["ハードウェアシステムの要件"]
+
++
+を参照して link:reference_red_hat_and_centos_software_and_installation_requirements.html["Linuxソフトウェアとインストールの要件"]
+
+* Unified ManagerのファイルをNetAppサポートサイトからターゲットシステムにダウンロードしておく必要があります `.zip`。
+* ダウンロードしたファイルの整合性を確認しておく必要があります `.zip`。
+* サポートされているWebブラウザが必要です。
+* ターミナルエミュレーションソフトウェアでは、スクロールバックが有効になっている必要があります。
+
+
+Red Hat Enterprise LinuxまたはCentOSシステムに、必要なサポートソフトウェア（Java、MySQL、その他のユーティリティ）の必要なバージョンがすべてインストールされているか、一部の必要なソフトウェアのみがインストールされているか、または新しくインストールしたシステムに必要なソフトウェアがまったくインストールされていない場合があります。
+
+.手順
+. Unified Managerをインストールするサーバにログインします。
+. 該当するコマンドを入力して、インストールをサポートするためにターゲットシステムでのインストールやアップグレードが必要なソフトウェアを評価します。
++
+[cols="2*"]
+|===
+| 必要なソフトウェアと最小バージョン | ソフトウェアとバージョンを確認するコマンド 
+
+
+ a| 
+OpenJDKバージョン11.0.21
+ a| 
+`java -version`
+
+
+
+ a| 
+MySQL 8.0.34 Community Edition
+ a| 
+`rpm -qa | grep -i mysql`
+
+
+
+ a| 
+p7zip 16.02
+ a| 
+`rpm -qa | grep p7zip`
+
+|===
+. インストールされているMySQLのバージョンがMySQL 8.0.34 Community Editionより前の場合は、次のコマンドを入力してアンインストールします。
++
+`rpm -e <mysql_package_name>`
+
++
+依存関係エラーが発生した場合は、コンポーネントをアンインストールするオプションを追加する必要があります `--nodeps`。
+
+. インストールファイルをダウンロードしたディレクトリに移動 `.zip`し、Unified Managerのバンドルを展開します。
++
+`unzip ActiveIQUnifiedManager-_<version>_.zip`
+
++
+Unified Managerに必要な `.rpm`モジュールがターゲットディレクトリに解凍されます。
+
+. ディレクトリに次のモジュールがあることを確認します。
++
+`ls *.rpm`
+
++
+`netapp-um<version>.x86_64.rpm`
+
+. インストール前スクリプトを実行して、Unified Managerのインストールと競合するシステム設定やインストール済みソフトウェアがないことを確認します。
++
+`sudo ./pre_install_check.sh`
+
++
+インストール前スクリプトは、システムに有効なRed Hat Enterprise Linuxサブスクリプションがあること、および必要なソフトウェアリポジトリにアクセスできることを確認します。問題が検出された場合は、Unified Managerをインストールする前に修正する必要があります。
+
++
+Red Hat Enterprise Linux 8システムで、AppStreamリポジトリが提供するJDK 11-OpenJDK、p7zip、およびその他のソフトウェアパッケージを含む内部リポジトリがある場合は、AppStreamリポジトリを無効にしてMySQL Community Serverをインストールする必要があります。次のコマンドを実行します。
+
++
+[listing]
+----
+# sudo yum --disablerepo=rhel-8-for-x86_64-appstream-rpms install  mysql-community-server
+----
+. * オプション： * システムがインターネットに接続されておらず、インストールに必要なパッケージを手動でダウンロードする必要がある場合にのみ、手順 7 を実行する必要があります。システムがインターネットに接続されていて、必要なパッケージがすべて揃っている場合は、ステップ8に進みます。システムがインターネットに接続されていない場合やRed Hat Enterprise Linuxのリポジトリを使用していない場合は、次の手順に従って、必要なパッケージが揃っているかどうかを確認し、不足しているパッケージをダウンロードします。
++
+.. Unified Managerをインストールするシステムで、使用可能なパッケージと使用できないパッケージのリストを確認します。+
+`yum install netapp-um<version>.x86_64.rpm --assumeno`
++
+"Installing :`" セクションの項目は現在のディレクトリにあるパッケージで、 "Installing for dependencies ： " セクションの項目はシステムにないパッケージです。
+
+.. インターネットにアクセスできるシステムで、不足しているパッケージをダウンロードします。
++
+`yum install <package_name> --downloadonly --downloaddir=.`
+
++
+[NOTE]
+====
+Red Hat Enterprise Linuxシステムではプラグイン「`yum-plugin-downloadOnly`」が常に有効になっているわけではないため、インストールせずにパッケージをダウンロードする機能を有効にしなければならない場合があります。
+`yum install yum-plugin-downloadonly`
+
+====
+.. インターネットに接続されたシステムからインストールシステムに不足しているパッケージをコピーします。
+
+
+. rootユーザとして、またはを使用して `sudo`、次のコマンドを実行してソフトウェアをインストールします。
++
+`yum install netapp-um<version>.x86_64.rpm`
+
++
+このコマンドを実行すると、.rpmパッケージ、必要なその他すべてのサポートソフトウェア、およびUnified Managerソフトウェアがインストールされます。
+
++
+インストールがGPG NOKEYエラーで失敗した場合は、を使用し `rpm --import`てURLからキーをインポートします。
+
++
+`rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022`
+
++
+[NOTE]
+====
+他のコマンド（など）を使用してインストールを実行しないでください `rpm -ivh`。Unified ManagerをRed Hat Enterprise LinuxまたはCentOSのシステムに正しくインストールするには、Unified Managerのすべてのファイルと関連ファイルを特定の順序で特定のディレクトリ構造にインストールする必要があり、そのためにはコマンドを使用する必要があります。 `yum install netapp-um<version>.x86_64.rpm`
+
+====
+. インストールメッセージの直後に表示されるEメール通知は無視してください。
++
+このEメールでは、最初のcronジョブが失敗したことがrootユーザに通知されますが、インストールには影響しません。
+
+. インストールメッセージが完了したら、メッセージを上にスクロールして、Unified Manager Web UIのIPアドレスまたはURL、メンテナンスユーザの名前（umadmin）、およびデフォルトのパスワードを確認します。
++
+次のようなメッセージが表示されます。
+
++
+[listing]
+----
+Active IQ Unified Manager installed successfully.
+Use a web browser and one of the following URL(s) to configure and access the Unified Manager GUI.
+https://default_ip_address/    (if using IPv4)
+https://[default_ip_address]/  (if using IPv6)
+https://fully_qualified_domain_name/
+
+Log in to Unified Manager in a web browser by using following details:
+  username: umadmin
+  password: admin
+----
+. IPアドレスまたはURL、割り当てられているユーザ名（umadmin）、および現在のパスワードを記録します。
+. Unified Managerをインストールする前にカスタムのホームディレクトリでumadminユーザアカウントを作成していた場合は、umadminユーザのログインシェルを指定する必要があります。
++
+`usermod -s /bin/maintenance-user-shell.sh umadmin`
+
+
+
+Web UIにアクセスしてumadminユーザのデフォルトパスワードを変更し、Unified Managerの初期セットアップを実行します（を参照）link:../config/concept_configure_unified_manager.html["Active IQ Unified Managerの設定"]。umadminユーザのデフォルトのパスワードは必ず変更する必要があります。

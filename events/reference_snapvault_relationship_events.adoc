@@ -1,0 +1,99 @@
+---
+permalink: events/reference_snapvault_relationship_events.html 
+sidebar: sidebar 
+keywords: snapvault, relationship, events, impact area, protection 
+summary: SnapVault関係イベントは、SnapVault関係のステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= SnapVault関係イベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapVault関係イベントは、SnapVault関係のステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：保護
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+非同期バックアップが正常でない（ocumEvtSnapVaultRelationshipUnhealthy）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+警告
+
+
+
+ a| 
+非同期バックアップを切断（ocumEvtSnapVaultRelationshipStateBrokenoff）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+非同期バックアップの初期化失敗（ocumEvtSnapVaultRelationshipInitializeFailed）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+非同期バックアップの更新失敗（ocumEvtSnapVaultRelationshipUpdateFailed）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+非同期バックアップの遅延エラー（ocumEvtSnapVaultRelationshipLagError）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+
+
+ a| 
+非同期バックアップの遅延警告（ocumEvtSnapVaultRelationshipLagWarning）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+警告
+
+
+
+ a| 
+非同期バックアップの再同期失敗（ocumEvtSnapvaultRelationshipResyncFailed）
+ a| 
+リスク
+ a| 
+SnapMirror関係
+ a| 
+エラー
+
+|===

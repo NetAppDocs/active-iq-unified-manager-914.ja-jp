@@ -1,0 +1,66 @@
+---
+permalink: events/reference_disk_events.html 
+sidebar: sidebar 
+keywords: disks, events, impact area, availability 
+summary: ディスクのイベントは、ディスクのステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。 
+---
+= テイスクノイヘント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ディスクのイベントは、ディスクのステータス情報を提供します。これにより、潜在的な問題を監視できます。影響範囲別にイベントがグループ化され、イベントとトラップの名前、影響レベル、ソースタイプ、および重大度が表示されます。
+
+
+
+== 影響範囲：可用性
+
+|===
+| イベント名（トラップ名） | 影響レベル | ソースタイプ | 重大度 
+
+
+ a| 
+フラッシュディスク-ほぼ使用済みのスペアブロック（ocumEvtClusterFlashDiskFewerSpareBlockError）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+エラー
+
+
+
+ a| 
+フラッシュディスク-スペアブロックなし（ocumEvtClusterFlashDiskNoSpareBlockCritical）
+ a| 
+インシデント
+ a| 
+クラスタ
+ a| 
+重大
+
+
+
+ a| 
+一部の未割り当てディスク（ocumEvtClusterUnassignedDisksSome）
+ a| 
+リスク
+ a| 
+クラスタ
+ a| 
+警告
+
+
+
+ a| 
+障害ディスクあり（ocumEvtDisksSomeFailed）
+ a| 
+インシデント
+ a| 
+クラスタ
+ a| 
+重大
+
+|===

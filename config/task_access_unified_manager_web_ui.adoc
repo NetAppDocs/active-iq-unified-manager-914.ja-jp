@@ -1,0 +1,32 @@
+---
+permalink: config/task_access_unified_manager_web_ui.html 
+sidebar: sidebar 
+keywords: access, unified manager, web ui 
+summary: Unified Manager をインストールしたら、 ONTAP システムの監視を開始できるように、 Web UI にアクセスして Unified Manager をセットアップします。 
+---
+= Unified Manager Web UI にアクセスします
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Manager をインストールしたら、 ONTAP システムの監視を開始できるように、 Web UI にアクセスして Unified Manager をセットアップします。
+
+* 必要なもの *
+
+* Web UIへのアクセスが初めての場合は、メンテナンスユーザ（Linux環境の場合はumadminユーザ）としてログインする必要があります。
+* 完全修飾ドメイン名（ FQDN ）または IP アドレスの代わりに短縮名を使用した Unified Manager へのアクセスをユーザに許可する場合は、短縮名が有効な FQDN に解決されるようにネットワークを設定する必要があります。
+* サーバで自己署名デジタル証明書が使用されている場合、信頼されていない証明書であることを示す警告がブラウザに表示されることがあります。リスクを承認してアクセスを続行するか、認証局（CA）が署名したサーバ認証用のデジタル証明書をインストールします。
+
+
+.手順
+. インストールの完了時に表示された URL を使用して、ブラウザから Unified Manager Web UI を起動します。URL は、 Unified Manager サーバの IP アドレスまたは完全修飾ドメイン名（ FQDN ）です。
++
+リンクの形式は次のとおりです。 `\https://URL`
+
+. メンテナンスユーザのクレデンシャルを使用して、 Unified Manager Web UI にログインします。
+
+
+
+NOTE: 1時間以内にWeb UIへのログインを3回連続して失敗すると、システムがロックアウトされ、システム管理者に問い合わせる必要があります。これは、ローカルユーザにのみ該当します。

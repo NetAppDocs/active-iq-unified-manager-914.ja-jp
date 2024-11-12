@@ -1,0 +1,113 @@
+---
+permalink: install-linux/reference_red_hat_and_centos_software_and_installation_requirements.html 
+sidebar: sidebar 
+keywords: linux software, installation requirements, system, authorization,  requirements 
+summary: Unified ManagerをインストールするLinuxシステムには、特定のバージョンのオペレーティングシステムとサポートソフトウェアが必要です。 
+---
+= Linuxソフトウェアとインストールの要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified ManagerをインストールするLinuxシステムには、特定のバージョンのオペレーティングシステムとサポートソフトウェアが必要です。
+
+
+
+== オペレーティングシステムソフトウェア
+
+Linuxシステムには、次のバージョンのオペレーティングシステムとサポートソフトウェアがインストールされている必要があります。
+
+* Red Hat Enterprise Linuxバージョン7.xおよび8.0から8.9（x86_64アーキテクチャに基づく）
+* x86_64アーキテクチャに基づくCentOSバージョン7.x。CentOS Streamはサポートされていません。
+
+
+サポートされているRed Hat Enterprise LinuxおよびCentOSのバージョンの最新のリストについては、Interoperability Matrixを参照してください。
+
+http://mysupport.netapp.com/matrix["mysupport.netapp.com/matrix"^]
+
+Unified Managerを実行する専用のサーバを用意する必要があります。他のアプリケーションをサーバにインストールしないでください。会社の規制により、Qualysのような脆弱性スキャナがLinuxシステムにインストールされている可能性があります。インストールが失敗しないようにするには、Unified Managerをインストールする前に脆弱性スキャナを無効にする必要があります。
+
+
+NOTE: 脆弱性スキャナ（Qualysなど）を使用すると、内部（Unified Managerと脆弱性スキャナが同じVMにインストールされている場合）または外部で仮想マシン（VM）をスキャンする際にCPU使用率が高くなることがあります。 （Unified Managerと脆弱性スキャナが2つの異なるサーバにインストールされ、脆弱性スキャナがUnified ManagerがインストールされているVMをスキャンします）。この問題を実行すると、VMが応答しなくなり、Unified Managerサービスに影響することがよくあります。そのため、NetAppでは、Unified ManagerがインストールされているVMで脆弱性スキャナを無効にすることを推奨しています。スキャナを無効にできない場合は、営業時間外にVMをスキャンし、スキャンの完了後にサービスを再起動してください。
+
+
+
+== サードパーティ製ソフトウェア
+
+Unified ManagerはWildFly Webサーバに導入されます。WildFly 26.1.3はUnified Managerにバンドルされ、設定されています。
+
+次のサードパーティパッケージが必要ですが、Unified Managerには含まれていません。これらのパッケージは、インストール時にインストーラによって自動的にインストールされ `yum`ます。ただし、次のセクションで説明するようにリポジトリを設定している場合に限ります。
+
+* MySQL Community Editionバージョン8.0.34（MySQLリポジトリから入手）。
+* OpenJDKバージョン11.0.21（Red Hat Extra Enterprise Linux Serverリポジトリから入手）
+* Python 3.6.x
+* p7zipバージョン16.02以降（Red Hat Extra Packages for Enterprise Linuxリポジトリから入手）
+
+
+[NOTE]
+====
+サードパーティ製ソフトウェアをアップグレードする前に、Unified Managerの実行中のインスタンスをシャットダウンする必要があります。サードパーティ製ソフトウェアのインストールが完了したら、Unified Managerを再起動できます。
+
+====
+
+
+== ユーザ認証の要件
+
+LinuxシステムへのUnified Managerのインストールは、rootユーザまたはroot以外のユーザがコマンドを使用して実行できます `sudo`。
+
+
+
+== インストールの要件
+
+Red Hat Enterprise LinuxまたはCentOSとその関連リポジトリをシステムにインストールする際のベストプラクティスを次に示します。別の方法でインストールまたは設定されたシステム、またはオフプレミス（クラウド）に導入されたシステムでは、追加の手順が必要になる場合があり、Unified Managerが適切に実行されない可能性があります。
+
+* Red Hat のベストプラクティスに従って Red Hat Enterprise Linux または CentOS をインストールし、次のデフォルトのオプションを選択する必要があります。デフォルトのオプションでは、「 GUI を使用するサーバ」ベース環境を選択します。
+* Red Hat Enterprise LinuxまたはCentOSへのUnified Managerのインストール中にインストールプログラムが必要なすべてのソフトウェアにアクセスしてインストールできるように、システムには適切なリポジトリへのアクセスが必要です。
+* インストーラがRed Hat Enterprise Linuxリポジトリから依存するソフトウェアを検索するには `yum`、Red Hat Enterprise Linuxのインストール時またはインストール後に有効なRed Hatサブスクリプションを使用してシステムを登録しておく必要があります。
++
+Red Hat Subscription Managerの詳細については、Red Hatのマニュアルを参照してください。
+
+* 必要なサードパーティユーティリティをシステムに正しくインストールするには、Extra Packages for Enterprise Linux（EPEL）リポジトリを有効にする必要があります。
++
+システムでEPELリポジトリが設定されていない場合は、リポジトリを手動でダウンロードして設定する必要があります。
+
++
+を参照して link:task_manually_configure_epel_repository.html["EPELリポジトリの手動設定"]
+
+* 正しいバージョンのMySQLがインストールされていない場合、システムにMySQLソフトウェアが正しくインストールされるように、MySQLリポジトリを有効にする必要があります。
++
+システムでMySQLリポジトリが設定されていない場合は、リポジトリを手動でダウンロードして設定する必要があります。
+
++
+を参照して link:task_manually_configure_mysql_repository.html["MySQLリポジトリの手動設定"]
+
+
+
+システムがインターネットに接続されておらず、インターネットに接続されたシステムからリポジトリがミラーリングされていない場合は、インストール手順に従って、システムに必要な外部ソフトウェアを確認してください。必要なソフトウェアをダウンロードしたら、インターネットに接続されたシステムにそのソフトウェアをダウンロードし、Unified Managerをインストールするシステムにファイルをコピーし `.rpm`ます。アーティファクトとパッケージをダウンロードするには、コマンドを使用する必要があります `yum install`。2つのシステムで同じバージョンのオペレーティングシステムを実行していること、および該当するRed Hat Enterprise LinuxまたはCentOSのバージョンのサブスクリプションライセンスがあることを確認する必要があります。
+
+[NOTE]
+====
+必要なサードパーティ製ソフトウェアは、ここに記載されたリポジトリ以外からはインストールしないでください。Red Hatリポジトリからインストールされるソフトウェアは、Red Hat Enterprise Linux専用に設計されたもので、Red Hatのベストプラクティス（ディレクトリのレイアウトや権限など）に準拠しています。他の場所から入手したソフトウェアはこれらのガイドラインに従っていないため、Unified Managerのインストールに失敗したり、将来のアップグレードで問題が発生したりする可能性があります。
+
+====
+
+
+== ポート443の要件
+
+Red Hat Enterprise LinuxおよびCentOSの汎用イメージでは、ポート443への外部アクセスがブロックされることがあります。そのため、Unified Managerのインストール後に管理者Web UIに接続できなくなることがあります。次のコマンドを実行すると、汎用のRed Hat Enterprise LinuxまたはCentOSシステムのすべての外部ユーザとアプリケーションがポート443にアクセスできるようになります。
+
+`# firewall-cmd --zone=public --add-port=443/tcp --permanent; firewall-cmd --reload`
+
+Red Hat Enterprise Linux および CentOS は、「 GUI を使用するサーバ」ベース環境でインストールする必要があります。Unified Managerのインストール手順で使用するコマンドを提供します。他のベース環境では、インストールを検証または完了するために追加のコマンドのインストールが必要になる場合があります。システムにがない場合は `firewall-cmd`、次のコマンドを実行してインストールする必要があります。
+
+`# sudo yum install firewalld`
+
+コマンドを実行する前にIT部門に連絡して、セキュリティポリシーで別の手順が必要かどうかを確認してください。
+
+[NOTE]
+====
+CentOSおよびRed Hatシステムでは、THP（Transparent Huge Pages）を無効にする必要があります。有効にすると、特定のプロセスがメモリを大量に消費して終了したときにUnified Managerがシャットダウンすることがあります。
+
+====

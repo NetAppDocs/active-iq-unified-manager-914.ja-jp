@@ -1,0 +1,22 @@
+---
+permalink: config/task_view_users.html 
+sidebar: sidebar 
+keywords: view, users 
+summary: '[Users]ページでは、Unified Managerを使用してストレージオブジェクトとデータを管理するユーザのリストを確認できます。ユーザ名、ユーザのタイプ、Eメールアドレス、ユーザに割り当てられているロールなど、ユーザに関する詳細を確認できます。' 
+---
+= ユーザの表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Users]ページでは、Unified Managerを使用してストレージオブジェクトとデータを管理するユーザのリストを確認できます。ユーザ名、ユーザのタイプ、Eメールアドレス、ユーザに割り当てられているロールなど、ユーザに関する詳細を確認できます。
+
+* 必要なもの *
+
+アプリケーション管理者のロールが必要です。
+
+.ステップ
+. 左側のナビゲーションペインで、 * 一般 * > * ユーザー * をクリックします。
+

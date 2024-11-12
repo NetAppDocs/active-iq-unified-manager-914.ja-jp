@@ -1,0 +1,14 @@
+---
+permalink: api-automation/concept_manage_storage_workloads.html 
+sidebar: sidebar 
+keywords: manage, workloads 
+summary: ここで説明するAPIは、ストレージワークロードの表示、LUNとファイル共有の作成、パフォーマンスサービスレベルとストレージ効率化ポリシーの管理、ストレージワークロードへのポリシーの割り当てなど、ストレージ管理のさまざまな機能に対応しています。 
+---
+= APIを使用したワークロードの管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ここで説明するAPIは、ストレージワークロードの表示、LUNとファイル共有の作成、パフォーマンスサービスレベルとストレージ効率化ポリシーの管理、ストレージワークロードへのポリシーの割り当てなど、ストレージ管理のさまざまな機能に対応しています。

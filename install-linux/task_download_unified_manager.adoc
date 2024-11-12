@@ -1,0 +1,61 @@
+---
+permalink: install-linux/task_download_unified_manager.html 
+sidebar: sidebar 
+keywords: download, Unified Manager 
+summary: 'Unified Managerをインストールするには、NetAppサポートサイトからUnified Managerのファイルをダウンロードする必要があります `.zip`。' 
+---
+= Unified Managerのダウンロード
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Managerをインストールするには、NetAppサポートサイトからUnified Managerのファイルをダウンロードする必要があります `.zip`。
+
+* 必要なもの *
+
+NetApp Support Siteのログインクレデンシャルが必要です。
+
+ダウンロードする Unified Manager のインストールパッケージは、 Red Hat Enterprise Linux と CentOS の両方のシステムで共通です。
+
+.手順
+. NetAppサポートサイトにログインし、Unified Managerのダウンロードページに移動します。
++
+https://mysupport.netapp.com/site/products/all/details/activeiq-unified-manager/downloads-tab["NetAppサポートサイト"]
+
+. 必要なUnified Managerのバージョンを選択し、エンドユーザライセンス契約（EULA）に同意します。
+. Linux用のUnified Managerインストーラファイルをダウンロードし、ファイルをターゲットシステムのディレクトリに保存します `.zip`。
++
+[NOTE]
+====
+** お使いのRed Hat Enterprise Linuxシステムに対応した正しいバージョンのインストーラファイルをダウンロードしてください。インストールされているRed Hat Enterprise Linux 7または8に基づいて、適切なバージョンのUnified Managerファイルをダウンロードして `.zip`ください。
+** NetAppでは、ファイル(`.sig`と一緒に(`.pem`、コード署名証明書とデジタル署名をダウンロードすることを推奨しています `.zip`。
+
+
+====
+. ダウンロードしたソフトウェアのチェックサムの整合性を確認します。
+. コード署名証明書とデジタル署名をダウンロードした場合は、インストーラファイルの整合性を検証できます。インストーラファイルの整合性を確認するには、次のコマンドを使用します。
++
+** 次のコマンドは、コード署名証明書から公開鍵を持つファイルを作成します。
++
+[listing]
+----
+openssl x509 -pubkey -noout -in AIQUM-RHEL-CLIENT-INTER-ROOT.pem > <public_key_file_name>
+----
++
+*** ここで、* AIQUM -RHEL-client-inter-root.pem *は、コード署名証明書を含むファイルです。
+
+
+** 次のコマンドは、インストーラファイルの署名を検証します。
++
+[listing]
+----
+openssl dgst -sha256 -verify <public_key_file_name> -signature <signature_file_name> ActiveIQUnifiedManager-<version>.zip
+----
++
+のようなメッセージは `Verified Ok`、インストーラファイルが安全に使用できることを確認します。
+
+
+
+

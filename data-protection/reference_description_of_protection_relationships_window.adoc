@@ -1,0 +1,14 @@
+---
+permalink: data-protection/reference_description_of_protection_relationships_window.html 
+sidebar: sidebar 
+keywords: description, protect, relationships, windows, dialog boxes 
+summary: 'リソースプール、 SVM の関連付け、保護ジョブなど、保護に関連する詳細を表示および管理できます。該当する[健全性しきい値]ページで、アグリゲート、ボリューム、および関係のグローバル健全性しきい値を設定できます。' 
+---
+= 保護関係のウィンドウとダイアログボックスの説明
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+リソースプール、 SVM の関連付け、保護ジョブなど、保護に関連する詳細を表示および管理できます。該当する[健全性しきい値]ページで、アグリゲート、ボリューム、および関係のグローバル健全性しきい値を設定できます。

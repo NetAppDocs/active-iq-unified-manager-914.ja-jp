@@ -1,0 +1,21 @@
+---
+permalink: health-checker/concept_understand_capacity_events_and_thresholds_for_node.html 
+sidebar: sidebar 
+keywords: understand, events, thresholds, node, root, aggregates 
+summary: Unified Managerを使用して、ノードのルートアグリゲートを監視できます。ルートアグリゲートのルートボリュームをシックプロビジョニングして、ノードが停止しないようにすることを推奨します。 
+---
+= ノードのルートアグリゲートのイベントとしきい値の概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unified Managerを使用して、ノードのルートアグリゲートを監視できます。ルートアグリゲートのルートボリュームをシックプロビジョニングして、ノードが停止しないようにすることを推奨します。
+
+デフォルトでは、ルートアグリゲートについては容量イベントとパフォーマンスイベントは生成されません。また、Unified Managerで使用されるしきい値の値はノードのルートアグリゲートには適用されません。これらのイベントが生成されるように設定を変更できるのは、テクニカルサポート担当者だけです。テクニカルサポート担当者が設定を変更すると、容量のしきい値がノードのルートアグリゲートに適用されます。
+
+ONTAPシステムマネージャまたはONTAP CLIを使用して、ノードの停止を防ぐための適切な対処を行うことができます。
+
+
+NOTE: クラスタでONTAP 9 14.1バージョン以降が実行されている場合、ノードのルートアグリゲートの監視機能は使用できません。

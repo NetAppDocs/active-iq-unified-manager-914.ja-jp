@@ -1,0 +1,72 @@
+---
+permalink: api-automation/concept_job_api.html 
+sidebar: sidebar 
+keywords: jobs, view 
+summary: management-server カテゴリのジョブ API を使用すると、非同期処理の実行の詳細を表示できます。 
+---
+= ジョブおよびシステムの詳細の表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+カテゴリのAPIを `management-server`使用して、非同期処理の実行の詳細を確認できます `jobs`。 `system`カテゴリのAPIを `management-server`使用すると、Active IQ Unified Manager環境でインスタンスの詳細を確認できます。
+
+
+
+== ジョブの表示
+
+Active IQ Unified Managerでは、リソースの追加や変更などの処理は、同期および非同期のAPI呼び出しによって実行されます。非同期実行がスケジュールされている呼び出しは、その呼び出しに対して作成されたジョブオブジェクトによって追跡できます。各ジョブオブジェクトには、識別用の一意のキーがあります。各ジョブオブジェクトはジョブオブジェクトURIを返します。このURIを使用すると、ジョブの進捗状況にアクセスして追跡できます。このAPIを使用して、各実行の詳細を取得できます。
+
+このAPIを使用すると、履歴データを含む、データセンターのすべてのジョブオブジェクトを照会できます。デフォルトでは、すべてのジョブを照会すると、Web UIおよびAPIインターフェイスからトリガーされた最新20件のジョブの詳細が返されます。組み込みのフィルタを使用して、特定のジョブを表示します。また、ジョブキーを使用して特定のジョブの詳細を照会し、リソースに対して次の一連の処理を実行することもできます。
+
+[cols="4*"]
+|===
+| カテゴリ | HTTP動詞 | パス | 製品説明 
+
+
+ a| 
+management-server
+ a| 
+取得
+ a| 
+`/management-server/jobs`
+ a| 
+すべてのジョブのジョブの詳細を返します。並べ替え順序が指定されていない場合、最後に送信されたジョブオブジェクトが上に返されます。
+
+
+
+ a| 
+management-server
+ a| 
+取得
+ a| 
+`/management-server/jobs/\{key}`
+
+ジョブオブジェクトのジョブキーを入力して、そのジョブの特定の詳細を表示します。
+ a| 
+特定のジョブオブジェクトの詳細を返します。
+
+|===
+
+
+== システムの詳細の表示
+
+APIを使用する `/management-server/system`と、Unified Manager環境のインスタンス固有の詳細を照会できます。APIから、製品とサービスに関する情報が返されます。これには、システムにインストールされているUnified Managerのバージョン、UUID、ベンダー名、ホストOSのほか、Unified Managerインスタンスで実行されているサービスの名前、説明、ステータスなどの情報が含まれます。
+
+[cols="4*"]
+|===
+| カテゴリ | HTTP動詞 | パス | 製品説明 
+
+
+ a| 
+management-server
+ a| 
+取得
+ a| 
+`/management-server/system`
+ a| 
+このAPIを実行するために入力パラメータは必要ありません。デフォルトでは、現在のUnified Managerインスタンスのシステムの詳細が返されます。
+
+|===

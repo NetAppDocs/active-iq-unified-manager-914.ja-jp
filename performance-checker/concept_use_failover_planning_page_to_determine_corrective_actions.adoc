@@ -1,0 +1,16 @@
+---
+permalink: performance-checker/concept_use_failover_planning_page_to_determine_corrective_actions.html 
+sidebar: sidebar 
+keywords: node, failover, planning page, determine, corrective, actions 
+summary: '[Performance/Node Failover Planning]ページに表示される情報を基に、フェイルオーバーによってHAペアのパフォーマンスが許容可能なレベルを下回らないように対処できます。' 
+---
+= [Node Failover Planning]ページを使用した対処方法の決定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Performance/Node Failover Planning]ページに表示される情報を基に、フェイルオーバーによってHAペアのパフォーマンスが許容可能なレベルを下回らないように対処できます。
+
+たとえば、フェイルオーバーによって予測されるパフォーマンスへの影響を軽減するために、一部のボリュームまたは LUN を HA ペアのノードからクラスタ内の他のノードに移動できます。これにより、プライマリノードはフェイルオーバー後も引き続き許容可能なパフォーマンスを提供できます。

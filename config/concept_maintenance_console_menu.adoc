@@ -1,0 +1,36 @@
+---
+permalink: config/concept_maintenance_console_menu.html 
+sidebar: sidebar 
+keywords: maintenance, console, menus 
+summary: メンテナンスコンソールは各種のメニューで構成され、 Unified Manager サーバの特別な機能や設定の保守と管理を行うことができます。 
+---
+= メンテナンスコンソールのメニュー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+メンテナンスコンソールは各種のメニューで構成され、 Unified Manager サーバの特別な機能や設定の保守と管理を行うことができます。
+
+Unified Manager をインストールしたオペレーティングシステムに応じて、メンテナンスコンソールは次のメニューで構成されます。
+
+* Upgrade Unified Manager（VMwareのみ）
+* ネットワーク構成（VMwareのみ）
+* システム構成（VMwareのみ）
++
+.. サポート/診断
+.. サーバ証明書のリセット
+.. 外部データプロバイダ
+.. バックアップ/リストア
+.. パフォーマンスポーリング間隔の設定
+.. SAML認証の無効化
+.. アプリケーションポートの表示/変更
+.. デバッグログ設定
+.. MySQLポート3306へのアクセスを制御
+.. 終了
+
+
+
+
+リストから番号を選択して、特定のメニューオプションにアクセスします。たとえば、バックアップとリストアの場合は、「_4_」を選択します。
