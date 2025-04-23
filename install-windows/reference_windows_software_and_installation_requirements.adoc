@@ -51,7 +51,7 @@ Unified Managerには次のサードパーティパッケージがバンドル�
 * MySQL Community Editionバージョン8.0.34
 * Python 3.11.6
 * OpenJDKバージョン11.0.20
-* p7zipバージョン23.01以降
+* 7-zipバージョン23.01以降
 
 
 [NOTE]
