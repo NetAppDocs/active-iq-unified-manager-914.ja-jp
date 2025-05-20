@@ -875,7 +875,6 @@
   <block id="5f3a8aa007370d00f3fd3b293a6a1118" category="paragraph">例2</block>
   <block id="ed81be50a9653250b6ea28ead011e7e0" category="paragraph">例3</block>
   <block id="d399c2619eb2015cdbc0feeecd5393c0" category="inline-link">外部で生成された証明書をActiveIQ Unified Managerでインストールできない</block>
-  <block id="e27fc816983568847a34ee8cfa2a43ac" category="paragraph">証明書のインストールに失敗した場合は、ナレッジベース（KB）の次の記事を参照してください。<block ref="2bdca89ea81a55c90daea7f3fd7941fa" category="inline-link-rx"></block></block>
   <block id="68dfce5fa7bbaecb2fd57c523891ffb2" category="summary">この機能を使用すると、システムへのアクセスを許可されているユーザ、ログインおよびログアウト時の使用条件などの情報を組織で表示できます。</block>
   <block id="105fb94c125c52cd53c3ff2749a84c57" category="doc">ログインハナアノツイカ</block>
   <block id="7e3286608c8d7159e351e5fc7cb42c6c" category="paragraph">ログインバナーを追加すると、システムへのアクセスが許可されているユーザや、ログインおよびログアウト時の利用条件などの情報を組織で表示できます。</block>
@@ -11971,4 +11970,8 @@
   <block id="3d937fc01fa5cc206639b1a0a897e80d" category="paragraph">9.14.1以降のActive IQ Unified Managerでは、オンライン証明書ステータスプロトコル（OCSP）のステータス情報がStorage Virtual Machine（SVM、旧Vserver）レベルで提供されます。つまり、SVMへのすべてのSSL/TLS接続にOCSP検証が適用され、それらの接続で使用される証明書の整合性と有効性が保証されます。</block>
   <block id="1ebcce8a1c4d802b8fe1f7f0994575b0" category="paragraph">また、Unified Managerのデフォルトのインストールでは、sudoersファイルと<block ref="6a2e8f066e07f32cb6b210b2f264b86b" prefix=" " category="inline-code"></block><block ref="15160d21aa7f8cb0f751f17cf3a5cb0e" prefix=" " category="inline-code"></block>ディレクトリにumadminユーザ（デフォルトのメンテナンスユーザ）とjbossユーザが含まれます<block ref="e1308a99253f00dceab1f955b9bb8823" prefix="(" category="inline-code"></block>。セキュリティポリシーまたはセキュリティ監視ツールが原因でこのコンテンツを環境から削除した場合は、再度追加する必要があります。Unified Manager の一部の処理では sudo 権限が必要なため、 sudoers の設定を維持する必要があります。</block>
   <block id="af95c5c8b4d0fa2b905341b11918dede" category="list-text">7-zipバージョン23.01以降</block>
+  <block id="6e01204c5266c6bad73448d8f8d5abc8" category="paragraph">証明書のインストールに失敗した場合は、ナレッジベース（KB）の次の記事を参照してください。<block ref="e2fe41d42a2d7397cc470302ef9f2a97" category="inline-link-rx"></block></block>
+  <block id="57149177e572f9b5329f85c287861767" category="paragraph">Unified Managerが監査ログをリモートsyslogサーバに送信するために使用します。</block>
+  <block id="a683cc8dbb0bb0e6b1793e6ba834ff32" category="inline-link">Active IQ Unified ManagerホストでJavaを更新したあとにサービスが開始されない</block>
+  <block id="09baf90eb42ecfec3f212db12b09fe09" category="list-text">Unified Managerホストにインストールする必要があるJavaのバージョンは1つだけです。インストールしないと、使用するバージョンが特定できない可能性があります。を参照してください<block ref="c8da8190d4ab26608407458b2e410255" category="inline-link-rx"></block></block>
 </blocks>
