@@ -11166,7 +11166,6 @@
   <block id="8a13d1a5338f1794b0454274eb4286a1" category="summary">Active IQ Unified Managerには、ストレージ環境の監視と管理に関する情報を表示するためのREST APIが用意されています。また、ポリシーに基づいてストレージオブジェクトをプロビジョニングおよび管理することもできます。</block>
   <block id="12d49648274bb61cf34ecef5c6ec1acc" category="doc">Unified Manager REST APIの使用</block>
   <block id="3c7317176d7c7efc96ac34c6081c3782" category="paragraph">Unified ManagerでサポートされるAPIゲートウェイを使用して、ONTAP管理のすべてのクラスタに対してONTAP APIを実行することもできます。</block>
-  <block id="6b4f58d10ed3b35bb65050a16ca6ac3d" category="paragraph">Unified Manager REST APIの詳細については、を参照してください<block ref="821164fa8c5ff02f6a5d3ecc3d001b16" category="inline-link-macro-rx"></block>。</block>
   <block id="f63bfd0f21322837ec283a9385287658" category="summary">スイッチオーバーまたはスイッチバックをトリガーするイベントが発生すると、ディザスタリカバリグループ内の一方のクラスタからもう一方のクラスタにアクティブなボリュームが移動されます。クライアントにデータを提供していたアクティブなクラスタ上のボリュームは停止され、もう一方のクラスタ上のボリュームがアクティブ化されてデータの提供が開始されます。Unified Managerは、実行中のアクティブなボリュームのみを監視します。</block>
   <block id="7edc2199c58b1da2fb3f4eafb729d425" category="paragraph">ボリュームはクラスタ間で移動されるため、両方のクラスタを監視することを推奨します。MetroCluster構成の両方のクラスタを単一のインスタンスで監視できますが、2つのサイト間の距離によっては、両方のクラスタを監視するためにUnified Managerインスタンスを2つ使用しなければならない場合があります。次の図は、Unified Managerの単一インスタンスを示しています。</block>
   <block id="1f627cf53c59c3dcb003a3d36f72e53e" category="image-alt">Unified Managerの単一インスタンスを示すUIのスクリーンショット。</block>
@@ -11974,4 +11973,8 @@
   <block id="57149177e572f9b5329f85c287861767" category="paragraph">Unified Managerが監査ログをリモートsyslogサーバに送信するために使用します。</block>
   <block id="a683cc8dbb0bb0e6b1793e6ba834ff32" category="inline-link">Active IQ Unified ManagerホストでJavaを更新したあとにサービスが開始されない</block>
   <block id="09baf90eb42ecfec3f212db12b09fe09" category="list-text">Unified Managerホストにインストールする必要があるJavaのバージョンは1つだけです。インストールしないと、使用するバージョンが特定できない可能性があります。を参照してください<block ref="c8da8190d4ab26608407458b2e410255" category="inline-link-rx"></block></block>
+  <block id="cc8fe7d78ffdf74546d47ee78ae65dce" category="inline-link-macro">Active IQ Unified Manager REST APIの使用を開始する</block>
+  <block id="f6952e0b11db7160562f18106a9c16d6" category="paragraph">Unified Manager REST APIの詳細については、以下を参照してください。<block ref="7c769569c7bbad9af49bc30dbb82753d" category="inline-link-macro-rx"></block> 。</block>
+  <block id="46ddffc1618503c5b7bac4767df5963b" category="list-text">15 日間のパフォーマンス データの収集には CPU 負荷がかかります。 NetApp、データ継続性収集ポーリングが同時に多くのクラスターで実行されないように、新しいクラスターの追加を段階的に行うことを推奨しています。さらに、データ継続性収集期間中に Unified Manager を再起動すると、収集が停止し、欠落した期間のパフォーマンス チャートにギャップが表示されます。</block>
+  <block id="40bbb8b87d3598ac9845a44abe43f38c" category="list-text">バージョン 9.14.1 以降のONTAPクラスターを追加すると、クラウド エージェント機能を通じて通信が行われます。  ONTAP は、読み取り専用権限を持つ内部サービス アカウント ユーザー (clus-agent-xxxx など) を自動的に作成します。  Unified Managerは、以下の場合、これらのクラスタからのデータ収集を停止します。<block ref="45b8c9da551ea3a5a411451e7d91c303" prefix=" " category="inline-code"></block>ユーザーは削除されます。</block>
 </blocks>
