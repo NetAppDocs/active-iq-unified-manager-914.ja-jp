@@ -3170,7 +3170,6 @@
   <block id="357a35aedd0c37deb3a881df778a9bb4" category="list-text">[* リストア ] をクリックします。</block>
   <block id="58c0234305a387b4aa60babbbd858295" category="paragraph">リストアプロセスが開始されます。リストアプロセスを完了するためにバックエンドでジョブが作成されます。</block>
   <block id="aa2724776cabef1aaa6642e924be93b0" category="list-text">ジョブの進捗状況を表示するには、左側のナビゲーションペインで* Protection &gt; Jobs *と進み、リストア・ジョブのステータスをジョブのリストから確認します。</block>
-  <block id="f19eba4a48c0d8762f03ea93717fbfea" category="paragraph">Cloud Volumes ONTAP HA クラスタ間のリストア処理が NDMP のエラーで失敗する場合は、ソースシステムのクラスタ管理 LIF と通信できるように、デスティネーションクラスタで明示的な AWS ルートを追加しなければならないことがあります。この設定手順は、BlueXPを使用して実行します。</block>
   <block id="7d85117aeb6dd780b49fc8bc5df44937" category="summary">関係を休止してスケジュールされた転送の実行を停止したら、再開を使用してスケジュールされた転送を再度有効にし、ソースボリュームまたはプライマリボリュームのデータを保護します。転送は、次回のスケジュールされた転送の実行時にチェックポイント（存在する場合）から再開されます。</block>
   <block id="f7badd266fb3b7da14e5a44e940795fe" category="doc">休止中の関係のスケジュールされた転送を[Volume Relationships]ページで再開</block>
   <block id="c49784c79b4a831f938c96963dfe9e09" category="paragraph">関係を休止してスケジュールされた転送の実行を停止したあと、 * Resume * を使用してスケジュールされた転送を再度有効にし、ソースボリュームまたはプライマリボリュームのデータを保護することができます。転送は、次回のスケジュールされた転送の実行時にチェックポイント（存在する場合）から再開されます。</block>
@@ -11977,4 +11976,5 @@
   <block id="f6952e0b11db7160562f18106a9c16d6" category="paragraph">Unified Manager REST APIの詳細については、以下を参照してください。<block ref="7c769569c7bbad9af49bc30dbb82753d" category="inline-link-macro-rx"></block> 。</block>
   <block id="46ddffc1618503c5b7bac4767df5963b" category="list-text">15 日間のパフォーマンス データの収集には CPU 負荷がかかります。 NetApp、データ継続性収集ポーリングが同時に多くのクラスターで実行されないように、新しいクラスターの追加を段階的に行うことを推奨しています。さらに、データ継続性収集期間中に Unified Manager を再起動すると、収集が停止し、欠落した期間のパフォーマンス チャートにギャップが表示されます。</block>
   <block id="40bbb8b87d3598ac9845a44abe43f38c" category="list-text">バージョン 9.14.1 以降のONTAPクラスターを追加すると、クラウド エージェント機能を通じて通信が行われます。  ONTAP は、読み取り専用権限を持つ内部サービス アカウント ユーザー (clus-agent-xxxx など) を自動的に作成します。  Unified Managerは、以下の場合、これらのクラスタからのデータ収集を停止します。<block ref="45b8c9da551ea3a5a411451e7d91c303" prefix=" " category="inline-code"></block>ユーザーは削除されます。</block>
+  <block id="323f966c65a63cb769e4f899cb19451f" category="paragraph">Cloud Volumes ONTAPのHAクラスタ間のリストア処理がNDMPのエラーで失敗する場合は、ソース システムのクラスタ管理LIFと通信できるように、デスティネーション クラスタで明示的なAWSのルートを追加しなければならないことがあります。この構成手順は、 NetAppコンソールを使用して実行します。</block>
 </blocks>
